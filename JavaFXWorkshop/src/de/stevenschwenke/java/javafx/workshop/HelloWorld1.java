@@ -35,10 +35,17 @@ public class HelloWorld1 extends Application implements Initializable {
 	@FXML
 	private Label chipsLabel;
 
-	/** Properties to hold the amount of stuff we are going to buy */
+	@FXML
+	private Label sumLabel;
+
+	/**
+	 * Properties to hold the amount of stuff we are going to buy. Similar to
+	 * old value classes / literals but with more power.
+	 */
 	private IntegerProperty amountOfPotatoes = new SimpleIntegerProperty();
 	private IntegerProperty amountOfApples = new SimpleIntegerProperty();
 	private IntegerProperty amountOfChips = new SimpleIntegerProperty();
+	private IntegerProperty sum = new SimpleIntegerProperty();
 
 	private Data junk;
 
@@ -100,6 +107,14 @@ public class HelloWorld1 extends Application implements Initializable {
 			}
 		});
 
+		sum.bind(amountOfApples.add(amountOfChips).add(amountOfPotatoes));
+		sum.addListener(new ChangeListener<Number>() {
+			@Override
+			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+				sumLabel.textProperty().set(newValue.toString());
+			}
+		});
+
 	}
 
 	@FXML
@@ -124,7 +139,6 @@ public class HelloWorld1 extends Application implements Initializable {
 
 	@FXML
 	private void subtractOneFromPotatoes() {
-		// TODO Diese Logik mit den Properties abbilden!
 		if (amountOfPotatoes.greaterThan(0).get()) {
 			amountOfPotatoes.set(amountOfPotatoes.get() - 1);
 		}
