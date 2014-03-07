@@ -75,6 +75,11 @@ public class HelloWorld1 extends Application implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+
+		potatoesLabel.setText("0");
+		applesLabel.setText("0");
+		chipsLabel.setText("0");
+
 		fruits = new PieChart.Data("Fruits", 0);
 		vegetables = new PieChart.Data("Vegetables", 0);
 		junk = new PieChart.Data("Junkfood", 0);
