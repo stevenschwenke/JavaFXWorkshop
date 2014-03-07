@@ -61,7 +61,7 @@ public class HelloWorld1 extends Application implements Initializable {
 	}
 
 	@FXML
-	private void addOneToFruits() {
+	private void addOneToApples() {
 		// Update not possible on this observable list - only with implementing
 		// a callback while instantiating the list!
 		// fruits.pieValueProperty().add(1L);
@@ -70,29 +70,29 @@ public class HelloWorld1 extends Application implements Initializable {
 	}
 
 	@FXML
-	private void subtractOneFromFruits() {
+	private void subtractOneFromApples() {
 		if (fruits.getPieValue() > 0)
 			fruits.setPieValue(fruits.getPieValue() - 1);
 	}
 
 	@FXML
-	private void addOneToVegetables() {
+	private void addOneToPotatoes() {
 		vegetables.setPieValue(vegetables.getPieValue() + 1);
 	}
 
 	@FXML
-	private void subtractOneFromVegetables() {
+	private void subtractOneFromPotatoes() {
 		if (vegetables.getPieValue() > 0)
 			vegetables.setPieValue(vegetables.getPieValue() - 1);
 	}
 
 	@FXML
-	private void addOneToJunk() {
+	private void addOneToChips() {
 		junk.setPieValue(junk.getPieValue() + 1);
 	}
 
 	@FXML
-	private void subtractOneFromJunk() {
+	private void subtractOneFromChips() {
 		if (junk.getPieValue() > 0)
 			junk.setPieValue(junk.getPieValue() - 1);
 	}

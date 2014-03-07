@@ -15,12 +15,12 @@
         <Label text="potatoes" GridPane.columnIndex="0" GridPane.rowIndex="0" />
         <Label text="appel" GridPane.columnIndex="0" GridPane.rowIndex="1" />
         <Label text="chips" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-        <Button id="addPotatoe" contentDisplay="CENTER" mnemonicParsing="false" onAction="#subtractOneFromVegetables" text="-" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
-        <Button id="addPotatoe" mnemonicParsing="false" onAction="#addOneToVegetables" text="+" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
-        <Button mnemonicParsing="false" onAction="#subtractOneFromFruits" text="-" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-        <Button mnemonicParsing="false" onAction="#addOneToFruits" text="+" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-        <Button mnemonicParsing="false" onAction="#subtractOneFromJunk" prefWidth="-1.0" text="-" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-        <Button mnemonicParsing="false" onAction="#addOneToJunk" text="+" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+        <Button id="addPotatoe" contentDisplay="CENTER" mnemonicParsing="false" onAction="#subtractOneFromPotatoes" text="-" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
+        <Button id="addPotatoe" mnemonicParsing="false" onAction="#addOneToPotatoes" text="+" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
+        <Button mnemonicParsing="false" onAction="#subtractOneFromApples" text="-" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+        <Button mnemonicParsing="false" onAction="#addOneToApples" text="+" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+        <Button mnemonicParsing="false" onAction="#subtractOneFromChips" prefWidth="-1.0" text="-" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+        <Button mnemonicParsing="false" onAction="#addOneToChips" text="+" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
       </children>
       <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
