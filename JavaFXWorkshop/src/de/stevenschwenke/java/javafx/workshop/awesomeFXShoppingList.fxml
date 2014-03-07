@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
+<?import java.net.*?>
 <?import java.util.*?>
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="730.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="de.stevenschwenke.java.javafx.workshop.HelloWorld1">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="730.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="de.stevenschwenke.java.javafx.workshop.AwesomeFXShoppingList">
   <children>
     <PieChart id="PieChart" fx:id="pieChart" layoutX="14.0" layoutY="173.0" prefHeight="276.9999000000025" prefWidth="332.0" />
     <GridPane alignment="TOP_LEFT" layoutX="28.0" layoutY="14.0" prefHeight="140.0" prefWidth="277.0">
@@ -40,4 +41,7 @@
       </rowConstraints>
     </GridPane>
   </children>
+  <stylesheets>
+    <URL value="@awesomeCSS.css" />
+  </stylesheets>
 </AnchorPane>

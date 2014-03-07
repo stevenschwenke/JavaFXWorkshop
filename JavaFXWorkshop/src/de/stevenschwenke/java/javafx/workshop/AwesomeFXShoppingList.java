@@ -20,7 +20,7 @@ import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-public class HelloWorld1 extends Application implements Initializable {
+public class AwesomeFXShoppingList extends Application implements Initializable {
 
 	/** UI components with FX-mapping to the .fxml - file */
 	@FXML
@@ -49,7 +49,9 @@ public class HelloWorld1 extends Application implements Initializable {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("helloWorld1.fxml"));
+		// Loading out GUI from the fxml file. Binding to fields above happens
+		// here.
+		Parent root = FXMLLoader.load(getClass().getResource("awesomeFXShoppingList.fxml"));
 		// TODO Was ist eine Stage, was eine Scene? - Abbildungen!
 		// TODO Sources einbinden!
 		// TODO Workspace als zip auf 2 USB-Sticks rumgehen lassen - gleich mit
@@ -57,7 +59,7 @@ public class HelloWorld1 extends Application implements Initializable {
 		// dieser Workspace sein, da hier Zugangsdaten für Github stehen!
 		Scene scene = new Scene(root, 800, 600);
 
-		stage.setTitle("Hello World 1");
+		stage.setTitle("Awesome FX Shopping List");
 		stage.setScene(scene);
 		stage.show();
 	}
