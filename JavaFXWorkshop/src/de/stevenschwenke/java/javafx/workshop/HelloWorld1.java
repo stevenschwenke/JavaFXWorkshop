@@ -26,7 +26,6 @@ public class HelloWorld1 extends Application {
 		stage.setTitle("Hello World 1");
 		stage.setScene(scene);
 		stage.show();
-		
 	}
 
 }
