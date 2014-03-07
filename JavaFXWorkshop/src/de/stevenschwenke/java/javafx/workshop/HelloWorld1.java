@@ -4,6 +4,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.application.Application;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,14 +17,28 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.PieChart.Data;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class HelloWorld1 extends Application implements Initializable {
 
+	/** UI components */
 	@FXML
 	private PieChart pieChart;
 
-	private ObservableList<PieChart.Data> pieChartData;
+	@FXML
+	private Label potatoesLabel;
+
+	@FXML
+	private Label applesLabel;
+
+	@FXML
+	private Label chipsLabel;
+
+	/** Properties to hold the amount of stuff we are going to buy */
+	private IntegerProperty amountOfPotatoes = new SimpleIntegerProperty();
+	private IntegerProperty amountOfApples = new SimpleIntegerProperty();
+	private IntegerProperty amountOfChips = new SimpleIntegerProperty();
 
 	private Data junk;
 
@@ -34,8 +52,7 @@ public class HelloWorld1 extends Application implements Initializable {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		Parent root = FXMLLoader.load(getClass()
-				.getResource("helloWorld1.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("helloWorld1.fxml"));
 		// TODO Was ist eine Stage, was eine Scene? - Abbildungen!
 		// TODO Sources einbinden!
 		// TODO Workspace als zip auf 2 USB-Sticks rumgehen lassen - gleich mit
@@ -55,9 +72,34 @@ public class HelloWorld1 extends Application implements Initializable {
 		vegetables = new PieChart.Data("Vegetables", 0);
 		junk = new PieChart.Data("Junkfood", 0);
 
-		pieChartData = FXCollections.observableArrayList(fruits, vegetables,
-				junk);
+		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(fruits, vegetables, junk);
 		pieChart.setData(pieChartData);
+
+		// Listener for the properties to react on changes
+		amountOfPotatoes.addListener(new ChangeListener<Number>() {
+			@Override
+			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+				potatoesLabel.textProperty().set(newValue.toString());
+				vegetables.setPieValue(vegetables.getPieValue() + (newValue.intValue() - oldValue.intValue()));
+			}
+		});
+
+		amountOfApples.addListener(new ChangeListener<Number>() {
+			@Override
+			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+				applesLabel.textProperty().set(newValue.toString());
+				fruits.setPieValue(fruits.getPieValue() + (newValue.intValue() - oldValue.intValue()));
+			}
+		});
+
+		amountOfChips.addListener(new ChangeListener<Number>() {
+			@Override
+			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+				chipsLabel.textProperty().set(newValue.toString());
+				junk.setPieValue(junk.getPieValue() + (newValue.intValue() - oldValue.intValue()));
+			}
+		});
+
 	}
 
 	@FXML
@@ -66,34 +108,37 @@ public class HelloWorld1 extends Application implements Initializable {
 		// a callback while instantiating the list!
 		// fruits.pieValueProperty().add(1L);
 
-		fruits.setPieValue(fruits.getPieValue() + 1);
+		amountOfApples.set(amountOfApples.get() + 1);
 	}
 
 	@FXML
 	private void subtractOneFromApples() {
-		if (fruits.getPieValue() > 0)
-			fruits.setPieValue(fruits.getPieValue() - 1);
+		if (amountOfApples.greaterThan(0).get())
+			amountOfApples.set(amountOfApples.get() - 1);
 	}
 
 	@FXML
 	private void addOneToPotatoes() {
-		vegetables.setPieValue(vegetables.getPieValue() + 1);
+		amountOfPotatoes.set(amountOfPotatoes.get() + 1);
 	}
 
 	@FXML
 	private void subtractOneFromPotatoes() {
-		if (vegetables.getPieValue() > 0)
-			vegetables.setPieValue(vegetables.getPieValue() - 1);
+		// TODO Diese Logik mit den Properties abbilden!
+		if (amountOfPotatoes.greaterThan(0).get()) {
+			amountOfPotatoes.set(amountOfPotatoes.get() - 1);
+		}
 	}
 
 	@FXML
 	private void addOneToChips() {
-		junk.setPieValue(junk.getPieValue() + 1);
+		amountOfChips.set(amountOfChips.get() + 1);
 	}
 
 	@FXML
 	private void subtractOneFromChips() {
-		if (junk.getPieValue() > 0)
-			junk.setPieValue(junk.getPieValue() - 1);
+		if (amountOfChips.greaterThan(0).get()) {
+			amountOfChips.set(amountOfChips.get() - 1);
+		}
 	}
 }

@@ -10,19 +10,23 @@
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="730.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="de.stevenschwenke.java.javafx.workshop.HelloWorld1">
   <children>
     <PieChart id="PieChart" fx:id="pieChart" layoutX="14.0" layoutY="173.0" prefHeight="276.9999000000025" prefWidth="332.0" />
-    <GridPane alignment="TOP_LEFT" layoutX="28.0" layoutY="14.0" prefHeight="110.0" prefWidth="208.0">
+    <GridPane alignment="TOP_LEFT" layoutX="28.0" layoutY="14.0" prefHeight="110.0" prefWidth="277.0">
       <children>
         <Label text="potatoes" GridPane.columnIndex="0" GridPane.rowIndex="0" />
         <Label text="appel" GridPane.columnIndex="0" GridPane.rowIndex="1" />
         <Label text="chips" GridPane.columnIndex="0" GridPane.rowIndex="2" />
         <Button id="addPotatoe" contentDisplay="CENTER" mnemonicParsing="false" onAction="#subtractOneFromPotatoes" text="-" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
-        <Button id="addPotatoe" mnemonicParsing="false" onAction="#addOneToPotatoes" text="+" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
+        <Button id="addPotatoe" mnemonicParsing="false" onAction="#addOneToPotatoes" text="+" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
         <Button mnemonicParsing="false" onAction="#subtractOneFromApples" text="-" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-        <Button mnemonicParsing="false" onAction="#addOneToApples" text="+" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+        <Button mnemonicParsing="false" onAction="#addOneToApples" text="+" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
         <Button mnemonicParsing="false" onAction="#subtractOneFromChips" prefWidth="-1.0" text="-" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-        <Button mnemonicParsing="false" onAction="#addOneToChips" text="+" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+        <Button mnemonicParsing="false" onAction="#addOneToChips" text="+" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+        <Label fx:id="potatoesLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+        <Label fx:id="applesLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+        <Label fx:id="chipsLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2" />
       </children>
       <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
