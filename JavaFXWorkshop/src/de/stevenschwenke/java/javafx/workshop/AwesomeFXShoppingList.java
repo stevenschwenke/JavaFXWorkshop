@@ -70,6 +70,7 @@ public class AwesomeFXShoppingList extends Application implements Initializable 
 		potatoesLabel.setText("0");
 		applesLabel.setText("0");
 		chipsLabel.setText("0");
+		sumLabel.setText("0");
 
 		// building pie chart
 		final Data fruits = new PieChart.Data("Fruits", 0);
