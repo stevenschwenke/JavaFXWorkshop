@@ -57,7 +57,7 @@ public class AwesomeFXShoppingList extends Application implements Initializable 
 		// TODO Workspace als zip auf 2 USB-Sticks rumgehen lassen - gleich mit
 		// fxml startet Scene Builder und allen Beispielen. Sollte aber nicht
 		// dieser Workspace sein, da hier Zugangsdaten für Github stehen!
-		Scene scene = new Scene(root, 800, 600);
+		Scene scene = new Scene(root, 418, 550);
 
 		stage.setTitle("Awesome FX Shopping List");
 		stage.setScene(scene);
