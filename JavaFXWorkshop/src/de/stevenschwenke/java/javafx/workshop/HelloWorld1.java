@@ -22,36 +22,26 @@ import javafx.stage.Stage;
 
 public class HelloWorld1 extends Application implements Initializable {
 
-	/** UI components */
+	/** UI components with FX-mapping to the .fxml - file */
 	@FXML
 	private PieChart pieChart;
-
 	@FXML
 	private Label potatoesLabel;
-
 	@FXML
 	private Label applesLabel;
-
 	@FXML
 	private Label chipsLabel;
-
 	@FXML
 	private Label sumLabel;
 
 	/**
 	 * Properties to hold the amount of stuff we are going to buy. Similar to
-	 * old value classes / literals but with more power.
+	 * old value classes / literals but with ninja power.
 	 */
 	private IntegerProperty amountOfPotatoes = new SimpleIntegerProperty();
 	private IntegerProperty amountOfApples = new SimpleIntegerProperty();
 	private IntegerProperty amountOfChips = new SimpleIntegerProperty();
 	private IntegerProperty sum = new SimpleIntegerProperty();
-
-	private Data junk;
-
-	private Data fruits;
-
-	private Data vegetables;
 
 	public static void main(String[] args) {
 		launch(args);
@@ -70,7 +60,6 @@ public class HelloWorld1 extends Application implements Initializable {
 		stage.setTitle("Hello World 1");
 		stage.setScene(scene);
 		stage.show();
-
 	}
 
 	@Override
@@ -80,9 +69,10 @@ public class HelloWorld1 extends Application implements Initializable {
 		applesLabel.setText("0");
 		chipsLabel.setText("0");
 
-		fruits = new PieChart.Data("Fruits", 0);
-		vegetables = new PieChart.Data("Vegetables", 0);
-		junk = new PieChart.Data("Junkfood", 0);
+		// building pie chart
+		final Data fruits = new PieChart.Data("Fruits", 0);
+		final Data vegetables = new PieChart.Data("Vegetables", 0);
+		final Data junk = new PieChart.Data("Junkfood", 0);
 
 		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(fruits, vegetables, junk);
 		pieChart.setData(pieChartData);
@@ -112,22 +102,19 @@ public class HelloWorld1 extends Application implements Initializable {
 			}
 		});
 
+		// You can do math with properties!
 		sum.bind(amountOfApples.add(amountOfChips).add(amountOfPotatoes));
+
 		sum.addListener(new ChangeListener<Number>() {
 			@Override
 			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
 				sumLabel.textProperty().set(newValue.toString());
 			}
 		});
-
 	}
 
 	@FXML
 	private void addOneToApples() {
-		// Update not possible on this observable list - only with implementing
-		// a callback while instantiating the list!
-		// fruits.pieValueProperty().add(1L);
-
 		amountOfApples.set(amountOfApples.get() + 1);
 	}
 
