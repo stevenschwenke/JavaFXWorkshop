@@ -8,6 +8,11 @@ JavaFXWorkshop
 
 2. Let's code!
 --------------
+
+Setup your tools:
+- Eclipse project with Java 1.7 and referenced jfxrt.jar
+- SceneBuilder 1.1 (2.0 is still buggy) (http://www.oracle.com/technetwork/java/javafx/downloads/index.html)
+
 1. SceneBuilder and fxml-files
 2. properties
 3. Charts - the pie chart
@@ -15,6 +20,11 @@ JavaFXWorkshop
 
 That is what we will build:
 ![alt tag](awesomeFXShoppingList.png)
+
+More tools:
+- Scenic View  (http://fxexperience.com/scenic-view/)
+- e(fx)clipse (http://www.eclipse.org/efxclipse/index.html)
+
 
 3. Swing Interop
 ----------------
