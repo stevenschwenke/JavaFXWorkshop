@@ -15,24 +15,24 @@ Setup your tools:
 - JDK >1.7u9 (with jfxrt.jar)
 - SceneBuilder 1.1 (2.0 is still buggy) (http://www.oracle.com/technetwork/java/javafx/downloads/index.html)
 
-Part 1: SceneBuilder and fxml-files
+*Part 1: SceneBuilder and fxml-files*
 - fxml-file = user interface declaration
 - Controller = Java class that controls one fxml-file
 - don't forget to set the controller in the SceneBuilder on your top component!
 - fields and methods in your controller are bound to the fxml with "@FXML"
 
-Part 2: Properties and binding
+*Part 2: Properties and binding*
 - Properties are a language extension - expect them to come around in the backend, too.
 - extension of bean definition: "setMyFoo(...)", "getMyFoo()" and "myFooProperty()"
 - There is unidirectional and bidirectional binding: myProperty.bind(...) and myProperty.bindBidirectional(...)
 - you can do math with properties, for example: sum.bind(amountOfApples.add(amountOfChips).add(amountOfPotatoes));
 - you can listen on properties and get notified if there's a change
 
-Part 3: Charts - the pie chart
+*Part 3: Charts - the pie chart*
 - data behind chart = ObservableList. You can listen on that, too!
 - because of that, you just have to change the data and the chart will be updated
 
-Part 4: Styling with CSS
+*Part 4: Styling with CSS*
 - either directly for one component in SceneBuilder or in the code or in a CSS (you want to have the latter!)
 - behold: not all CSS tags are available in JavaFX and you have to add a "-fx" before them: "-fx-background-color:red"
 - just in JavaFX - CSS: dropshadow
