@@ -12,7 +12,7 @@ JavaFXWorkshop
 
 Setup your tools:
 - Eclipse IDE
-- JDK >1.7u9 (with jfxrt.jar)
+- JDK >1.7u6 (with jfxrt.jar)
 - SceneBuilder 1.1 (2.0 is still buggy) (http://www.oracle.com/technetwork/java/javafx/downloads/index.html)
 
 **Part 1: SceneBuilder and .fxml-files**
@@ -38,7 +38,7 @@ Setup your tools:
 
 **Part 2: Properties and binding**
 - Properties are a language extension - expect them to come around in the backend, too.
-- extension of bean definition: 
+- extension of bean naming convention: 
 
     setMyFoo(...) {...}
     
@@ -78,14 +78,16 @@ That is what we build together:
 - maybe invert life cycle by setting a controller factory in FXML loader
 - because of time constraints and focus of this workshop: Let's talk about that later and specific for your project. Also, there will be an article about that.
 
-4. current state of JavaFX (Java 1.7)
+4. current state of JavaFX (Java 1.7 and Java 1.8)
 -------------------------------------
 - some basic components missing like date chooser
 - some rough edges in the API
 - huge hype with a lot of potential
-- Have a look at controlsFX (http://fxexperience.com/controlsfx/)
-- Definitively have a look at the Ensemble (http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)
-- and watch the first two minutes of http://www.youtube.com/watch?v=a3dAteWr40k&feature=youtu.be
+
+- Ensemble (http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)
+- controlsFX (http://fxexperience.com/controlsfx/)
+- watch the first two minutes of http://www.youtube.com/watch?v=a3dAteWr40k&feature=youtu.be
+- jfxtras (http://jfxtras.org/)
 
 5. some more stuff to have a look at
 -------------------------------------
