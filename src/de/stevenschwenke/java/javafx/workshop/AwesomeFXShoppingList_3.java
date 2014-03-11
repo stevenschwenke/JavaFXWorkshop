@@ -20,7 +20,7 @@ import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-public class AwesomeFXShoppingList extends Application implements Initializable {
+public class AwesomeFXShoppingList_3 extends Application implements Initializable {
 
 	/** UI components with FX-mapping to the .fxml - file */
 	@FXML

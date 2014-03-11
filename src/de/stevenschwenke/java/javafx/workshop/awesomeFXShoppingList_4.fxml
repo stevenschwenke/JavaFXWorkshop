@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="418.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="de.stevenschwenke.java.javafx.workshop.AwesomeFXShoppingList">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="418.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="de.stevenschwenke.java.javafx.workshop.AwesomeFXShoppingList_4">
   <children>
     <PieChart id="PieChart" fx:id="pieChart" layoutX="14.0" layoutY="202.0" prefHeight="319.0" prefWidth="390.0" />
     <GridPane alignment="TOP_LEFT" layoutX="28.0" layoutY="62.0" prefHeight="140.0" prefWidth="375.9999000000025">
