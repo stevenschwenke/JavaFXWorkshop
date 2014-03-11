@@ -15,11 +15,11 @@ Setup your tools:
 - JDK >1.7u9 (with jfxrt.jar)
 - SceneBuilder 1.1 (2.0 is still buggy) (http://www.oracle.com/technetwork/java/javafx/downloads/index.html)
 
-**Part 1: SceneBuilder and fxml-files**
-- fxml-file = user interface declaration
-- Controller = Java class that controls one fxml-file
+**Part 1: SceneBuilder and .fxml-files**
+- .fxml-file = user interface declaration
+- Controller = Java class that controls one .fxml-file
 - don't forget to set the controller in the SceneBuilder on your top component!
-- fields and methods in your controller are bound to the fxml with "@FXML"
+- fields and methods in your controller are bound to the .fxml with "@FXML"
 
 **Part 2: Properties and binding**
 - Properties are a language extension - expect them to come around in the backend, too.
@@ -56,32 +56,24 @@ That is what we build together:
 
 ![alt tag](awesomeFXShoppingList.png)
 
-More tools:
-- Scenic View  (http://fxexperience.com/scenic-view/)
-- e(fx)clipse (http://www.eclipse.org/efxclipse/index.html)
-
-
 3. Swing Interop
 ----------------
 - JavaFX in Swing easy. Swing in JavaFX not before JDK 8 (however possible)
 - replace Swing components with FX components step by step
 - maybe invert life cycle by setting a controller factory in FXML loader
-- because of time constraints and focus of this workshop: Let's talk about that later and specific for your project.
+- because of time constraints and focus of this workshop: Let's talk about that later and specific for your project. Also, there will be an article about that.
 
 4. current state of JavaFX (Java 1.7)
 -------------------------------------
-- Ensemble (http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)
 - some basic components missing like date chooser
 - some rough edges in the API
 - huge hype with a lot of potential
+- Have a look at controlsFX (http://fxexperience.com/controlsfx/)
+- Definitively have a look at the Ensemble (http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)
+- and watch the first two minutes of http://www.youtube.com/watch?v=a3dAteWr40k&feature=youtu.be
 
-5. future prospects
---------------------
-- again a big leap forward in Java 1.8
-- http://fxexperience.com/controlsfx/
-- first two minutes of http://www.youtube.com/watch?v=a3dAteWr40k&feature=youtu.be
-
-6. references
--------------
-
+5. some more stuff to have a look at
+-------------------------------------
 - Oracle http://docs.oracle.com/javafx/
+- More tools: Scenic View  (http://fxexperience.com/scenic-view/)
+- More tools: e(fx)clipse (http://www.eclipse.org/efxclipse/index.html)
