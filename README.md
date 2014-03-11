@@ -24,12 +24,19 @@ Setup your tools:
 **Part 2: Properties and binding**
 - Properties are a language extension - expect them to come around in the backend, too.
 - extension of bean definition: 
+
     setMyFoo(...) {...}
+    
     getMyFoo() {...}
+    
     myFooProperty() {...}
+    
 - There is unidirectional and bidirectional binding: 
+
     myProperty.bind(...);
+    
     myProperty.bindBidirectional(...);
+    
 - you can do math with properties, for example: sum.bind(amountOfApples.add(amountOfChips).add(amountOfPotatoes));
 - you can listen on properties and get notified if there's a change
 
@@ -40,7 +47,9 @@ Setup your tools:
 **Part 4: Styling with CSS**
 - either directly for one component in SceneBuilder or in the code or in a CSS (you want to have the latter!)
 - behold: not all CSS tags are available in JavaFX and you have to add a "-fx" before them: 
-    "-fx-background-color:red"
+
+    -fx-background-color:red
+    
 - just in JavaFX - CSS: dropshadow
 
 That is what we build together:
