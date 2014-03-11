@@ -21,6 +21,7 @@ Setup your tools:
 4. Styling with CSS
 
 That is what we will build:
+
 ![alt tag](awesomeFXShoppingList.png)
 
 More tools:
