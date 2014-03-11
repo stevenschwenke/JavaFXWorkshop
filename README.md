@@ -20,6 +20,21 @@ Setup your tools:
 - Controller = Java class that controls one .fxml-file
 - don't forget to set the controller in the SceneBuilder on your top component!
 - fields and methods in your controller are bound to the .fxml with "@FXML"
+- just a side note about the lifecycle of a JavaFX application (http://docs.oracle.com/javafx/2/api/javafx/application/Application.html)
+
+>The entry point for JavaFX applications is the Application class. The JavaFX runtime does the following, in order, whenever an application is launched:
+>
+>    1. Constructs an instance of the specified Application class
+>
+>    2. Calls the init() method
+>
+>    3. Calls the start(javafx.stage.Stage) method
+>
+>    4. Waits for the application to finish, which happens when either of the following occur:
+>
+>    the application calls Platform.exit() OR the last window has been closed and the implicitExit attribute on Platform is true
+>
+>    5. Calls the stop() method
 
 **Part 2: Properties and binding**
 - Properties are a language extension - expect them to come around in the backend, too.
