@@ -8,8 +8,6 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,8 +21,6 @@ import javafx.stage.Stage;
 public class AwesomeFXShoppingList_2 extends Application implements Initializable {
 
 	/** UI components with FX-mapping to the .fxml - file */
-	@FXML
-	private PieChart pieChart;
 	@FXML
 	private Label potatoesLabel;
 	@FXML
@@ -51,7 +47,7 @@ public class AwesomeFXShoppingList_2 extends Application implements Initializabl
 	public void start(Stage stage) throws Exception {
 		// Loading out GUI from the fxml file. Binding to fields above happens
 		// here.
-		Parent root = FXMLLoader.load(getClass().getResource("awesomeFXShoppingList.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("awesomeFXShoppingList_2.fxml"));
 		Scene scene = new Scene(root, 418, 550);
 
 		stage.setTitle("Awesome FX Shopping List");
@@ -71,9 +67,6 @@ public class AwesomeFXShoppingList_2 extends Application implements Initializabl
 		final Data fruits = new PieChart.Data("Fruits", 0);
 		final Data vegetables = new PieChart.Data("Vegetables", 0);
 		final Data junk = new PieChart.Data("Junkfood", 0);
-
-		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(fruits, vegetables, junk);
-		pieChart.setData(pieChartData);
 
 		// Listener for the properties to react on changes
 		amountOfPotatoes.addListener(new ChangeListener<Number>() {
