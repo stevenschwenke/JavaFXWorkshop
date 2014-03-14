@@ -6,8 +6,6 @@ import java.util.ResourceBundle;
 import javafx.application.Application;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -20,6 +18,14 @@ import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+/*
+ * Explain this part of the workshop in the following order: 
+ * 1. add chart in this controller
+ * 2. add chart in Scene Builder
+ * 3. write 3 Data variables for the chart
+ * 4. explain observable list - that's cool Java 8 stuff, man!
+ * 5. bind value properties to pieValueProperties
+ */
 public class AwesomeFXShoppingList_3 extends Application implements Initializable {
 
 	/** UI components with FX-mapping to the .fxml - file */
@@ -62,11 +68,6 @@ public class AwesomeFXShoppingList_3 extends Application implements Initializabl
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
-		potatoesLabel.setText("0");
-		applesLabel.setText("0");
-		chipsLabel.setText("0");
-		sumLabel.setText("0");
-
 		// building pie chart
 		final Data fruits = new PieChart.Data("Fruits", 0);
 		final Data vegetables = new PieChart.Data("Vegetables", 0);
@@ -75,40 +76,20 @@ public class AwesomeFXShoppingList_3 extends Application implements Initializabl
 		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(fruits, vegetables, junk);
 		pieChart.setData(pieChartData);
 
-		// Listener for the properties to react on changes
-		amountOfPotatoes.addListener(new ChangeListener<Number>() {
-			@Override
-			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-				potatoesLabel.textProperty().set(newValue.toString());
-				vegetables.setPieValue(vegetables.getPieValue() + (newValue.intValue() - oldValue.intValue()));
-			}
-		});
-
-		amountOfApples.addListener(new ChangeListener<Number>() {
-			@Override
-			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-				applesLabel.textProperty().set(newValue.toString());
-				fruits.setPieValue(fruits.getPieValue() + (newValue.intValue() - oldValue.intValue()));
-			}
-		});
-
-		amountOfChips.addListener(new ChangeListener<Number>() {
-			@Override
-			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-				chipsLabel.textProperty().set(newValue.toString());
-				junk.setPieValue(junk.getPieValue() + (newValue.intValue() - oldValue.intValue()));
-			}
-		});
+		// set Labels when properties change
+		potatoesLabel.textProperty().bind(amountOfPotatoes.asString());
+		applesLabel.textProperty().bind(amountOfApples.asString());
+		chipsLabel.textProperty().bind(amountOfChips.asString());
 
 		// You can do math with properties!
 		sum.bind(amountOfApples.add(amountOfChips).add(amountOfPotatoes));
 
-		sum.addListener(new ChangeListener<Number>() {
-			@Override
-			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-				sumLabel.textProperty().set(newValue.toString());
-			}
-		});
+		sumLabel.textProperty().bind(sum.asString());
+
+		// set chart when properties change
+		vegetables.pieValueProperty().bind(amountOfPotatoes);
+		fruits.pieValueProperty().bind(amountOfApples);
+		junk.pieValueProperty().bind(amountOfChips);
 	}
 
 	@FXML

@@ -63,6 +63,7 @@ This is our first UI:
     
 - you can do math with properties, for example: sum.bind(amountOfApples.add(amountOfChips).add(amountOfPotatoes));
 - you can listen on properties and get notified if there's a change
+- great article about difference between ChangeListener and InvalidationListener: http://blog.netopyr.com/2012/02/08/when-to-use-a-changelistener-or-an-invalidationlistener/ (in short: InvalidationListener doesn't give you old and new value and fires even without the data changing. ChangeListener however is less performant. 
 
 With properties, we can calculate the sum of the items in our list:
 

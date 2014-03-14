@@ -6,8 +6,6 @@ import java.util.ResourceBundle;
 import javafx.application.Application;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,6 +14,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+/*
+ * Explain this part of the workshop in the following order: 
+ * 1. add 4 properties as fields to this class
+ * 2. add @FXML-annotated add/subtract-methods that manipulate the properties
+ * 3. connect the methods to the buttons using Scene Builder
+ * 4. properties should change labels in UI when changed - add binding
+ * 5. remove the set "0" to the labels - because of the binding they are 0 from the beginning
+ */
 public class AwesomeFXShoppingList_2 extends Application implements Initializable {
 
 	/** UI components with FX-mapping to the .fxml - file */
@@ -56,42 +62,15 @@ public class AwesomeFXShoppingList_2 extends Application implements Initializabl
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
-		potatoesLabel.setText("0");
-		applesLabel.setText("0");
-		chipsLabel.setText("0");
-		sumLabel.setText("0");
-
-		// Listener for the properties to react on changes
-		amountOfPotatoes.addListener(new ChangeListener<Number>() {
-			@Override
-			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-				potatoesLabel.textProperty().set(newValue.toString());
-			}
-		});
-
-		amountOfApples.addListener(new ChangeListener<Number>() {
-			@Override
-			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-				applesLabel.textProperty().set(newValue.toString());
-			}
-		});
-
-		amountOfChips.addListener(new ChangeListener<Number>() {
-			@Override
-			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-				chipsLabel.textProperty().set(newValue.toString());
-			}
-		});
+		// set Labels when properties change
+		potatoesLabel.textProperty().bind(amountOfPotatoes.asString());
+		applesLabel.textProperty().bind(amountOfApples.asString());
+		chipsLabel.textProperty().bind(amountOfChips.asString());
 
 		// You can do math with properties!
 		sum.bind(amountOfApples.add(amountOfChips).add(amountOfPotatoes));
 
-		sum.addListener(new ChangeListener<Number>() {
-			@Override
-			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-				sumLabel.textProperty().set(newValue.toString());
-			}
-		});
+		sumLabel.textProperty().bind(sum.asString());
 	}
 
 	@FXML

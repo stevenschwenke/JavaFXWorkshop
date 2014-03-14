@@ -12,6 +12,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+/*
+ * Explain this part of the workshop in the following order: 
+ * 1. make eclipse project
+ * 2. explain Scene Builder and build UI
+ * 3. create this application class
+ * 4. load fxml with FXMLLoader 
+ * 5. implement Initializable interface and set label to "0"
+ */
 public class AwesomeFXShoppingList_1 extends Application implements Initializable {
 
 	/** UI components with FX-mapping to the .fxml - file */
