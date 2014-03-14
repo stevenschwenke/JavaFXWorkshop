@@ -13,8 +13,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.PieChart;
-import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
@@ -63,17 +61,11 @@ public class AwesomeFXShoppingList_2 extends Application implements Initializabl
 		chipsLabel.setText("0");
 		sumLabel.setText("0");
 
-		// building pie chart
-		final Data fruits = new PieChart.Data("Fruits", 0);
-		final Data vegetables = new PieChart.Data("Vegetables", 0);
-		final Data junk = new PieChart.Data("Junkfood", 0);
-
 		// Listener for the properties to react on changes
 		amountOfPotatoes.addListener(new ChangeListener<Number>() {
 			@Override
 			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
 				potatoesLabel.textProperty().set(newValue.toString());
-				vegetables.setPieValue(vegetables.getPieValue() + (newValue.intValue() - oldValue.intValue()));
 			}
 		});
 
@@ -81,7 +73,6 @@ public class AwesomeFXShoppingList_2 extends Application implements Initializabl
 			@Override
 			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
 				applesLabel.textProperty().set(newValue.toString());
-				fruits.setPieValue(fruits.getPieValue() + (newValue.intValue() - oldValue.intValue()));
 			}
 		});
 
@@ -89,7 +80,6 @@ public class AwesomeFXShoppingList_2 extends Application implements Initializabl
 			@Override
 			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
 				chipsLabel.textProperty().set(newValue.toString());
-				junk.setPieValue(junk.getPieValue() + (newValue.intValue() - oldValue.intValue()));
 			}
 		});
 
