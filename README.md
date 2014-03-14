@@ -36,6 +36,10 @@ Setup your tools:
 >
 >    5. Calls the stop() method
 
+This is our first UI:
+
+![alt tag](1.png)
+
 **Part 2: Properties and binding**
 - Properties are a language extension - expect them to come around in the backend, too.
 - extension of bean naming convention: 
@@ -55,9 +59,17 @@ Setup your tools:
 - you can do math with properties, for example: sum.bind(amountOfApples.add(amountOfChips).add(amountOfPotatoes));
 - you can listen on properties and get notified if there's a change
 
+With properties, we can calculate the sum of the items in our list:
+
+![alt tag](2.png)
+
 **Part 3: Charts - the pie chart**
 - data behind chart = ObservableList. You can listen on that, too!
 - because of that, you just have to change the data and the chart will be updated
+
+A chart makes our shopping list much more interesting:
+
+![alt tag](3.png)
 
 **Part 4: Styling with CSS**
 - either directly for one component in SceneBuilder or in the code or in a CSS (you want to have the latter!)
@@ -67,9 +79,9 @@ Setup your tools:
     
 - just in JavaFX - CSS: dropshadow
 
-That is what we build together:
+With styling, we now have a realy nice looking shopping list:
 
-![alt tag](awesomeFXShoppingList.png)
+![alt tag](4.png)
 
 3. Swing Interop
 ----------------
