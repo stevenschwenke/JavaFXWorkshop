@@ -5,6 +5,8 @@ Meta: About the workshop
 --------------------------
 The workshop is an internal event for my coworkers. Target audience are developers who haven't heard much about JavaFX unit now but want to know what the hype is all about. I hope to get through with the content below in 4 hours. However, it's an open end workshop and we will discuss any special topic that comes up.
 
+The code works with Java 7 and Java 8.
+
 
 1. What is JavaFX and why should you care?
 ---------------
