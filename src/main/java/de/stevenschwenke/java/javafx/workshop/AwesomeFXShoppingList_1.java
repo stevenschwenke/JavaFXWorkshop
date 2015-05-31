@@ -40,7 +40,7 @@ public class AwesomeFXShoppingList_1 extends Application implements Initializabl
 	public void start(Stage stage) throws Exception {
 		// Loading out GUI from the fxml file. Binding to fields above happens
 		// here.
-		Parent root = FXMLLoader.load(getClass().getResource("awesomeFXShoppingList_1.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("../../../../../../resources/awesomeFXShoppingList_1.fxml"));
 		Scene scene = new Scene(root, 418, 550);
 
 		stage.setTitle("Awesome FX Shopping List");
