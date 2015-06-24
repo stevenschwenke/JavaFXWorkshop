@@ -12,7 +12,9 @@ The code works with Java 7 and Java 8.
 - mode details and examples for Swing interop
 - how to build you own SceneBuilder (because there isn't a compiled version any more, see w.com/questions/28808130/where-exactly-can-i-download-the-latest-version-of-scene-builder-for-java)
 - advanced controls
-- custom controls, both adapting an existing control (like using a normal Button to build some specialized kind of button) and writing controls from scratch 
+- custom controls, both adapting an existing control (like using a normal Button to build some specialized kind of button) and writing controls from scratch
+
+**Because of these updates, this readme has to be updated, too. The following text refers to the first chapter, "your first FX application".**
 
 1. What is JavaFX and why should you care?
 ---------------
