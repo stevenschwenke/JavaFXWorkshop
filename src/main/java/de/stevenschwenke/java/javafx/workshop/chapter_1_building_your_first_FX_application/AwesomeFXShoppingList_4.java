@@ -1,4 +1,4 @@
-package de.stevenschwenke.java.javafx.workshop;
+package de.stevenschwenke.java.javafx.workshop.chapter_1_building_your_first_FX_application;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -6,25 +6,30 @@ import java.util.ResourceBundle;
 import javafx.application.Application;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
+import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 /*
  * Explain this part of the workshop in the following order: 
- * 1. add 4 properties as fields to this class
- * 2. add @FXML-annotated add/subtract-methods that manipulate the properties
- * 3. connect the methods to the buttons using Scene Builder
- * 4. properties should change labels in UI when changed - add binding
- * 5. remove the set "0" to the labels - because of the binding they are 0 from the beginning
+ * 1. code stays the same!
+ * 2. write CSS file / copy it from github
+ * 3. reference it in SceneBuilder - buttons look nice
+ * 4. set custom class to header and sum-label
  */
-public class AwesomeFXShoppingList_2 extends Application implements Initializable {
+public class AwesomeFXShoppingList_4 extends Application implements Initializable {
 
 	/** UI components with FX-mapping to the .fxml - file */
+	@FXML
+	private PieChart pieChart;
 	@FXML
 	private Label potatoesLabel;
 	@FXML
@@ -51,7 +56,7 @@ public class AwesomeFXShoppingList_2 extends Application implements Initializabl
 	public void start(Stage stage) throws Exception {
 		// Loading out GUI from the fxml file. Binding to fields above happens
 		// here.
-		Parent root = FXMLLoader.load(getClass().getResource("/awesomeFXShoppingList_2.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/awesomeFXShoppingList_4.fxml"));
 		Scene scene = new Scene(root, 418, 550);
 
 		stage.setTitle("Awesome FX Shopping List");
@@ -62,6 +67,14 @@ public class AwesomeFXShoppingList_2 extends Application implements Initializabl
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
+		// building pie chart
+		final Data fruits = new PieChart.Data("Fruits", 0);
+		final Data vegetables = new PieChart.Data("Vegetables", 0);
+		final Data junk = new PieChart.Data("Junkfood", 0);
+
+		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(fruits, vegetables, junk);
+		pieChart.setData(pieChartData);
+
 		// set Labels when properties change
 		potatoesLabel.textProperty().bind(amountOfPotatoes.asString());
 		applesLabel.textProperty().bind(amountOfApples.asString());
@@ -71,6 +84,11 @@ public class AwesomeFXShoppingList_2 extends Application implements Initializabl
 		sum.bind(amountOfApples.add(amountOfChips).add(amountOfPotatoes));
 
 		sumLabel.textProperty().bind(sum.asString());
+
+		// set chart when properties change
+		vegetables.pieValueProperty().bind(amountOfPotatoes);
+		fruits.pieValueProperty().bind(amountOfApples);
+		junk.pieValueProperty().bind(amountOfChips);
 	}
 
 	@FXML

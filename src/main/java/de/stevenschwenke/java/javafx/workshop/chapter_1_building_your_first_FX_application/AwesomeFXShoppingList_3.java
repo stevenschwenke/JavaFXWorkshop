@@ -1,4 +1,4 @@
-package de.stevenschwenke.java.javafx.workshop;
+package de.stevenschwenke.java.javafx.workshop.chapter_1_building_your_first_FX_application;
 
 import java.net.URL;
 import java.util.ResourceBundle;
