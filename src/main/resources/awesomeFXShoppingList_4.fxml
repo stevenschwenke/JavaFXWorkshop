@@ -43,6 +43,6 @@
     <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="14.0" prefWidth="389.9999000000025" styleClass="header" text="What do you want to buy today?" />
   </children>
   <stylesheets>
-    <URL value="@../java/de/stevenschwenke/java/javafx/workshop/awesomeCSS.css" />
+    <URL value="@awesomeCSS.css" />
   </stylesheets>
 </AnchorPane>
