@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
@@ -18,30 +19,36 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * This application is maximized to full screen mode.
+ * Demonstrates the fullscreen mode.
  */
 public class FullScreenDemo extends Application {
+
+    private Label label = new Label("Click maximize (in the toolbar) to go to fullscreen");
+
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage stage) throws Exception {
-        Scene scene = new Scene(new BorderPane(), 418, 550);
+        BorderPane root = new BorderPane();
+        root.setCenter(label);
+        Scene scene = new Scene(root, 418, 550);
         stage.setTitle("Full Screen Demo");
         stage.setScene(scene);
 
+        // Exit fullscreen with escape and tell when entering fullscreen mode
         stage.setFullScreenExitKeyCombination(new KeyCodeCombination(KeyCode.ESCAPE));
-        stage.setFullScreenExitHint("Quit fullscreen-mode with Control+Q");
+        stage.setFullScreenExitHint("Quit fullscreen-mode with ESC");
 
-        InvalidationListener invalidationListener = observable -> {
+        InvalidationListener fullscreenListener = observable -> {
             boolean fullscreen = ((ReadOnlyBooleanProperty) observable).get();
 
             stage.setFullScreen(fullscreen);
 
-            System.out.println("Set fullscreen " + (fullscreen ? "on" : "off"));
+            label.setText("Set fullscreen on. Quit fullscreen-mode with ESC");
             if (!fullscreen) {
-                System.out.println("Reset to default");
+                label.setText("Reset to default. Click maximize (in the toolbar) to go to fullscreen");
                 // When leaving the fullscreen-mode, the application is maximized, which causes the maximize-button to
                 // be a minimize-button.
                 stage.setMaximized(false);
@@ -50,11 +57,13 @@ public class FullScreenDemo extends Application {
         };
 
         // Overwrite the maximize-function with entering fullscreen mode
-        stage.maximizedProperty().addListener(invalidationListener);
+        stage.maximizedProperty().addListener(fullscreenListener);
         // for leaving the fullscreen mode
-        stage.fullScreenProperty().addListener(invalidationListener);
+        stage.fullScreenProperty().addListener(fullscreenListener);
 
         stage.show();
+
+        // Another nice method: Application is always at a nice spot on the screen.
         stage.centerOnScreen();
     }
 }
