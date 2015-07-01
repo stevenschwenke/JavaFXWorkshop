@@ -1,4 +1,4 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_3_additional_controls;
+package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics;
 
 import javafx.application.Application;
 import javafx.beans.InvalidationListener;
