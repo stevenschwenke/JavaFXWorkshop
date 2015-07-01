@@ -2,21 +2,13 @@ package de.stevenschwenke.java.javafx.workshop.chapter_3_additional_controls;
 
 import javafx.application.Application;
 import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 import javafx.beans.property.ReadOnlyBooleanProperty;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
-import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 /**
  * Demonstrates the fullscreen mode.
@@ -46,25 +38,21 @@ public class FullScreenDemo extends Application {
 
             stage.setFullScreen(fullscreen);
 
-            label.setText("Set fullscreen on. Quit fullscreen-mode with ESC");
-            if (!fullscreen) {
+            if (fullscreen) {
+                label.setText("Set fullscreen on. Quit fullscreen-mode with ESC");
+            } else {
                 label.setText("Reset to default. Click maximize (in the toolbar) to go to fullscreen");
                 // When leaving the fullscreen-mode, the application is maximized, which causes the maximize-button to
                 // be a minimize-button.
                 stage.setMaximized(false);
             }
-            stage.centerOnScreen();
         };
 
-        // Overwrite the maximize-function with entering fullscreen mode
+        // Use our logic above when entering and leaving fullscreen-mode
         stage.maximizedProperty().addListener(fullscreenListener);
-        // for leaving the fullscreen mode
         stage.fullScreenProperty().addListener(fullscreenListener);
 
         stage.show();
-
-        // Another nice method: Application is always at a nice spot on the screen.
-        stage.centerOnScreen();
     }
 }
 
