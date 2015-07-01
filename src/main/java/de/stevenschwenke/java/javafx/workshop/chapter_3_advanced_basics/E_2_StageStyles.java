@@ -12,7 +12,7 @@ import javafx.stage.StageStyle;
 /**
  * Demonstrates different {@link StageStyle}s.
  */
-public class StageStyles extends Application {
+public class E_2_StageStyles extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         new StyledStage(StageStyle.UTILITY, Color.AZURE, 0);

@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 /**
  * Demonstrates the fullscreen mode.
  */
-public class FullScreenDemo extends Application {
+public class E_1_FullScreenDemo extends Application {
 
     private Label label = new Label("Click maximize (in the toolbar) to go to fullscreen");
 
