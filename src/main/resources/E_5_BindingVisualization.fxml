@@ -7,17 +7,13 @@
    <children>
       <TextField fx:id="t1" layoutX="58.0" layoutY="69.0" maxWidth="30.0" prefWidth="30.0" text="1" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="30.0" />
       <TextField fx:id="t2" layoutX="249.0" layoutY="69.0" maxWidth="30.0" prefWidth="30.0" text="2" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="30.0" />
-      <TextField fx:id="t4" layoutX="58.0" layoutY="175.0" maxWidth="30.0" prefWidth="30.0" text="4" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="200.0" />
       <TextField fx:id="t3" layoutX="249.0" layoutY="175.0" maxWidth="30.0" prefWidth="30.0" text="3" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="200.0" />
       <Line endX="40.0" layoutX="190.0" layoutY="82.0" startX="-100.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="42.0" />
       <Circle fx:id="c_2_to_1" fill="LIGHTGRAY" layoutX="73.0" layoutY="42.0" onMouseClicked="#click2To1" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fx:id="c_1_to_2" fill="LIGHTGRAY" layoutX="187.0" layoutY="42.0" onMouseClicked="#click1To2" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Line endX="40.0" layoutX="160.0" layoutY="212.0" startX="-100.0" />
-      <Circle fx:id="c_3_to_4" fill="LIGHTGRAY" layoutX="73.0" layoutY="212.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="c_4_to_3" fill="LIGHTGRAY" layoutX="187.0" layoutY="212.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
-      <Line endY="140.0" layoutX="45.0" layoutY="56.0" />
-      <Circle fx:id="c_4_to_1" fill="LIGHTGRAY" layoutX="45.0" layoutY="69.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="c_1_to_4" fill="LIGHTGRAY" layoutX="45.0" layoutY="186.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Line endX="130.0" endY="150.0" layoutX="45.0" layoutY="56.0" startY="16.0" />
+      <Circle fx:id="c_3_to_1" fill="LIGHTGRAY" layoutX="45.0" layoutY="69.0" onMouseClicked="#click3To1" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="c_1_to_3" fill="LIGHTGRAY" layoutX="187.0" layoutY="213.0" onMouseClicked="#click1To3" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
       <Line endY="140.0" layoutX="215.0" layoutY="56.0" />
       <Circle fx:id="c_3_to_2" fill="LIGHTGRAY" layoutX="215.0" layoutY="69.0" onMouseClicked="#click3To2" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fx:id="c_2_to_3" fill="LIGHTGRAY" layoutX="215.0" layoutY="186.0" onMouseClicked="#click2To3" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
