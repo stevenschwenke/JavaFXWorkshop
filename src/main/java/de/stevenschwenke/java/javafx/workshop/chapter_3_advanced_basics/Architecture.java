@@ -1,7 +1,7 @@
 package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics;
 
 /**
- * Created by schwenks on 01.07.2015.
+ * Some background information about JavaFX architecture.
  */
 public class Architecture {
 
