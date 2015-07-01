@@ -1,5 +1,6 @@
 JavaFXWorkshop
 ==============
+[![Build Status](https://api.shippable.com/projects/5593645bedd7f2c0524cb0b3/badge/master)](https://app.shippable.com/projects/5593645bedd7f2c0524cb0b3/builds/latest)
 
 Meta: About the workshop
 --------------------------
