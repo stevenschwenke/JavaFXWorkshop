@@ -1,0 +1,6 @@
+# language
+language: java
+
+# version numbers
+jdk:
+    - oraclejdk8
