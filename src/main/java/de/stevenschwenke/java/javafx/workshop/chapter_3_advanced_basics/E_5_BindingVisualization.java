@@ -87,7 +87,7 @@ public class E_5_BindingVisualization extends Application implements Initializab
         // Loading out GUI from the fxml file. Binding to fields above happens
         // here.
         Parent root = FXMLLoader.load(getClass().getResource("/E_5_BindingVisualization.fxml"));
-        Scene scene = new Scene(root, 260, 250);
+        Scene scene = new Scene(root, 260, 270);
 
         stage.setTitle("Binding Visualization");
         stage.setScene(scene);
@@ -151,14 +151,6 @@ public class E_5_BindingVisualization extends Application implements Initializab
             t1.textProperty().bind(t2.textProperty());
         }
 
-        if (t2BoundToT1.and(t1BoundToT2).get()) {
-            t2.textProperty().bindBidirectional(t1.textProperty());
-        } else if (t2BoundToT1.get()) {
-            t1.textProperty().bind(t2.textProperty());
-        } else if (t1BoundToT2.get()) {
-            t2.textProperty().bind(t1.textProperty());
-        }
-
         if (t2BoundToT3.and(t3BoundToT2).get()) {
             t2.textProperty().bindBidirectional(t3.textProperty());
         } else if (t2BoundToT3.get()) {
@@ -167,28 +159,12 @@ public class E_5_BindingVisualization extends Application implements Initializab
             t2.textProperty().bind(t3.textProperty());
         }
 
-        if (t3BoundToT2.and(t2BoundToT3).get()) {
-            t3.textProperty().bindBidirectional(t2.textProperty());
-        } else if (t3BoundToT2.get()) {
-            t2.textProperty().bind(t3.textProperty());
-        } else if (t2BoundToT3.get()) {
-            t3.textProperty().bind(t2.textProperty());
-        }
-
         if (t3BoundToT1.and(t1BoundToT3).get()) {
             t3.textProperty().bindBidirectional(t1.textProperty());
         } else if (t3BoundToT1.get()) {
             t1.textProperty().bind(t3.textProperty());
         } else if (t1BoundToT3.get()) {
             t3.textProperty().bind(t1.textProperty());
-        }
-
-        if (t1BoundToT3.and(t3BoundToT1).get()) {
-            t1.textProperty().bindBidirectional(t3.textProperty()); // TODO WEG
-        } else if (t1BoundToT3.get()) {
-            t3.textProperty().bind(t1.textProperty());
-        } else if (t3BoundToT1.get()) {
-            t1.textProperty().bind(t3.textProperty());
         }
     }
 
