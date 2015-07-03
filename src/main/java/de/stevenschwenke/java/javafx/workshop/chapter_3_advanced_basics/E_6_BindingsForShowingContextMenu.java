@@ -72,13 +72,21 @@ public class E_6_BindingsForShowingContextMenu extends Application {
 
         table.setRowFactory(tableView -> {
             final TableRow<Person> row = new TableRow<>();
+
+            //////////////////////////////////////////
+            // SECOND NICE BINDING HERE:
+            // Highlight when hovered:
+            //////////////////////////////////////////
+            row.styleProperty().bind(
+                    Bindings.when(row.hoverProperty()).then("-fx-border-color:blue").otherwise("-fx-border-color:white"));
+
             final ContextMenu contextMenu = new ContextMenu();
             final MenuItem removeMenuItem = new MenuItem("Remove");
             removeMenuItem.setOnAction(event -> removeRow(row.getItem()));
             contextMenu.getItems().add(removeMenuItem);
 
             //////////////////////////////////////////
-            // SECOND NICE BINDING HERE:
+            // THIRD NICE BINDING HERE:
             // Set context menu on row, but use a binding to make it only show for non-empty rows:
             //////////////////////////////////////////
             row.contextMenuProperty().bind(
