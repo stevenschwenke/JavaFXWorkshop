@@ -2,6 +2,7 @@ package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics;
 
 import javafx.application.Application;
 import javafx.beans.binding.Bindings;
+import javafx.beans.property.ReadOnlyListWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -29,6 +30,7 @@ public class E_6_BindingsForShowingContextMenu extends Application {
             new Person("Emma", "Jones", "emma.jones@example.com"),
             new Person("Michael", "Brown", "michael.brown@example.com")
     );
+    private Button remove = new Button("Remove");
 
     public static void main(String[] args) {
         launch(args);
@@ -56,13 +58,29 @@ public class E_6_BindingsForShowingContextMenu extends Application {
         table.setItems(data);
         table.getColumns().addAll(Arrays.asList(firstNameCol, lastNameCol, emailCol));
 
+        remove.setDisable(true);
+        remove.setOnAction(event -> removeRow(table.getSelectionModel().getSelectedItem()));
+
+        //////////////////////////////////////////
+        // FIRST NICE BINDING HERE:
+        // Only enable button button in the top when a row is selected:
+        //////////////////////////////////////////
+        ObservableList<Person> selectedItems = table.getSelectionModel().getSelectedItems();
+        // Wrap it to get a nice property for the binding:
+        ReadOnlyListWrapper readOnlyListWrapper = new ReadOnlyListWrapper(selectedItems);
+        remove.disableProperty().bind(readOnlyListWrapper.sizeProperty().isEqualTo(0));
+
         table.setRowFactory(tableView -> {
             final TableRow<Person> row = new TableRow<>();
             final ContextMenu contextMenu = new ContextMenu();
             final MenuItem removeMenuItem = new MenuItem("Remove");
-            removeMenuItem.setOnAction(event -> table.getItems().remove(row.getItem()));
+            removeMenuItem.setOnAction(event -> removeRow(row.getItem()));
             contextMenu.getItems().add(removeMenuItem);
+
+            //////////////////////////////////////////
+            // SECOND NICE BINDING HERE:
             // Set context menu on row, but use a binding to make it only show for non-empty rows:
+            //////////////////////////////////////////
             row.contextMenuProperty().bind(
                     Bindings.when(row.emptyProperty())
                             .then((ContextMenu) null)
@@ -70,9 +88,15 @@ public class E_6_BindingsForShowingContextMenu extends Application {
             return row;
         });
 
-        scene.setRoot(new BorderPane(table));
+        BorderPane borderPane = new BorderPane(table);
+        borderPane.setTop(remove);
+        scene.setRoot(borderPane);
         stage.setScene(scene);
         stage.show();
+    }
+
+    private boolean removeRow(Person row) {
+        return table.getItems().remove(row);
     }
 
     public static class Person {
