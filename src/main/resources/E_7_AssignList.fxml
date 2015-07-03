@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" type="BorderPane" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <FlowPane alignment="CENTER" columnHalignment="CENTER" maxWidth="60.0" prefHeight="400.0" prefWidth="60.0" prefWrapLength="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" fillWidth="false" maxWidth="100.0">
+               <children>
+                  <Button fx:id="btnRight" mnemonicParsing="false" onAction="#actionRight" prefWidth="40.0" text="&gt;" />
+                  <Button fx:id="btnRightAll" mnemonicParsing="false" onAction="#actionRightAll" prefWidth="40.0" text="&gt;&gt;" />
+                  <Button fx:id="btnLeft" mnemonicParsing="false" onAction="#actionLeft" prefWidth="40.0" text="&lt;" />
+                  <Button fx:id="btnLeftAll" mnemonicParsing="false" onAction="#actionLeftAll" prefWidth="40.0" text="&lt;&lt;" />
+               </children>
+            </VBox>
+         </children>
+      </FlowPane>
+   </center>
+   <left>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+            <ListView fx:id="left" layoutY="59.0" prefHeight="400.0" prefWidth="252.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0" />
+            <TextField fx:id="txtText" layoutX="6.0" layoutY="14.0" prefHeight="22.0" prefWidth="244.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="6.0" />
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+            <ListView fx:id="right" prefHeight="200.0" prefWidth="250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+   </right>
+</fx:root>
