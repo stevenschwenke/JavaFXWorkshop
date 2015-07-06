@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import java.net.URL?>
+<AnchorPane minHeight="200.0" prefHeight="200.0" prefWidth="600.0" styleClass="pane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_8_Transitions">
+  <children>
+    <AnchorPane fx:id="extendableNavigationPane" layoutX="129.0" layoutY="136.0" minHeight="64.0" onMouseEntered="#showPane" onMouseExited="#hidePane" prefHeight="64.0" prefWidth="371.0">
+      <children>
+        <Button fx:id="navButton1" layoutX="53.0" layoutY="19.0" mnemonicParsing="false" onAction="#selectPane1" style="" styleClass="navigation-button" text="Medic Stuff" />
+        <Button fx:id="navButton2" layoutX="114.0" layoutY="18.0" mnemonicParsing="false" onAction="#selectPane2" styleClass="navigation-button" text="Cross Stuff" />
+        <Button fx:id="navButton3" layoutX="168.0" layoutY="30.0" mnemonicParsing="false" onAction="#selectPane3" styleClass="navigation-button" text="Highway Stuff" />
+        <Button fx:id="navButton4" layoutX="241.0" layoutY="18.0" mnemonicParsing="false" onAction="#selectPane4" styleClass="navigation-button" text="Peace, man!" />
+      </children>
+    </AnchorPane>
+  </children>
+  <stylesheets>
+    <URL value="@E_8_Transitions.css" />
+  </stylesheets>
+</AnchorPane>

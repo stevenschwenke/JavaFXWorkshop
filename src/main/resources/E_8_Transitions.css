@@ -1,0 +1,18 @@
+.pane{
+		-fx-background-color: white;
+}
+
+.navigation-button{
+    -fx-font-size: 0.9em;
+    -fx-background-color: transparent;
+    -fx-graphic-text-gap: 0px;
+    -fx-text-fill: gray;
+}
+ 
+.navigation-button:pressed:hover{
+    -fx-text-fill: black;
+}
+ 
+.navigation-button:hover{
+    -fx-text-fill: red;
+}
