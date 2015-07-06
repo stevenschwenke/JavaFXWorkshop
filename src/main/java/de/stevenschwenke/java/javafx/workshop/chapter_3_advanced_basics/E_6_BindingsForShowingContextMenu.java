@@ -63,7 +63,7 @@ public class E_6_BindingsForShowingContextMenu extends Application {
 
         //////////////////////////////////////////
         // FIRST NICE BINDING HERE:
-        // Only enable button button in the top when a row is selected:
+        // Only enable button remove in the top when a row is selected:
         //////////////////////////////////////////
         ObservableList<Person> selectedItems = table.getSelectionModel().getSelectedItems();
         // Wrap it to get a nice property for the binding:
