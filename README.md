@@ -17,6 +17,7 @@ The code works with Java 7 and Java 8.
 
 **Because of these updates, this readme has to be updated, too. The following text refers to the first chapter, "your first FX application".**
 
+
 1. What is JavaFX and why should you care?
 ---------------
 - successor of Swing
