@@ -101,9 +101,9 @@ public class JavaFX3DSample extends Application {
 
         //Legend
         Label lblControls = new Label("Cam Controls:");
-        Label lblX = new Label("X-Axis\nCam: A/D\nBox:Up/Down");
-        Label lblY = new Label("Y-Axis\nCam: W/S\nBox:Left/Right");
-        Label lblZ = new Label("Z-Axis\nCam: Q/E\nBox:Sh+L/Sh+R");
+        Label lblX = new Label("X-Axis\nCam: A/D\nBox: Up/Down");
+        Label lblY = new Label("Y-Axis\nCam: W/S\nBox: Left/Right");
+        Label lblZ = new Label("Z-Axis\nCam: Q/E\nBox: Sh+L/Sh+R");
         Label lblT = new Label("Tilt\nAxis: Sh+Q/Sh+E");
         Label lblP = new Label("Pan\nCam: Sh+WASD");
         lblX.setStyle("-fx-text-fill: #ff0000");
