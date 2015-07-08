@@ -13,6 +13,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
+import javafx.scene.shape.DrawMode;
 import javafx.scene.shape.Sphere;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
@@ -47,14 +48,16 @@ public class JavaFX3DSample extends Application {
         axes.getChildren().addAll(xAxis, yAxis, zAxis);
 
         //Materials
-        PhongMaterial boxMat = new PhongMaterial(new Color(.5, .03, .08, 1));
-        boxMat.setSpecularColor(new Color(.1, .01, .02, 1));
-        PhongMaterial xMat = new PhongMaterial(new Color(1, 0, 0, 1));
+        PhongMaterial boxMat = new PhongMaterial(new Color(.8, .1, .3, 1));
+        PhongMaterial xMat = new PhongMaterial(Color.RED);
         PhongMaterial yMat = new PhongMaterial(Color.GREEN);
         PhongMaterial zMat = new PhongMaterial(Color.BLUE);
 
         //Apply Mat's
         box.setMaterial(boxMat);
+        /////
+        box.setDrawMode(DrawMode.FILL);
+        /////
         boxXAxis.setMaterial(xMat);
         boxYAxis.setMaterial(yMat);
         boxZAxis.setMaterial(zMat);
@@ -63,23 +66,24 @@ public class JavaFX3DSample extends Application {
         zAxis.setMaterial(zMat);
 
         //Lighting
-        AmbientLight ambientLight = new AmbientLight(new Color(1, 1, 1, 1));
-        ambientLight.setTranslateX(0);
-        ambientLight.setTranslateY(0);
-        ambientLight.setTranslateZ(0);
-        PointLight pointLight = new PointLight(new Color(1, .8, .8, 1));
-        pointLight.setTranslateX(250);
-        pointLight.setTranslateY(250);
-        pointLight.setTranslateZ(-500);
-        pointLight.setOpacity(.5);
+        AmbientLight ambientLightGlobal = new AmbientLight();
+        ambientLightGlobal.getScope().addAll(boxXAxis, boxYAxis, boxZAxis, xAxis, yAxis, zAxis);
+
+        AmbientLight ambientLightBox = new AmbientLight(new Color(.3, 0, .01, 1));
+        ambientLightBox.getScope().addAll(box);
+
+        PointLight pointLight = new PointLight();
+        pointLight.setTranslateX(100);
+        pointLight.setTranslateY(-100);
+        pointLight.setTranslateZ(-150);
         pointLight.getScope().addAll(box);
 
         //Lighting - Visualization
         Sphere pointBox = new Sphere(20);
         pointBox.setMaterial(new PhongMaterial(pointLight.getColor()));
-        pointBox.setTranslateX(pointLight.getTranslateX() + 100);
-        pointBox.setTranslateY(pointLight.getTranslateY() + 100);
-        pointBox.setTranslateZ(pointLight.getTranslateZ() - 100);
+        pointBox.setTranslateX(pointLight.getTranslateX() * 2);
+        pointBox.setTranslateY(pointLight.getTranslateY() * 2);
+        pointBox.setTranslateZ(pointLight.getTranslateZ() * 2);
 
         //Initial rotation
         box3D.getTransforms().add(new Rotate(5, Rotate.X_AXIS));
@@ -105,16 +109,16 @@ public class JavaFX3DSample extends Application {
         Label lblZ = new Label("Z-Axis\nCam: Q/E\nBox: Sh+L/Sh+R");
         Label lblT = new Label("Tilt\nAxis: Sh+Q/Sh+E");
         Label lblP = new Label("Pan\nCam: Sh+WASD");
-        lblX.setStyle("-fx-text-fill: #ff0000");
-        lblY.setStyle("-fx-text-fill: #00ff00");
-        lblZ.setStyle("-fx-text-fill: #0000ff");
+        lblX.getStyleClass().add("labelX");
+        lblY.getStyleClass().add("labelY");
+        lblZ.getStyleClass().add("labelZ");
         Label lblCamera = new Label("\n\nCamera Pos:");
         Label lblCameraX = new Label();
         Label lblCameraY = new Label();
         Label lblCameraZ = new Label();
-        lblCameraX.setStyle("-fx-text-fill: #ff0000");
-        lblCameraY.setStyle("-fx-text-fill: #00ff00");
-        lblCameraZ.setStyle("-fx-text-fill: #0000ff");
+        lblCameraX.getStyleClass().add("labelX");
+        lblCameraY.getStyleClass().add("labelY");
+        lblCameraZ.getStyleClass().add("labelZ");
         Bindings.bindBidirectional(lblCameraX.textProperty(), camera.translateXProperty(), new NumberStringConverter());
         Bindings.bindBidirectional(lblCameraY.textProperty(), camera.translateYProperty(), new NumberStringConverter());
         Bindings.bindBidirectional(lblCameraZ.textProperty(), camera.translateZProperty(), new NumberStringConverter());
@@ -126,7 +130,7 @@ public class JavaFX3DSample extends Application {
         flow.setAlignment(Pos.CENTER_LEFT);
 
         //SubScene Setting
-        subRoot.getChildren().addAll(box3D, ambientLight, pointLight, pointBox, axes);
+        subRoot.getChildren().addAll(box3D, ambientLightGlobal, pointLight, pointBox, axes, ambientLightBox);
         SubScene subScene = new SubScene(subRoot, 920, 770, true, SceneAntialiasing.BALANCED);
         subScene.prefHeight(Double.MAX_VALUE);
         subScene.prefWidth(Double.MAX_VALUE);
@@ -142,6 +146,7 @@ public class JavaFX3DSample extends Application {
 
         //Scene/Stage Setting
         Scene scene = new Scene(root, 1024, 768, true);
+        scene.getStylesheets().add("JavaFX3DSample.css");
         primaryStage.setTitle("Java3D Sample");
         primaryStage.setScene(scene);
         primaryStage.setWidth(1070);
@@ -219,33 +224,5 @@ public class JavaFX3DSample extends Application {
                 }
             }
         });
-
-//        scene.setOnMouseMoved(new EventHandler<MouseEvent>() {
-//            public void handle(MouseEvent me) {
-//                mouseOldX = mousePosX;
-//                mouseOldY = mousePosY;
-//                mousePosX = me.getX();
-//                mousePosY = me.getY();
-//                mouseDeltaX = mousePosX - mouseOldX;
-//                mouseDeltaY = mousePosY - mouseOldY;
-//                if (me.isAltDown() && me.isShiftDown() && me.isPrimaryButtonDown()) {
-//                    cam.rz.setAngle(cam.rz.getAngle() - mouseDeltaX);
-//                } else if (me.isAltDown() && me.isPrimaryButtonDown()) {
-//                    cam.ry.setAngle(cam.ry.getAngle() - mouseDeltaX);
-//                    cam.rx.setAngle(cam.rx.getAngle() + mouseDeltaY);
-//                } else if (me.isAltDown() && me.isSecondaryButtonDown()) {
-//                    double scale = cam.s.getX();
-//                    double newScale = scale + mouseDeltaX * 0.01;
-//                    cam.s.setX(newScale);
-//                    cam.s.setY(newScale);
-//                    cam.s.setZ(newScale);
-//                } else if (me.isAltDown() && me.isMiddleButtonDown()) {
-//                    cam.t.setX(cam.t.getX() + mouseDeltaX);
-//                    cam.t.setY(cam.t.getY() + mouseDeltaY);
-//                }
-            }
-//        });
-
-//    }
-
+    }
 }
