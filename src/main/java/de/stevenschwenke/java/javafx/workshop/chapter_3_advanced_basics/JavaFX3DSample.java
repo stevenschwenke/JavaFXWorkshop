@@ -2,14 +2,12 @@ package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics;
 
 import javafx.application.Application;
 import javafx.beans.binding.Bindings;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
@@ -21,7 +19,8 @@ import javafx.stage.Stage;
 import javafx.util.converter.NumberStringConverter;
 
 /**
- * Created by schwenks on 01.07.2015.
+ * Created by drandard on 07.07.2015.
+ * JavaFX 3D-Sample
  */
 public class JavaFX3DSample extends Application {
 
@@ -136,10 +135,10 @@ public class JavaFX3DSample extends Application {
 
         //root Setting
         root.setRight(flow);
-        root.setAlignment(flow, Pos.CENTER_LEFT);
         root.setCenter(subScene);
-        root.setAlignment(subScene, Pos.CENTER_LEFT);
-        root.setMargin(flow, new Insets(20, 20, 20, 0));
+        BorderPane.setAlignment(flow, Pos.CENTER_LEFT);
+        BorderPane.setAlignment(subScene, Pos.CENTER_LEFT);
+        BorderPane.setMargin(flow, new Insets(20, 20, 20, 0));
 
         //Scene/Stage Setting
         Scene scene = new Scene(root, 1024, 768, true);
@@ -179,6 +178,7 @@ public class JavaFX3DSample extends Application {
                     case RIGHT:
                         box3D.getTransforms().add(new Rotate(5, Rotate.Z_AXIS));
                         return;
+                    default:
                 }
             } else {
                 switch (key.getCode()) {
@@ -215,12 +215,13 @@ public class JavaFX3DSample extends Application {
                     case RIGHT:
                         box3D.getTransforms().add(new Rotate(-10, Rotate.Y_AXIS));
                         return;
+                    default:
                 }
             }
         });
 
-        scene.setOnMouseMoved(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
+//        scene.setOnMouseMoved(new EventHandler<MouseEvent>() {
+//            public void handle(MouseEvent me) {
 //                mouseOldX = mousePosX;
 //                mouseOldY = mousePosY;
 //                mousePosX = me.getX();
@@ -243,8 +244,8 @@ public class JavaFX3DSample extends Application {
 //                    cam.t.setY(cam.t.getY() + mouseDeltaY);
 //                }
             }
-        });
+//        });
 
-    }
+//    }
 
 }
