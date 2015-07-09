@@ -2,6 +2,8 @@ package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics;
 
 import javafx.application.Application;
 import javafx.beans.binding.Bindings;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
@@ -26,6 +28,9 @@ import javafx.util.converter.NumberStringConverter;
 public class JavaFX3DSample extends Application {
 
     final BorderPane root = new BorderPane();
+    final DoubleProperty negCamX = new SimpleDoubleProperty(0);
+    final DoubleProperty negCamY = new SimpleDoubleProperty(0);
+    final DoubleProperty negCamZ = new SimpleDoubleProperty(0);
 
     @Override
     public void start(Stage primaryStage) {
@@ -45,7 +50,24 @@ public class JavaFX3DSample extends Application {
         Box xAxis = new Box(10000, 1, 1);
         Box yAxis = new Box(1, 10000, 1);
         Box zAxis = new Box(1, 1, 10000);
-        axes.getChildren().addAll(xAxis, yAxis, zAxis);
+        Label lblW = new Label("W");
+        Label lblA = new Label("A");
+        Label lblS = new Label("S");
+        Label lblD = new Label("D");
+        Label lblQ = new Label("Q");
+        Label lblE = new Label("E");
+        lblW.setTranslateY(-150);
+        lblA.setTranslateX(-150);
+        lblS.setTranslateY(150);
+        lblD.setTranslateX(150);
+        lblQ.setTranslateZ(150);
+        lblE.setTranslateZ(-150);
+        axes.getChildren().addAll(xAxis, yAxis, zAxis, lblW, lblA, lblS, lblD, lblQ, lblE);
+        axes.getChildren().forEach((node) -> {
+            if (node instanceof Label) {
+                node.getStyleClass().add("labelAxes");
+            }
+        });
 
         //Materials
         PhongMaterial boxMat = new PhongMaterial(new Color(.8, .1, .3, 1));
@@ -67,23 +89,26 @@ public class JavaFX3DSample extends Application {
 
         //Lighting
         AmbientLight ambientLightGlobal = new AmbientLight();
-        ambientLightGlobal.getScope().addAll(boxXAxis, boxYAxis, boxZAxis, xAxis, yAxis, zAxis);
 
         AmbientLight ambientLightBox = new AmbientLight(new Color(.3, 0, .01, 1));
-        ambientLightBox.getScope().addAll(box);
 
         PointLight pointLight = new PointLight();
         pointLight.setTranslateX(100);
         pointLight.setTranslateY(-100);
         pointLight.setTranslateZ(-150);
-        pointLight.getScope().addAll(box);
 
         //Lighting - Visualization
-        Sphere pointBox = new Sphere(20);
-        pointBox.setMaterial(new PhongMaterial(pointLight.getColor()));
-        pointBox.setTranslateX(pointLight.getTranslateX() * 2);
-        pointBox.setTranslateY(pointLight.getTranslateY() * 2);
-        pointBox.setTranslateZ(pointLight.getTranslateZ() * 2);
+        Sphere pointSphere = new Sphere(20);
+        pointSphere.setMaterial(new PhongMaterial(Color.LIGHTYELLOW));
+        pointSphere.setTranslateX(pointLight.getTranslateX() * 1.2);
+        pointSphere.setTranslateY(pointLight.getTranslateY() * 1.2);
+        pointSphere.setTranslateZ(pointLight.getTranslateZ() * 1.2);
+
+        //Lighting - Scoping
+        ambientLightGlobal.getScope().addAll(boxXAxis, boxYAxis, boxZAxis, xAxis, yAxis, zAxis, pointSphere);
+        ambientLightBox.getScope().addAll(box);
+        pointLight.getScope().addAll(box);
+
 
         //Initial rotation
         box3D.getTransforms().add(new Rotate(5, Rotate.X_AXIS));
@@ -130,11 +155,11 @@ public class JavaFX3DSample extends Application {
         flow.setAlignment(Pos.CENTER_LEFT);
 
         //SubScene Setting
-        subRoot.getChildren().addAll(box3D, ambientLightGlobal, pointLight, pointBox, axes, ambientLightBox);
+        subRoot.getChildren().addAll(box3D, ambientLightGlobal, pointLight, pointSphere, axes, ambientLightBox);
         SubScene subScene = new SubScene(subRoot, 920, 770, true, SceneAntialiasing.BALANCED);
         subScene.prefHeight(Double.MAX_VALUE);
         subScene.prefWidth(Double.MAX_VALUE);
-        subScene.setFill(Color.LIGHTGREY);
+        subScene.setFill(Color.WHITESMOKE);
         subScene.setCamera(camera);
 
         //root Setting
@@ -152,28 +177,33 @@ public class JavaFX3DSample extends Application {
         primaryStage.setWidth(1070);
         primaryStage.show();
 
+        //Camera-Rotation-Setup
+        negCamX.bind(camera.translateXProperty().negate());
+        negCamY.bind(camera.translateYProperty().negate());
+        negCamZ.bind(camera.translateZProperty().negate());
+
         //Controls
         scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
             if (key.isShiftDown()) {
                 switch (key.getCode()) {
                     //Rotate Camera
                     case W:
-                        camera.getTransforms().add(new Rotate(5, Rotate.X_AXIS));
+                        camera.getTransforms().add(new Rotate(-5, negCamX.get(), negCamY.get(), negCamZ.get(), Rotate.X_AXIS));
                         return;
                     case A:
-                        camera.getTransforms().add(new Rotate(-5, Rotate.Y_AXIS));
+                        camera.getTransforms().add(new Rotate(5, negCamX.get(), negCamY.get(), negCamZ.get(), Rotate.Y_AXIS));
                         return;
                     case S:
-                        camera.getTransforms().add(new Rotate(-5, Rotate.X_AXIS));
+                        camera.getTransforms().add(new Rotate(5, negCamX.get(), negCamY.get(), negCamZ.get(), Rotate.X_AXIS));
                         return;
                     case D:
-                        camera.getTransforms().add(new Rotate(5, Rotate.Y_AXIS));
+                        camera.getTransforms().add(new Rotate(-5, negCamX.get(), negCamY.get(), negCamZ.get(), Rotate.Y_AXIS));
                         return;
                     case Q:
-                        camera.getTransforms().add(new Rotate(5, Rotate.Z_AXIS));
+                        camera.getTransforms().add(new Rotate(-5, negCamX.get(), negCamY.get(), negCamZ.get(), Rotate.Z_AXIS));
                         return;
                     case E:
-                        camera.getTransforms().add(new Rotate(-5, Rotate.Z_AXIS));
+                        camera.getTransforms().add(new Rotate(5, negCamX.get(), negCamY.get(), negCamZ.get(), Rotate.Z_AXIS));
                         return;
 
                     //Rotate Box

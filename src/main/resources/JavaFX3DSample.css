@@ -7,3 +7,6 @@
 .labelZ {
   	-fx-text-fill: #0000ff;
   	}
+.labelAxes {
+    -fx-text-fill: #000000;
+    }
