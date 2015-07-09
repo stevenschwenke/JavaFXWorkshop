@@ -5,18 +5,23 @@ import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.geometry.Insets;
-import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
 import javafx.scene.shape.DrawMode;
 import javafx.scene.shape.Sphere;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
+import javafx.scene.text.TextFlow;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.converter.NumberStringConverter;
@@ -27,7 +32,7 @@ import javafx.util.converter.NumberStringConverter;
  */
 public class JavaFX3DSample extends Application {
 
-    final BorderPane root = new BorderPane();
+    final StackPane root = new StackPane();
     final DoubleProperty negCamX = new SimpleDoubleProperty(0);
     final DoubleProperty negCamY = new SimpleDoubleProperty(0);
     final DoubleProperty negCamZ = new SimpleDoubleProperty(0);
@@ -64,9 +69,7 @@ public class JavaFX3DSample extends Application {
         lblE.setTranslateZ(-150);
         axes.getChildren().addAll(xAxis, yAxis, zAxis, lblW, lblA, lblS, lblD, lblQ, lblE);
         axes.getChildren().forEach((node) -> {
-            if (node instanceof Label) {
-                node.getStyleClass().add("labelAxes");
-            }
+            if (node instanceof Label) node.setStyle("-fx-text-fill: #000000");
         });
 
         //Materials
@@ -77,9 +80,7 @@ public class JavaFX3DSample extends Application {
 
         //Apply Mat's
         box.setMaterial(boxMat);
-        /////
         box.setDrawMode(DrawMode.FILL);
-        /////
         boxXAxis.setMaterial(xMat);
         boxYAxis.setMaterial(yMat);
         boxZAxis.setMaterial(zMat);
@@ -89,7 +90,6 @@ public class JavaFX3DSample extends Application {
 
         //Lighting
         AmbientLight ambientLightGlobal = new AmbientLight();
-
         AmbientLight ambientLightBox = new AmbientLight(new Color(.3, 0, .01, 1));
 
         PointLight pointLight = new PointLight();
@@ -100,87 +100,85 @@ public class JavaFX3DSample extends Application {
         //Lighting - Visualization
         Sphere pointSphere = new Sphere(20);
         pointSphere.setMaterial(new PhongMaterial(Color.LIGHTYELLOW));
-        pointSphere.setTranslateX(pointLight.getTranslateX() * 1.2);
-        pointSphere.setTranslateY(pointLight.getTranslateY() * 1.2);
-        pointSphere.setTranslateZ(pointLight.getTranslateZ() * 1.2);
+        pointSphere.setTranslateX(pointLight.getTranslateX() * 1.5);
+        pointSphere.setTranslateY(pointLight.getTranslateY() * 1.5);
+        pointSphere.setTranslateZ(pointLight.getTranslateZ() * 1.5);
 
         //Lighting - Scoping
         ambientLightGlobal.getScope().addAll(boxXAxis, boxYAxis, boxZAxis, xAxis, yAxis, zAxis, pointSphere);
         ambientLightBox.getScope().addAll(box);
         pointLight.getScope().addAll(box);
 
+        //Camera setup
+        PerspectiveCamera camera = new PerspectiveCamera(true);
+        camera.setFarClip(2000.0);
+        camera.setNearClip(0.1);
+        camera.setFieldOfView(60);
+        camera.setTranslateX(40);
+        camera.setTranslateY(-20);
+        camera.setTranslateZ(-450);
+        camera.getTransforms().add(new Rotate(-5, Rotate.Y_AXIS));
+        camera.getTransforms().add(new Rotate(-5, Rotate.X_AXIS));
+
+        //Camera-Rotation-Setup
+        negCamX.bind(camera.translateXProperty().negate());
+        negCamY.bind(camera.translateYProperty().negate());
+        negCamZ.bind(camera.translateZProperty().negate());
 
         //Initial rotation
         box3D.getTransforms().add(new Rotate(5, Rotate.X_AXIS));
         box3D.getTransforms().add(new Rotate(5, Rotate.Y_AXIS));
         axes.getTransforms().add(new Rotate(5, Rotate.X_AXIS));
         axes.getTransforms().add(new Rotate(5, Rotate.Y_AXIS));
+        camera.getTransforms().add(new Rotate(-5, negCamX.get(), negCamY.get(), negCamZ.get(), Rotate.X_AXIS));
+        camera.getTransforms().add(new Rotate(-5, negCamX.get(), negCamY.get(), negCamZ.get(), Rotate.Y_AXIS));
+        camera.getTransforms().add(new Rotate(-1, negCamX.get(), negCamY.get(), negCamZ.get(), Rotate.Z_AXIS));
 
-        //Camera setup
-        PerspectiveCamera camera = new PerspectiveCamera(true);
-        camera.setFarClip(2000.0);
-        camera.setNearClip(0.1);
-        camera.setFieldOfView(60);
-        camera.setTranslateX(30);
-        camera.setTranslateY(-20);
-        camera.setTranslateZ(-500);
-        camera.getTransforms().add(new Rotate(-5, Rotate.Y_AXIS));
-        camera.getTransforms().add(new Rotate(-5, Rotate.X_AXIS));
-
-        //Legend
-        Label lblControls = new Label("Cam Controls:");
-        Label lblX = new Label("X-Axis\nCam: A/D\nBox: Up/Down");
-        Label lblY = new Label("Y-Axis\nCam: W/S\nBox: Left/Right");
-        Label lblZ = new Label("Z-Axis\nCam: Q/E\nBox: Sh+L/Sh+R");
-        Label lblT = new Label("Tilt\nAxis: Sh+Q/Sh+E");
-        Label lblP = new Label("Pan\nCam: Sh+WASD");
-        lblX.getStyleClass().add("labelX");
-        lblY.getStyleClass().add("labelY");
-        lblZ.getStyleClass().add("labelZ");
-        Label lblCamera = new Label("\n\nCamera Pos:");
-        Label lblCameraX = new Label();
-        Label lblCameraY = new Label();
-        Label lblCameraZ = new Label();
-        lblCameraX.getStyleClass().add("labelX");
-        lblCameraY.getStyleClass().add("labelY");
-        lblCameraZ.getStyleClass().add("labelZ");
-        Bindings.bindBidirectional(lblCameraX.textProperty(), camera.translateXProperty(), new NumberStringConverter());
-        Bindings.bindBidirectional(lblCameraY.textProperty(), camera.translateYProperty(), new NumberStringConverter());
-        Bindings.bindBidirectional(lblCameraZ.textProperty(), camera.translateZProperty(), new NumberStringConverter());
-
-        //Legend - FlowPane
-        FlowPane flow = new FlowPane(lblControls, lblX, lblY, lblZ, lblT, lblP, lblCamera, lblCameraX, lblCameraY, lblCameraZ);
-        flow.setOrientation(Orientation.VERTICAL);
-        flow.setVgap(10);
-        flow.setAlignment(Pos.CENTER_LEFT);
+        //Overlay
+        Text txtControls = new Text("\n\nCam Controls:\n");
+        Text txtX = new Text("X-Axis\nCam: A/D\nBox: Up/Down\n\n");
+        Text txtY = new Text("Y-Axis\nCam: W/S\nBox: Left/Right\n\n");
+        Text txtZ = new Text("Z-Axis\nCam: Q/E\nBox: Sh+L/Sh+R\n\n");
+        Text txtT = new Text("Tilt\nAxis: Sh+Q/Sh+E\n\n");
+        Text txtP = new Text("Pan\nCam: Sh+WASD\n\n");
+        Text txtCamera = new Text("Camera Pos:\n");
+        Text txtCameraX = new Text();
+        Text txtCameraY = new Text();
+        Text txtCameraZ = new Text();
+        //Overlay - Coloring
+        new Group(txtControls, txtT, txtP, txtCamera).getChildren().forEach((node) -> ((Text) node).setFill(Color.WHITE));
+        new Group(txtX, txtCameraX).getChildren().forEach((node) -> ((Text) node).setFill(Color.RED.brighter()));
+        new Group(txtY, txtCameraY).getChildren().forEach((node) -> ((Text) node).setFill(Color.GREEN.brighter().brighter()));
+        new Group(txtZ, txtCameraZ).getChildren().forEach((node) -> ((Text) node).setFill(Color.BLUE.brighter()));
+        //Overlay - Integration
+        TextFlow instructions = new TextFlow(txtControls, txtX, txtY, txtZ, txtT, txtP, txtCamera, txtCameraX, new Text("\n"), txtCameraY, new Text("\n"), txtCameraZ);
+        instructions.getChildren().forEach(node -> ((Text) node).setFont(Font.font("Arial", 11)));
+        instructions.setTextAlignment(TextAlignment.CENTER);
+        instructions.setBackground(new Background(new BackgroundFill(new Color(0, 0, 0, .6), new CornerRadii(25), Insets.EMPTY)));
+        instructions.setMaxWidth(120);
+        instructions.setMaxHeight(335);
+        //Overlay - Binding
+        Bindings.bindBidirectional(txtCameraX.textProperty(), camera.translateXProperty(), new NumberStringConverter());
+        Bindings.bindBidirectional(txtCameraY.textProperty(), camera.translateYProperty(), new NumberStringConverter());
+        Bindings.bindBidirectional(txtCameraZ.textProperty(), camera.translateZProperty(), new NumberStringConverter());
 
         //SubScene Setting
         subRoot.getChildren().addAll(box3D, ambientLightGlobal, pointLight, pointSphere, axes, ambientLightBox);
-        SubScene subScene = new SubScene(subRoot, 920, 770, true, SceneAntialiasing.BALANCED);
-        subScene.prefHeight(Double.MAX_VALUE);
-        subScene.prefWidth(Double.MAX_VALUE);
-        subScene.setFill(Color.WHITESMOKE);
+        SubScene subScene = new SubScene(subRoot, 1300, 768, true, SceneAntialiasing.BALANCED);
         subScene.setCamera(camera);
 
         //root Setting
-        root.setRight(flow);
-        root.setCenter(subScene);
-        BorderPane.setAlignment(flow, Pos.CENTER_LEFT);
-        BorderPane.setAlignment(subScene, Pos.CENTER_LEFT);
-        BorderPane.setMargin(flow, new Insets(20, 20, 20, 0));
+        root.getChildren().addAll(subScene, instructions);
+        root.setPrefSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        StackPane.setAlignment(instructions, Pos.TOP_RIGHT);
+        StackPane.setAlignment(subScene, Pos.CENTER);
+        StackPane.setMargin(instructions, new Insets(10));
 
         //Scene/Stage Setting
-        Scene scene = new Scene(root, 1024, 768, true);
-        scene.getStylesheets().add("JavaFX3DSample.css");
+        Scene scene = new Scene(root, 1300, 768, true);
         primaryStage.setTitle("Java3D Sample");
         primaryStage.setScene(scene);
-        primaryStage.setWidth(1070);
         primaryStage.show();
-
-        //Camera-Rotation-Setup
-        negCamX.bind(camera.translateXProperty().negate());
-        negCamY.bind(camera.translateYProperty().negate());
-        negCamZ.bind(camera.translateZProperty().negate());
 
         //Controls
         scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
