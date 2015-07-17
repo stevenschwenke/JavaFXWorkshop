@@ -10,38 +10,11 @@
 
     <!-- Properties -->
     <properties>
-        <java.version>1.8</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.build.resourcesEncoding>windows-1252</project.build.resourcesEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    </properties>
-
-    <!-- Build Settings -->
-    <build>
-        <plugins>
-            <!-- Build Setup -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                    <compilerVersion>${java.version}</compilerVersion>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                    <showWarnings>false</showWarnings>
-                </configuration>
-            </plugin>
-
-            <!-- Encoding of resource files -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>2.6</version>
-                <configuration>
-                    <encoding>${project.build.resourcesEncoding}</encoding>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- Java 8 (Das wird auch von Eclipse und dem Compilerplugin erkannt daher 
+			müssen wir das Compilerplugin nicht mehr anpassen) -->
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+    
 </project>
