@@ -1,4 +1,4 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics;
+package de.stevenschwenke.java.javafx.workshop.chapter_6_JavaFX_3D;
 
 import javafx.application.Application;
 import javafx.beans.binding.Bindings;
@@ -27,8 +27,10 @@ import javafx.stage.Stage;
 import javafx.util.converter.NumberStringConverter;
 
 /**
- * Created by drandard on 07.07.2015.
- * JavaFX 3D-Sample
+ * Interactive JavaFX 3D-Sample.
+ *
+ * @author drandard (https://github.com/drandard)
+ * @since 07.07.2015
  */
 public class JavaFX3DSample extends Application {
 
