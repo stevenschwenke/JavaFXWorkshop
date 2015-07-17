@@ -8,11 +8,8 @@
     <artifactId>JavaFXWorkshop</artifactId>
     <version>1.1</version>
 
-    <!-- Properties -->
     <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<!-- Java 8 (Das wird auch von Eclipse und dem Compilerplugin erkannt daher 
-			müssen wir das Compilerplugin nicht mehr anpassen) -->
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>

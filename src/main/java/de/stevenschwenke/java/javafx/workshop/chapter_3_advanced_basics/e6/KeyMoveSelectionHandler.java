@@ -1,7 +1,5 @@
 package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.e6;
 
-import java.util.List;
-
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.Control;
@@ -9,28 +7,37 @@ import javafx.scene.control.ScrollToEvent;
 import javafx.scene.control.SelectionModel;
 import javafx.scene.input.KeyEvent;
 import javafx.util.StringConverter;
+
+import java.util.List;
 /**
- * Using the keys (ABCDE...) to navigate in a list and select the item
- * @author scavenger156
+ * Using key strokes to navigate in a list and selecting items.
  *
- * @param <T>
+ * @author scavenger156 (https://github.com/Scavenger156)
+ * @param <T> type of the list and this selection handler
  */
 public class KeyMoveSelectionHandler<T> implements EventHandler<KeyEvent> {
+
 	private SelectionModel<T> selectionModel;
 	private List<T> backingList;
 	private StringConverter<T> converter;
 
-	public KeyMoveSelectionHandler(SelectionModel<T> selectionModel, List<T> backingList, StringConverter<T> converter) {
+	/**
+	 * Constructor with all necessary arguments.
+	 *
+	 * @param selectionModel of the list
+	 * @param backingList of the observable list
+	 * @param stringConverter for display
+	 */
+	public KeyMoveSelectionHandler(SelectionModel<T> selectionModel, List<T> backingList, StringConverter<T> stringConverter) {
 		super();
 		this.selectionModel = selectionModel;
 		this.backingList = backingList;
-		this.converter = converter;
+		this.converter = stringConverter;
 		if (this.converter == null) {
 			this.converter = new StringConverter<T>() {
 
 				@Override
 				public String toString(T object) {
-
 					return object.toString();
 				}
 
@@ -44,7 +51,6 @@ public class KeyMoveSelectionHandler<T> implements EventHandler<KeyEvent> {
 
 	@Override
 	public void handle(KeyEvent event) {
-		// Text from the keyevent
 		String keyText = event.getText();
 		if (keyText != null && !"".equals(keyText)) {
 			keyText = keyText.toLowerCase();
@@ -64,10 +70,10 @@ public class KeyMoveSelectionHandler<T> implements EventHandler<KeyEvent> {
 	}
 
 	/**
-	 * Finding the next element starting with "txt"
+	 * Finding the next element starting with "txt".
 	 * 
-	 * @param txt
-	 * @param startIndex
+	 * @param txt to search for
+	 * @param startIndex from which the search begins
 	 * @return Index from the next element
 	 */
 	private int findNext(String txt, int startIndex) {
@@ -81,10 +87,10 @@ public class KeyMoveSelectionHandler<T> implements EventHandler<KeyEvent> {
 	}
 
 	/**
-	 * Copy from Code in FX
+	 * Scrolling to a specific index in the list.
 	 * 
-	 * @param control
-	 * @param index
+	 * @param control to scroll in
+	 * @param index to scroll to
 	 */
 	private void scrollToIndex(final Control control, int index) {
 		Event.fireEvent(control, new ScrollToEvent<>(control, control, ScrollToEvent.scrollToTopIndex(), index != -1 ? index : 0));

@@ -1,26 +1,21 @@
 package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.e6;
 
-import java.util.Collections;
-import java.util.List;
-
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Control;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.ScrollToEvent;
-import javafx.scene.control.SelectionModel;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import javafx.util.StringConverter;
+
+import java.util.Collections;
 
 /**
- * Enhancing the ListView by searching elements with da key.
+ * Enhanced ListView that searches elements with key strokes.
  * 
- * @author scavenger156
+ * @author scavenger156 (https://github.com/Scavenger156)
  *
  */
 public class E_6_ListViewEnhanced extends Application {
@@ -33,17 +28,19 @@ public class E_6_ListViewEnhanced extends Application {
 		ObservableList<String> elements = FXCollections.observableArrayList("Wolfsburg", "Dresden", "Emden", "Zwickau-Mosel", "Bratislava", "Palmela", "Portugal", "Pamplona", "Spanien", "Puebla", "Curitiba", "Brasilien", "Uitenhage", "Hannover", "Posen", "Polen", "Düsseldorf",
 				"Ludwigsfelde");
 		Collections.sort(elements);
-		ListView<String> toEnhance = new ListView<String>(elements);
-		KeyMoveSelectionHandler<String> keyHelper = new KeyMoveSelectionHandler<>(toEnhance.getSelectionModel(), toEnhance.getItems(), null);
+		ListView<String> listView = new ListView<>(elements);
 
-		// this or the other
-		toEnhance.setOnKeyReleased(keyHelper);
-		// toEnhance.addEventHandler(KeyEvent.KEY_RELEASED, keyHelper);
+		// Notice the last parameter is null because the default string converter is used. You could use your own here without
+		// altering the selection handler.
+		KeyMoveSelectionHandler<String> keyHelper = new KeyMoveSelectionHandler<>(listView.getSelectionModel(), listView.getItems(), null);
 
-		primaryStage.setScene(new Scene(toEnhance));
+		// Two ways of attaching the handler to the list:
+		//listView.setOnKeyReleased(keyHelper);
+		 listView.addEventHandler(KeyEvent.KEY_RELEASED, keyHelper);
 
+		BorderPane borderPane = new BorderPane(listView);
+		borderPane.setTop(new Label("Set focus in the list by typing the first letter of the city:"));
+		primaryStage.setScene(new Scene(borderPane));
 		primaryStage.show();
 	}
-
-	
 }
