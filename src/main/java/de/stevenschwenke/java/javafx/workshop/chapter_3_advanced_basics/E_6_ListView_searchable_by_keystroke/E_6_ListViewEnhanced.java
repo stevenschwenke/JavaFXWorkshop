@@ -30,6 +30,8 @@ public class E_6_ListViewEnhanced extends Application {
 		Collections.sort(elements);
 		ListView<String> listView = new ListView<>(elements);
 
+		// The first two parameters give you the chance to set this key listener to everything that has a selection model
+		// and a backing list, for example comboboxes.
 		// Notice the last parameter is null because the default string converter is used. You could use your own here without
 		// altering the selection handler.
 		KeyMoveSelectionHandler<String> keyHelper = new KeyMoveSelectionHandler<>(listView.getSelectionModel(), listView.getItems(), null);

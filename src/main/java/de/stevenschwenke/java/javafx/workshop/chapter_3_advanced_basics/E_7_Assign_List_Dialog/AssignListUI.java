@@ -47,8 +47,7 @@ public class AssignListUI<T> extends BorderPane implements Initializable {
 
 	/**
 	 * 
-	 * @param converter
-	 *            Converter for object
+	 * @param converter Converter for object
 	 */
 	public AssignListUI(StringConverter<T> converter) {
 		super();
@@ -58,7 +57,6 @@ public class AssignListUI<T> extends BorderPane implements Initializable {
 
 				@Override
 				public String toString(T object) {
-
 					return object.toString();
 				}
 
@@ -68,7 +66,7 @@ public class AssignListUI<T> extends BorderPane implements Initializable {
 				}
 			};
 		}
-		// Loading
+
 		FXMLLoader fxmlLoader = new FXMLLoader(AssignListUI.class.getResource("/E_7_AssignList.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
@@ -78,14 +76,15 @@ public class AssignListUI<T> extends BorderPane implements Initializable {
 		} catch (IOException exception) {
 			throw new RuntimeException(exception);
 		}
-
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// Renderer
-		left.setCellFactory(BaseListCell.createCallBack(converter));
-		right.setCellFactory(BaseListCell.createCallBack(converter));
+
+		// CellFactories are described using the interface Callable. This interface is a generic description of a
+		// factory and is called whenever a new instance of a cell is needed.
+		left.setCellFactory(BaseListCell.createCellFactory(converter));
+		right.setCellFactory(BaseListCell.createCellFactory(converter));
 	
 		left.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		right.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -101,7 +100,7 @@ public class AssignListUI<T> extends BorderPane implements Initializable {
 		});
 		left.setItems(filteredItems);
 	
-		// Buttons enabled an disabled by binding
+		// Buttons enabled and disabled by binding
 		ListExpression<T> leftSelection = new ReadOnlyListWrapper<>(left.getSelectionModel().getSelectedItems());
 		ListExpression<T> leftItemsExpression = new ReadOnlyListWrapper<>(left.getItems());
 		btnRight.disableProperty().bind(leftSelection.emptyProperty());
@@ -114,8 +113,8 @@ public class AssignListUI<T> extends BorderPane implements Initializable {
 	}
 
 	/**
-	 * Filtering the items by text see FilteredList
-	 * @author scavenger156
+	 * Filtering the items by text, see FilteredList
+	 * @author scavenger156 (https://github.com/Scavenger156)
 	 *
 	 */
 	private class PredicateFilterListByTxt implements Predicate<T> {
@@ -146,9 +145,9 @@ public class AssignListUI<T> extends BorderPane implements Initializable {
 	/**
 	 * 
 	 * @param items
-	 *            Items that are avaible
+	 *            Items that are available
 	 */
-	public void setAvaibleItems(List<T> items) {
+	public void setAvailableItems(List<T> items) {
 		sort(items);
 		this.allItems.setAll(items);
 
@@ -162,7 +161,7 @@ public class AssignListUI<T> extends BorderPane implements Initializable {
 	/**
 	 * 
 	 * @param itemsAssigned
-	 *            List from Items that are allready assiged
+	 *            List from Items that are already assigned
 	 */
 	public void setAssignedItems(List<T> itemsAssigned) {
 		itemsAssigned.retainAll(allItems);

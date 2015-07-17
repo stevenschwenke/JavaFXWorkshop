@@ -61,7 +61,7 @@ public class E_7_AssignListDialog extends Application {
 		Alert alert = new Alert(AlertType.NONE, null, ButtonType.APPLY, ButtonType.CANCEL);
 		alert.setTitle(title);
 		AssignListUI<T> uic = new AssignListUI<>(stringConverter);
-		uic.setAvaibleItems(allItems);
+		uic.setAvailableItems(allItems);
 		uic.setAssignedItems(chosenItems);
 		alert.getDialogPane().setContent(uic);
 		Optional<ButtonType> result = alert.showAndWait();

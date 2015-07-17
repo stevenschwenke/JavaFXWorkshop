@@ -29,8 +29,15 @@ public class BaseListCell<T> extends ListCell<T> {
 		}
 	}
 
-	public static <T> Callback<ListView<T>, ListCell<T>> createCallBack(
-			final StringConverter<T> converter) {
-		return param -> new BaseListCell<>(converter);
+	/**
+	 * This method could also be located in a factory class because it creates instances of cell factories
+	 * {@link BaseListCell}. However, this class is so small that it can be located here.
+	 *
+	 * @param stringConverter to convert from and to strings
+	 * @param <T> type parameter of the manufactured cell
+	 * @return instance of a cell
+	 */
+	public static <T> Callback<ListView<T>, ListCell<T>> createCellFactory(final StringConverter<T> stringConverter) {
+		return (ListView<T> listView) -> new BaseListCell<>(stringConverter);
 	}
 }
