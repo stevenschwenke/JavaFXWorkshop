@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<GridPane alignment="CENTER" hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+          minWidth="-Infinity" prefHeight="497.0" prefWidth="363.0" vgap="20.0" xmlns="http://javafx.com/javafx/8.0.40"
+          xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="de.stevenschwenke.java.javafx.workshop.chapter_X_testing_FX_applications.TestedApp">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+    </rowConstraints>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+    <children>
+        <FlowPane alignment="CENTER" columnHalignment="CENTER" hgap="10.0" prefHeight="200.0" prefWidth="200.0"
+                  style="-fx-border-color: AAAAAA;" vgap="10.0" GridPane.columnSpan="3" GridPane.halignment="CENTER"
+                  GridPane.valignment="CENTER">
+            <children>
+                <Button fx:id="minus" mnemonicParsing="false" onAction="#minusCount" text="-"/>
+                <TextField fx:id="count" prefHeight="25.0" prefWidth="96.0" text="0"/>
+                <Button fx:id="plus" mnemonicParsing="false" onAction="#plusCount" text="+"/>
+            </children>
+        </FlowPane>
+        <FlowPane alignment="CENTER" hgap="30.0" style="-fx-border-color: AAAAAA;" vgap="30.0" GridPane.columnSpan="3"
+                  GridPane.rowIndex="1" GridPane.rowSpan="2">
+            <children>
+                <VBox alignment="CENTER" spacing="10.0" style="-fx-border-color: AAAAAA;">
+                    <children>
+                        <CheckBox fx:id="opt1" mnemonicParsing="false" text="Opt. 1"/>
+                        <CheckBox fx:id="opt2" mnemonicParsing="false" text="Opt. 2"/>
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                    </padding>
+                </VBox>
+                <VBox alignment="CENTER" spacing="10.0" style="-fx-border-color: AAAAAA;">
+                    <children>
+                        <RadioButton fx:id="optA" mnemonicParsing="false" text="Opt. A">
+                            <toggleGroup>
+                                <ToggleGroup fx:id="grp"/>
+                            </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="optB" mnemonicParsing="false" text="Opt. B" toggleGroup="$grp"/>
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                    </padding>
+                </VBox>
+                <VBox spacing="8.0">
+                    <children>
+                        <ChoiceBox fx:id="choice" prefHeight="25.0" prefWidth="60.0" value="Opt*">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="Opt*"/>
+                                    <String fx:value="Opt+"/>
+                                    <String fx:value="Opt-"/>
+                                    <String fx:value="Opt/"/>
+                                </FXCollections>
+                            </items>
+                        </ChoiceBox>
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="60.0"
+                                text="Refresh"/>
+                    </children>
+                </VBox>
+            </children>
+        </FlowPane>
+        <TextArea fx:id="area" prefHeight="200.0" prefWidth="200.0" promptText="Type something..."
+                  GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="4"
+                  GridPane.valignment="CENTER"/>
+        <FlowPane alignment="CENTER" hgap="50.0" style="-fx-border-color: AAAAAA;" vgap="50.0" GridPane.columnSpan="3"
+                  GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+            <children>
+                <Slider fx:id="sliderX" prefHeight="14.0" prefWidth="75.0" style="-fx-border-color: AAAAAA;">
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                    </padding>
+                </Slider>
+                <VBox alignment="CENTER" prefHeight="81.0" prefWidth="42.0" spacing="20.0"
+                      style="-fx-border-color: AAAAAA;">
+                    <children>
+                        <Label fx:id="labelX" text="x"/>
+                        <Label fx:id="labelY" text="y"/>
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                    </padding>
+                </VBox>
+                <Slider fx:id="sliderY" orientation="VERTICAL" prefHeight="69.0" prefWidth="14.0"
+                        style="-fx-border-color: AAAAAA;">
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                    </padding>
+                </Slider>
+            </children>
+        </FlowPane>
+        <Label fx:id="selection" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
+               maxWidth="1.7976931348623157E308" style="-fx-border-color: AAAAAA;" text="What you selected..."
+               textAlignment="CENTER" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3"
+               GridPane.valignment="CENTER">
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </padding>
+        </Label>
+    </children>
+</GridPane>
