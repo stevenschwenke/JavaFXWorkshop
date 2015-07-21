@@ -20,6 +20,7 @@
             <artifactId>testFx</artifactId>
             <version>3.1.2</version>
         </dependency>
+
     </dependencies>
 
 </project>

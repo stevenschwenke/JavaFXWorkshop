@@ -15,6 +15,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
+ * A simple App, supposed to be tested.
  * Created by drandard on 20.07.2015.
  */
 public class TestedApp extends Application implements Initializable {
@@ -68,6 +69,8 @@ public class TestedApp extends Application implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         count.textProperty().bind(counter.asString());
+        labelX.textProperty().bind(sliderX.valueProperty().asString());
+        labelY.textProperty().bind(sliderY.valueProperty().asString());
     }
 
     @FXML
@@ -82,7 +85,37 @@ public class TestedApp extends Application implements Initializable {
 
     @FXML
     public void refresh() {
+        //CheckBoxes
+        String checkBoxes = "";
+        if (opt1.isSelected())
+            checkBoxes = "Opt1";
+        if (opt2.isSelected()) {
+            if (!checkBoxes.isEmpty())
+                checkBoxes = checkBoxes + ", ";
+            checkBoxes = checkBoxes + "Opt2";
+        }
 
+        //RadioButtons
+        String radio = "";
+
+        if (optA.isSelected()) radio = radio + "OptA";
+        if (optB.isSelected())
+            radio = radio + "OptB";
+        if (!checkBoxes.isEmpty() && !radio.isEmpty())
+            radio = " & " + radio;
+
+
+        //ChoiceBox
+        String choices = "";
+        if (choice.getValue() != null) {
+            if (!checkBoxes.isEmpty() || !radio.isEmpty())
+                choices = " & ";
+
+            choices = choices + choice.getValue();
+        }
+
+        selection.setText("You have selected: " + checkBoxes + radio + choices);
     }
 
 }
+
