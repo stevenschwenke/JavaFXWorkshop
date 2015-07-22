@@ -12,11 +12,16 @@ import java.io.IOException;
 //Extend the Test-Class with GuiTest
 
 /**
- * Test with Head
+ * Test with Head.
  * Created by drandard on 21.07.2015.
  */
 public class TestedAppHeadTest extends GuiTest {
 
+    /**
+     * Needs to be overwritten to obtain a Parent-/Root-Node.
+     *
+     * @return Root-/Parent-Node
+     */
     @Override
     protected Parent getRootNode() {
         try {
@@ -32,20 +37,22 @@ public class TestedAppHeadTest extends GuiTest {
      */
     @Test
     public void testFXTest() {
+        //You can click directly with ID or Caption and you can chain these methods
+        clickOn("#minus").clickOn("-");
+
         //It's also possible to save to Nodes to variables
         Button minusID = find("#minus");
         Button minusCap = find("-");
-        //Tests whether Nodes for by ID or Caption are equal
+        //Tests whether Nodes found by ID and Caption are equal
         Assert.assertEquals(minusID, minusCap);
 
-        //Tests whether loops are handled properly
+        //Tests whether loops are handled properly (Delay w/ Click, No Delay w/ Drag)
         for (int i = 0; i < 4; i++) {
             clickOn((Button) find("#plus"));
         }
-        //You can also click directly with ID or Caption and you can chain these methods
-        clickOn("#minus").clickOn("-");
+
         //Tests whether casting find()-Results directly is possible
-        Assert.assertEquals(((TextField) find("#count")).getText(), "2");
+        Assert.assertEquals("4", ((TextField) find("#count")).getText());
     }
 
     /**
@@ -70,7 +77,7 @@ public class TestedAppHeadTest extends GuiTest {
     }
 
     /**
-     * Tests the selection of CheckBoxes, RadioButtons and a ChoiceBox.
+     * Tests the selection of CheckBoxes, RadioButtons(w/ Groups) and a ChoiceBox.
      */
     @Test
     public void selectionTest() {
@@ -79,7 +86,7 @@ public class TestedAppHeadTest extends GuiTest {
         Label selection = find("#selection");
         Assert.assertFalse(selection.getText().contains("Opt"));
 
-        //Lets select a CheckBox
+        //Lets select some CheckBoxes
         clickOn("#opt1").clickOn("#refresh");
         Assert.assertTrue(selection.getText().contains("Opt1") && !selection.getText().contains("Opt2"));
         clickOn("#opt2").clickOn("#refresh");
@@ -93,7 +100,7 @@ public class TestedAppHeadTest extends GuiTest {
         clickOn("#optB").clickOn("#refresh");
         Assert.assertTrue(selection.getText().contains("OptB") && !selection.getText().contains("OptA"));
 
-        //Finally some ChoiceBox Testing
+        //Then some ChoiceBox Testing
         ChoiceBox<String> choice = find("#choice");
         choice.getItems().forEach((item) -> {
             clickOn(choice);
@@ -101,28 +108,44 @@ public class TestedAppHeadTest extends GuiTest {
             Assert.assertTrue(selection.getText().contains(choice.getValue()));
         });
 
-        //For the finish let's test our final result
+        //Finally let's test our final result
         Assert.assertTrue(selection.getText().contains("Opt2") && selection.getText().contains("OptB") && selection.getText().contains("Opt/"));
     }
 
+    /**
+     * Tests dragging around the slider-point.
+     */
     @Test
     public void sliderTest() {
+        //If you want to work with nodes in other ways than clicking etc., you should save the to a variable
         Slider sliderX = find("#sliderX");
         Slider sliderY = find("#sliderY");
         Label labelX = find("#labelX");
         Label labelY = find("#labelY");
+
+        //Pretty hard to handle Sliders - ScenicView helps a lot!
         drag(sliderX.getChildrenUnmodifiable().get(1)).dropBy(20, 0);
         drag(sliderY.getChildrenUnmodifiable().get(1)).dropBy(0, -20);
+
+        //Checks the results
+        Assert.assertTrue((((int) sliderX.getValue() == ((int) Double.parseDouble(labelX.getText())))));
+        Assert.assertTrue((((int) sliderY.getValue() == ((int) Double.parseDouble(labelY.getText())))));
 
         Assert.assertTrue((((int) sliderX.getValue() == 5)));
         Assert.assertTrue((((int) sliderY.getValue() == 4)));
     }
 
+    /**
+     * Types something inside the TextArea and then scrolls back up.
+     */
     @Test
     public void typeTest() {
+        //Click on the TextArea first to focus it
         TextArea area = find("#area");
+        clickOn(area).write("Hello FX-World...\n\n\n\n\n\n\n\n");
+
+        //Hard to access Scrollbars - ScenicView helps a lot!
         ScrollBar ScrollY = ((ScrollBar) ((ScrollPane) area.getChildrenUnmodifiable().get(0)).getChildrenUnmodifiable().get(1));
-        clickOn(area).write("Hello FX-World...\n.\n.\n.\n.\n.\n.\n.\n.");
         drag(ScrollY).dropBy(0, -10);
     }
 

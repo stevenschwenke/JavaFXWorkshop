@@ -41,7 +41,14 @@ public class JavaFX3DSample extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        //X Axis -  __  Y Axis |  __  Z Axis /
+        //X Axis   _____
+        //         -   +
+
+        //Y Axis   |   +
+        //         |   -
+
+        //Z Axis   /   +
+        //       /   -
         Group subRoot = new Group();
         Group box3D = new Group();
         Group axes = new Group();
@@ -185,10 +192,6 @@ public class JavaFX3DSample extends Application {
         //Controls
         scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
             if (key.isShiftDown()) {
-//                Point3D p3D = xAxis.localToScene(1,0,0,true);
-//                Point3D n3D = new Point3D(p3D.getX()-negCamX.get(),p3D.getY()-negCamY.get(),p3D.getZ()-negCamZ.get());
-//                System.out.println("p" + p3D);
-//                System.out.println("n" + n3D);
                 switch (key.getCode()) {
                     //Rotate Camera
                     case W:
