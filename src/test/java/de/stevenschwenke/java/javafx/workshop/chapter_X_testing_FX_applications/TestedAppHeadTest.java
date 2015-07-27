@@ -3,11 +3,12 @@ package de.stevenschwenke.java.javafx.workshop.chapter_X_testing_FX_applications
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-import org.junit.Assert;
 import org.junit.Test;
 import org.loadui.testfx.GuiTest;
 
 import java.io.IOException;
+
+import static org.junit.Assert.*;
 
 //Extend the Test-Class with GuiTest
 
@@ -44,7 +45,7 @@ public class TestedAppHeadTest extends GuiTest {
         Button minusID = find("#minus");
         Button minusCap = find("-");
         //Tests whether Nodes found by ID and Caption are equal
-        Assert.assertEquals(minusID, minusCap);
+        assertEquals(minusID, minusCap);
 
         //Tests whether loops are handled properly (Delay w/ Click, No Delay w/ Drag)
         for (int i = 0; i < 4; i++) {
@@ -52,7 +53,7 @@ public class TestedAppHeadTest extends GuiTest {
         }
 
         //Tests whether casting find()-Results directly is possible
-        Assert.assertEquals("4", ((TextField) find("#count")).getText());
+        assertEquals("4", ((TextField) find("#count")).getText());
     }
 
     /**
@@ -62,9 +63,9 @@ public class TestedAppHeadTest extends GuiTest {
     public void counterTest() {
         //Tests finding the Nodes with their Caption and ID's
         clickOn("+").clickOn("+").clickOn("#plus");
-        Assert.assertEquals(((TextField) find("#count")).getText(), "3");
+        assertEquals(((TextField) find("#count")).getText(), "3");
         clickOn("-").clickOn("#minus");
-        Assert.assertEquals(((TextField) find("#count")).getText(), "1");
+        assertEquals(((TextField) find("#count")).getText(), "1");
 
         Button minus = find("#minus");
         TextField count = find("#count");
@@ -72,7 +73,7 @@ public class TestedAppHeadTest extends GuiTest {
         for (int i = 0; i < 4; i++) {
             clickOn(minus);
         }
-        Assert.assertEquals(count.getText(), "0");
+        assertEquals(count.getText(), "0");
 
     }
 
@@ -84,32 +85,32 @@ public class TestedAppHeadTest extends GuiTest {
         //Should be empty when nothing is selected
         clickOn("#refresh");
         Label selection = find("#selection");
-        Assert.assertFalse(selection.getText().contains("Opt"));
+        assertFalse(selection.getText().contains("Opt"));
 
         //Lets select some CheckBoxes
         clickOn("#opt1").clickOn("#refresh");
-        Assert.assertTrue(selection.getText().contains("Opt1") && !selection.getText().contains("Opt2"));
+        assertTrue(selection.getText().contains("Opt1") && !selection.getText().contains("Opt2"));
         clickOn("#opt2").clickOn("#refresh");
-        Assert.assertTrue(selection.getText().contains("Opt1") && selection.getText().contains("Opt2"));
+        assertTrue(selection.getText().contains("Opt1") && selection.getText().contains("Opt2"));
         clickOn("#opt1").clickOn("#refresh");
-        Assert.assertTrue(!selection.getText().contains("Opt1") && selection.getText().contains("Opt2"));
+        assertTrue(!selection.getText().contains("Opt1") && selection.getText().contains("Opt2"));
 
         //Now lets try the RadioButtons
         clickOn("#optA").clickOn("#refresh");
-        Assert.assertTrue(selection.getText().contains("OptA"));
+        assertTrue(selection.getText().contains("OptA"));
         clickOn("#optB").clickOn("#refresh");
-        Assert.assertTrue(selection.getText().contains("OptB") && !selection.getText().contains("OptA"));
+        assertTrue(selection.getText().contains("OptB") && !selection.getText().contains("OptA"));
 
         //Then some ChoiceBox Testing
         ChoiceBox<String> choice = find("#choice");
         choice.getItems().forEach((item) -> {
             clickOn(choice);
             clickOn(item).clickOn("#refresh");
-            Assert.assertTrue(selection.getText().contains(choice.getValue()));
+            assertTrue(selection.getText().contains(choice.getValue()));
         });
 
         //Finally let's test our final result
-        Assert.assertTrue(selection.getText().contains("Opt2") && selection.getText().contains("OptB") && selection.getText().contains("Opt/"));
+        assertTrue(selection.getText().contains("Opt2") && selection.getText().contains("OptB") && selection.getText().contains("Opt/"));
     }
 
     /**
@@ -128,11 +129,11 @@ public class TestedAppHeadTest extends GuiTest {
         drag(sliderY.getChildrenUnmodifiable().get(1)).dropBy(0, -20);
 
         //Checks the results
-        Assert.assertTrue((((int) sliderX.getValue() == ((int) Double.parseDouble(labelX.getText())))));
-        Assert.assertTrue((((int) sliderY.getValue() == ((int) Double.parseDouble(labelY.getText())))));
+        assertTrue((((int) sliderX.getValue() == ((int) Double.parseDouble(labelX.getText())))));
+        assertTrue((((int) sliderY.getValue() == ((int) Double.parseDouble(labelY.getText())))));
 
-        Assert.assertTrue((((int) sliderX.getValue() == 5)));
-        Assert.assertTrue((((int) sliderY.getValue() == 4)));
+        assertTrue((((int) sliderX.getValue() == 5)));
+        assertTrue((((int) sliderY.getValue() == 4)));
     }
 
     /**
