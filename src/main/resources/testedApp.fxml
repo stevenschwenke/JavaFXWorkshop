@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import java.lang.String?>
 <GridPane alignment="CENTER" hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-          minWidth="-Infinity" prefHeight="497.0" prefWidth="363.0" vgap="20.0"
+          minWidth="-Infinity" prefHeight="484.0" prefWidth="363.0" vgap="20.0"
           xmlns="http://javafx.com/javafx/8.0.60-ea" xmlns:fx="http://javafx.com/fxml/1"
           fx:controller="de.stevenschwenke.java.javafx.workshop.chapter_X_testing_FX_applications.TestedApp">
     <columnConstraints>
@@ -95,10 +95,8 @@
                 <VBox alignment="CENTER" prefHeight="81.0" prefWidth="49.0" spacing="20.0"
                       style="-fx-border-color: AAAAAA;">
                     <children>
-                        <Label fx:id="labelX" alignment="CENTER" ellipsisString="" maxWidth="30.0" text="x"
-                               textAlignment="CENTER"/>
-                        <Label fx:id="labelY" alignment="CENTER" ellipsisString="" maxWidth="30.0" text="y"
-                               textAlignment="CENTER"/>
+                        <TextField fx:id="textX" alignment="CENTER" maxWidth="30.0" text="x"/>
+                        <TextField fx:id="textY" alignment="CENTER" maxWidth="30.0" text="y"/>
                     </children>
                 </VBox>
                 <Slider fx:id="sliderY" blockIncrement="1.0" majorTickUnit="5.0" max="10.0" minorTickCount="4"

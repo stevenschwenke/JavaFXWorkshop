@@ -4,6 +4,7 @@ package de.stevenschwenke.java.javafx.workshop.chapter_X_testing_FX_applications
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import org.junit.Test;
 import org.loadui.testfx.GuiTest;
 
@@ -122,19 +123,27 @@ public class TestedAppHeadlessTest extends GuiTest {
         //If you want to work with nodes in other ways than clicking etc., you should save the to a variable
         Slider sliderX = find("#sliderX");
         Slider sliderY = find("#sliderY");
-        Label labelX = find("#labelX");
-        Label labelY = find("#labelY");
+        TextField textX = find("#textX");
+        TextField textY = find("#textY");
 
         //Pretty hard to handle Sliders - ScenicView helps a lot!
-        drag(sliderX.getChildrenUnmodifiable().get(1)).dropBy(20, 0);
-        drag(sliderY.getChildrenUnmodifiable().get(1)).dropBy(0, -20);
+        //Moving Slider by Keyboard
+        clickOn(sliderX.getChildrenUnmodifiable().get(2)).type(KeyCode.RIGHT, 4).type(KeyCode.LEFT, 2);
+
+        //Moving Slider with Mouse (You can't use .moveBy in headless Mode
+        while (Integer.parseInt(textY.getText()) != 6) {
+            if (Integer.parseInt(textY.getText()) < 6)
+                drag(sliderY.getChildrenUnmodifiable().get(2)).dropBy(0, -5);
+            else
+                drag(sliderY.getChildrenUnmodifiable().get(2)).dropBy(0, 5);
+        }
 
         //Checks the results
-        assertTrue((((int) sliderX.getValue() == ((int) Double.parseDouble(labelX.getText())))));
-        assertTrue((((int) sliderY.getValue() == ((int) Double.parseDouble(labelY.getText())))));
+        assertTrue((int) sliderX.getValue() == (int) Double.parseDouble(textX.getText()));
+        assertTrue((int) sliderY.getValue() == (int) Double.parseDouble(textY.getText()));
 
-        assertTrue((((int) sliderX.getValue() == 5)));
-        assertTrue((((int) sliderY.getValue() == 4)));
+        assertTrue(Integer.parseInt(textX.getText()) == 2);
+        assertTrue(Integer.parseInt(textY.getText()) == 6);
     }
 
     /**

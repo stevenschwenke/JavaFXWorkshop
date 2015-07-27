@@ -1,9 +1,7 @@
 package de.stevenschwenke.java.javafx.workshop.chapter_X_testing_FX_applications;
 
 import javafx.application.Application;
-import javafx.beans.binding.Bindings;
 import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ReadOnlyIntegerWrapper;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,11 +45,15 @@ public class TestedApp extends Application implements Initializable {
     @FXML
     private Slider sliderY;
     @FXML
-    private Label labelX;
+    private TextField textX;
     @FXML
-    private Label labelY;
+    private TextField textY;
 
     private IntegerProperty counter = new SimpleIntegerProperty();
+
+    private IntegerProperty proxyX = new SimpleIntegerProperty();
+    private IntegerProperty proxyY = new SimpleIntegerProperty();
+    NumberStringConverter numberStringConverter = new NumberStringConverter();
 
     public static void main(String[] args) {
         launch(args);
@@ -71,20 +73,33 @@ public class TestedApp extends Application implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        //Everything here is potentially not thread-safe
+
+        //Listeners that are supposed to run before a binding need to be added before those!!!
+        textX.textProperty().addListener((observableValue, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*") || Integer.parseInt(newValue) > 10)
+                textX.setText(oldValue);
+        });
+        textY.textProperty().addListener((observableValue, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*") || Integer.parseInt(newValue) > 10)
+                textY.setText(oldValue);
+        });
+
+        //Binding the Slider with an Integer-Proxy-Property to bind it to a Text-Property of a label.
+        proxyX.bindBidirectional(sliderX.valueProperty());
+        proxyY.bindBidirectional(sliderY.valueProperty());
+
+        textX.textProperty().bindBidirectional(proxyX, numberStringConverter);
+        textY.textProperty().bindBidirectional(proxyY, numberStringConverter);
+
         count.textProperty().bind(counter.asString());
-        ReadOnlyIntegerWrapper proxyX = new ReadOnlyIntegerWrapper();
-        ReadOnlyIntegerWrapper proxyY = new ReadOnlyIntegerWrapper();
-
-        sliderX.valueProperty().bindBidirectional(proxyX);
-        sliderY.valueProperty().bindBidirectional(proxyY);
-
-        Bindings.bindBidirectional(labelX.textProperty(), proxyX, new NumberStringConverter());
-        Bindings.bindBidirectional(labelY.textProperty(), proxyY, new NumberStringConverter());
     }
 
     @FXML
     public void minusCount() {
-        if (counter.get() >= 1) counter.set(counter.get() - 1);
+        if (counter.get() >= 1) {
+            counter.set(counter.get() - 1);
+        }
     }
 
     @FXML
