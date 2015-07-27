@@ -125,6 +125,17 @@ public class TestedAppHeadTest extends GuiTest {
         Label labelY = find("#labelY");
 
         //Pretty hard to handle Sliders - ScenicView helps a lot!
+//        drag(sliderX.getChildrenUnmodifiable().get(1)).dropBy(20, 0);
+//        drag(sliderY.getChildrenUnmodifiable().get(1)).dropBy(0, -20);
+//
+//        //Checks the results
+//        assertTrue((((int) sliderX.getValue() == ((int) Double.parseDouble(labelX.getText())))));
+//        assertTrue((((int) sliderY.getValue() == ((int) Double.parseDouble(labelY.getText())))));
+//
+//        assertTrue((((int) sliderX.getValue() == 5)));
+//        assertTrue((((int) sliderY.getValue() == 4)));
+
+
         drag(sliderX.getChildrenUnmodifiable().get(1)).dropBy(20, 0);
         drag(sliderY.getChildrenUnmodifiable().get(1)).dropBy(0, -20);
 

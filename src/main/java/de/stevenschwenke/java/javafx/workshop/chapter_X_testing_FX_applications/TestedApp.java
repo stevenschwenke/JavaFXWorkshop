@@ -1,7 +1,9 @@
 package de.stevenschwenke.java.javafx.workshop.chapter_X_testing_FX_applications;
 
 import javafx.application.Application;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ReadOnlyIntegerWrapper;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.util.converter.NumberStringConverter;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -69,8 +72,14 @@ public class TestedApp extends Application implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         count.textProperty().bind(counter.asString());
-        labelX.textProperty().bind(sliderX.valueProperty().asString());
-        labelY.textProperty().bind(sliderY.valueProperty().asString());
+        ReadOnlyIntegerWrapper proxyX = new ReadOnlyIntegerWrapper();
+        ReadOnlyIntegerWrapper proxyY = new ReadOnlyIntegerWrapper();
+
+        sliderX.valueProperty().bindBidirectional(proxyX);
+        sliderY.valueProperty().bindBidirectional(proxyY);
+
+        Bindings.bindBidirectional(labelX.textProperty(), proxyX, new NumberStringConverter());
+        Bindings.bindBidirectional(labelY.textProperty(), proxyY, new NumberStringConverter());
     }
 
     @FXML
