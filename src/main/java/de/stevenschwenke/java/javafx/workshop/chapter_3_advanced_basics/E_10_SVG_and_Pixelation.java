@@ -1,5 +1,9 @@
 package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics;
 
+import de.codecentric.centerdevice.javafxsvg.SvgImageLoaderFactory;
+
+import java.io.InputStream;
+
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -14,7 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
- * Created by schwenks on 17.07.2015.
+ * Shows that controls in JavaFX are scalable and don't pixelate when being zoomed.
  */
 public class E_10_SVG_and_Pixelation extends Application {
 
@@ -22,15 +26,22 @@ public class E_10_SVG_and_Pixelation extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        //Button imageView = new Button("Hello World");
         BorderPane myPane = new BorderPane();
         ImageView imageView = new ImageView();
-        Image javafxLogo = new Image("/Javafx_logo_color.png");
-        Image svgLogo = new Image("/SVG_logo.svg"); // TODO read svg
+
+        Image pngImage = new Image("/Javafx_logo_color.png");
+
+        // There are several implementations which convert svg to non-scalable pixel-based formats, like
+        // https://blog.codecentric.de/en/2015/03/adding-custom-image-renderer-javafx-8/ does using Apache Batik:
+        SvgImageLoaderFactory.install();
+        InputStream resourceAsStream = getClass().getResourceAsStream("/SVG_logo.svg");
+        Image svgImage = new Image(resourceAsStream);
+
+        // TODO I commented a question in the article above and asked for a way to use the scalable format.
+
         Label label = new Label("This is a label");
-        imageView.setImage(javafxLogo);
 
-
+        imageView.setImage(svgImage);
         myPane.setCenter(imageView);
 
         EventHandler<MouseEvent> mouseEventEventHandler = event -> {
@@ -67,6 +78,7 @@ public class E_10_SVG_and_Pixelation extends Application {
     }
 
     enum Display {
+        // TODO use this to switch between what is shown when the import of svg is implemented
         BUTTON, PNG, SVG
     }
 }
