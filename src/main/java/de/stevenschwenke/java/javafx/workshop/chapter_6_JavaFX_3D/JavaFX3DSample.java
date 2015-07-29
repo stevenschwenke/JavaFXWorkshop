@@ -41,7 +41,14 @@ public class JavaFX3DSample extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        //X Axis -  __  Y Axis |  __  Z Axis /
+        //X Axis   _____
+        //         -   +
+
+        //Y Axis   |   +
+        //         |   -
+
+        //Z Axis   /   +
+        //       /   -
         Group subRoot = new Group();
         Group box3D = new Group();
         Group axes = new Group();

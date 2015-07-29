@@ -15,11 +15,25 @@
 	</properties>
 
     <dependencies>
+
         <dependency>
             <groupId>de.codecentric.centerdevice</groupId>
             <artifactId>javafxsvg</artifactId>
             <version>1.0.0</version>
         </dependency>
+        
+        <dependency>
+            <groupId>org.testfx</groupId>
+            <artifactId>testfx-legacy</artifactId>
+            <version>4.0.1-alpha</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testfx</groupId>
+            <artifactId>testfx-core</artifactId>
+            <version>4.0.1-alpha</version>
+        </dependency>
+
     </dependencies>
     
 </project>
