@@ -1,21 +1,33 @@
 package de.stevenschwenke.java.javafx.workshop.chapter_X_testing_FX_applications;
 
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
 import org.junit.Test;
 import org.loadui.testfx.GuiTest;
 
 import java.io.IOException;
 
-import static org.junit.Assert.*;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollBar;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 //Extend the Test-Class with GuiTest
 
 /**
- * Run with these arguments: -Dtestfx.robot=glass -Dglass.platform=Monocle -Dmonocle.platform=Headless
+ * Place openjfx-monocle-1.8.0_20.jar in your JDK\jre\lib\ext folder. Then run with these arguments:
+ * -Dtestfx.robot=glass -Dglass.platform=Monocle -Dmonocle.platform=Headless
+ *
  * Created by drandard on 21.07.2015.
  */
 public class TestedAppHeadlessTest extends GuiTest {
