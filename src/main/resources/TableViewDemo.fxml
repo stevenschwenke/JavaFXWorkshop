@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
+            fx:controller="de.stevenschwenke.java.javafx.workshop.chapter_7_TableView.TableViewDemo">
+    <center>
+        <TableView fx:id="table" BorderPane.alignment="TOP_LEFT">
+            <columns>
+                <TableColumn fx:id="colName" prefWidth="60" text="Name"/>
+            </columns>
+            <BorderPane.margin>
+                <Insets bottom="5" left="5" right="5" top="5"/>
+            </BorderPane.margin>
+        </TableView>
+    </center>
+</BorderPane>
