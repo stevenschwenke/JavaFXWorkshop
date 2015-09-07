@@ -3,7 +3,10 @@ package de.stevenschwenke.java.javafx.workshop.chapter_7_TableView;
 import javafx.scene.control.TableCell;
 
 /**
- * A TableCell with validation.
+ * A TableCell with validation. The Cell is reused due to the TableViews VirtualFlow mechanism.</br>
+ * Values < 6 -> red.</br>
+ * Values > 14 -> green.</br>
+ *
  * <p>
  * Created by bezze on 04.09.15.
  */
@@ -15,9 +18,9 @@ public class StyledTableCell extends TableCell<RowValue, Integer> {
 
         /**
          * Reset the style!
-         * Try uncommenting and see what is happening!
+         * Try commenting and see what is happening!
          */
-        //setStyle("-fx-text-fill: black; -fx-font-weight: normal");
+        setStyle("-fx-text-fill: black; -fx-font-weight: normal");
 
         if (!empty) {
             setText(item.toString());

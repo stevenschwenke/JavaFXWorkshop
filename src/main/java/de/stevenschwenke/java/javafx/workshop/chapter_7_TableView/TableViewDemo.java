@@ -18,7 +18,14 @@ import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 /**
- * Demonstrates the VirtualFlow mechanism.
+ * Demonstrates the VirtualFlow mechanism. Run it and scroll around in the table.</br>
+ *
+ * The displayed values are random values =< 20.</br>
+ * Values < 6 -> red.</br>
+ * Values > 14 -> green.</br>
+ *
+ * Before restarting comment line 20 in StyledTableCell and scroll (wild!) in the table.</br>
+ * The table reuses the StyledTableCell and therefor gets mixed up with the colors.
  *
  * @see com.sun.javafx.scene.control.skin.VirtualFlow
  * <p>
@@ -40,7 +47,7 @@ public class TableViewDemo extends Application implements Initializable {
 
     @Override
     public void start(Stage stage) throws Exception {
-        // System.out.println("start");
+
         Parent root = FXMLLoader.load(getClass().getResource("/TableViewDemo.fxml"));
         Scene scene = new Scene(root, 600, 400);
 
@@ -51,7 +58,6 @@ public class TableViewDemo extends Application implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // System.out.println("init");
 
         initTable();
 
@@ -63,8 +69,10 @@ public class TableViewDemo extends Application implements Initializable {
         table.setTableMenuButtonVisible(true);
         table.setEditable(false);
 
+        // the first column
         colName.setCellValueFactory(p -> new ReadOnlyObjectWrapper<String>(p.getValue().getName()));
 
+        // dynamic columns
         for (int i = 0; i < columnCount; i++) {
             final int colIdx = i;
 
