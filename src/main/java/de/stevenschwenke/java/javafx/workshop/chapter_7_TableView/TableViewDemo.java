@@ -66,11 +66,13 @@ public class TableViewDemo extends Application implements Initializable {
     }
 
     private void initTable() {
+        // Attention: Menu button lets you hide columns. Awesome. :)
         table.setTableMenuButtonVisible(true);
+
         table.setEditable(false);
 
         // the first column
-        colName.setCellValueFactory(p -> new ReadOnlyObjectWrapper<String>(p.getValue().getName()));
+        colName.setCellValueFactory(p -> new ReadOnlyObjectWrapper<>(p.getValue().getName()));
 
         // dynamic columns
         for (int i = 0; i < columnCount; i++) {
@@ -78,13 +80,16 @@ public class TableViewDemo extends Application implements Initializable {
 
             TableColumn<RowValue, Integer> col = new TableColumn<>("Col " + i);
             col.setCellValueFactory(p ->
-                    new ReadOnlyObjectWrapper<Integer>(p.getValue().getValues().get(colIdx)));
+                    new ReadOnlyObjectWrapper<>(p.getValue().getValues().get(colIdx)));
             col.setCellFactory(p -> new StyledTableCell());
 
             table.getColumns().add(col);
         }
     }
 
+    /**
+     * @return List of {@link RowValue}s that each hold a list of values for one row.
+     */
     private ObservableList<RowValue> buildTableData() {
         ObservableList<RowValue> retVal = FXCollections.observableArrayList();
 
