@@ -8,7 +8,7 @@
 <GridPane alignment="CENTER" hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
           minWidth="-Infinity" prefHeight="484.0" prefWidth="363.0" vgap="20.0"
           xmlns="http://javafx.com/javafx/8.0.60-ea" xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="de.stevenschwenke.java.javafx.workshop.chapter_7_testing_FX_applications.TestedApp">
+          fx:controller="de.stevenschwenke.java.javafx.workshop.chapter_6_testing_FX_applications.TestedApp">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>

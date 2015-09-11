@@ -1,4 +1,4 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_7_testing_FX_applications;
+package de.stevenschwenke.java.javafx.workshop.chapter_6_testing_FX_applications;
 
 
 import org.junit.Test;

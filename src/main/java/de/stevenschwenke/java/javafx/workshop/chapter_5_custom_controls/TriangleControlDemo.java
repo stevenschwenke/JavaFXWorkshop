@@ -1,4 +1,4 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_6_custom_controls;
+package de.stevenschwenke.java.javafx.workshop.chapter_5_custom_controls;
 
 import java.util.Random;
 

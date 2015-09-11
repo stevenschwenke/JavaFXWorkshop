@@ -26,22 +26,22 @@ Since JDK 8u40, Oracle doesn't provide a binary for the SceneBuilder. This chapt
 chapter 3: advanced basics
 --------------------------
 A collection of sample applications that show different aspects of JavaFX.
-TODO Screenshots einbauen
+TODO Screenshots
 
 chapter 4: JavaFX 3D
 --------------------------
 This chapter contains a sample application that uses the 3D API. Because JavaFX 3D is not a topic of this workshop, this app is only intended to get you started.
  
-chapter 5: 
+chapter 5: custom controls
+--------------------------
+Writing very own controls from scratch.
+
+chapter 6: testing FX application
+--------------------------
+Automatic testing with TestFX.
 
 
-- mode details and examples for Swing interop
-- how to build you own SceneBuilder (because there isn't a compiled version any more, see w.com/questions/28808130/where-exactly-can-i-download-the-latest-version-of-scene-builder-for-java)
-- advanced controls
-- custom controls, both adapting an existing control (like using a normal Button to build some specialized kind of button) and writing controls from scratch
-
-**Because of these updates, this readme has to be updated, too. The following text refers to the first chapter, "your first FX application".**
-
+**Because of updates, this readme has to be updated, too. The following text refers to the first chapter, "your first FX application".**
 
 1. What is JavaFX and why should you care?
 ---------------
