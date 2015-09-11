@@ -1,4 +1,4 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_6_ListView_searchable_by_keystroke;
+package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_5_ListView_searchable_by_keystroke;
 
 import javafx.event.Event;
 import javafx.event.EventHandler;

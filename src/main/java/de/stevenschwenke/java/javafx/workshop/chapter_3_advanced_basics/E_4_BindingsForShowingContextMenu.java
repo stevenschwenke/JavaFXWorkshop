@@ -20,7 +20,7 @@ import java.util.Arrays;
  * <p>
  * This code is the modified gist available at https://gist.github.com/james-d/7758918
  */
-public class E_6_BindingsForShowingContextMenu extends Application {
+public class E_4_BindingsForShowingContextMenu extends Application {
 
     private TableView<Person> table = new TableView<>();
     private final ObservableList<Person> data = FXCollections.observableArrayList(

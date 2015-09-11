@@ -1,4 +1,4 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics;
+package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_9_Snapshot;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -27,7 +27,7 @@ import javafx.util.Duration;
 /**
  * Demonstrates the snapshot function that allows to create an image from every node.
  */
-public class E_9_Snapshot extends Application {
+public class E_9_Start extends Application {
 
     @FXML
     private AnchorPane rootAnchorPane;

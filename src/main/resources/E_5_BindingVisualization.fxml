@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.Text?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="271.0" prefWidth="260.0" xmlns="http://javafx.com/javafx/8.0.45" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_5_BindingVisualization">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="271.0" prefWidth="260.0" xmlns="http://javafx.com/javafx/8.0.45" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_3_BindingVisualization">
    <children>
       <TextField fx:id="t1" layoutX="30.0" layoutY="61.0" maxWidth="30.0" prefWidth="30.0" text="1" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="61.0" />
       <TextField fx:id="t2" layoutX="200.0" layoutY="61.0" maxWidth="30.0" prefWidth="30.0" text="2" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="61.0" />

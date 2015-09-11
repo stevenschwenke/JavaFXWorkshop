@@ -1,4 +1,4 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics;
+package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_9_Snapshot;
 
 import javafx.beans.property.SimpleStringProperty;
 

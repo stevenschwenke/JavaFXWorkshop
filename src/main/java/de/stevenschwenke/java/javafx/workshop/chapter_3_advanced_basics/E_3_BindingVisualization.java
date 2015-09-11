@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 /**
  * Visualizes the binding API.
  */
-public class E_5_BindingVisualization extends Application implements Initializable {
+public class E_3_BindingVisualization extends Application implements Initializable {
 
     @FXML
     private TextField t1;

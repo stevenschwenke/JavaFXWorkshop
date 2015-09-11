@@ -1,4 +1,4 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_5_TableView;
+package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_7_TableView;
 
 import java.net.URL;
 import java.util.Random;
@@ -31,7 +31,7 @@ import javafx.stage.Stage;
  * <p>
  * Created by bezze on 04.09.15.
  */
-public class TableViewDemo extends Application implements Initializable {
+public class E_7_Start extends Application implements Initializable {
 
     @FXML
     private TableView<RowValue> table;

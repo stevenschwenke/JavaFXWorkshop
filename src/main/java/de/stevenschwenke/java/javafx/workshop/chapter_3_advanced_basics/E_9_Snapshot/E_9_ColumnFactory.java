@@ -1,4 +1,4 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics;
+package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_9_Snapshot;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
@@ -10,11 +10,11 @@ import javafx.util.Callback;
 
 public class E_9_ColumnFactory implements Callback<TableColumn<E_9_UserFX, String>, TableCell<E_9_UserFX, String>> {
 
-    private E_9_Snapshot controller;
+    private E_9_Start controller;
 
     private String upOrDown;
 
-    public E_9_ColumnFactory(E_9_Snapshot controller, String upOrDown) {
+    public E_9_ColumnFactory(E_9_Start controller, String upOrDown) {
         super();
         this.controller = controller;
         this.upOrDown = upOrDown;
