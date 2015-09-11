@@ -1,4 +1,4 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_4_custom_controls;
+package de.stevenschwenke.java.javafx.workshop.chapter_6_custom_controls;
 
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;

@@ -1,4 +1,4 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_6_JavaFX_3D;
+package de.stevenschwenke.java.javafx.workshop.chapter_4_JavaFX_3D;
 
 import javafx.application.Application;
 import javafx.beans.binding.Bindings;

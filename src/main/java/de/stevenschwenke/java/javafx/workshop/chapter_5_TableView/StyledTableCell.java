@@ -1,4 +1,4 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_7_TableView;
+package de.stevenschwenke.java.javafx.workshop.chapter_5_TableView;
 
 import javafx.scene.control.TableCell;
 

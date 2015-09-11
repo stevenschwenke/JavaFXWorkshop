@@ -1,4 +1,4 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_X_testing_FX_applications;
+package de.stevenschwenke.java.javafx.workshop.chapter_7_testing_FX_applications;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
