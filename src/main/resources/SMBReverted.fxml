@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import de.stevenschwenke.java.javafx.workshop.chapter_5_custom_controls.SMBReverted?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.layout.VBox?>
+<VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="10.0"
+      xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="de.stevenschwenke.java.javafx.workshop.chapter_5_custom_controls.SMBRevertedDemo">
+    <children>
+        <SplitMenuButton fx:id="smb" mnemonicParsing="false" text="Actions" onAction="#doSomething">
+            <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" onAction="#doSomething"/>
+                <MenuItem mnemonicParsing="false" text="Action 2" onAction="#doSomething"/>
+            </items>
+        </SplitMenuButton>
+        <SMBReverted fx:id="rsmb" mnemonicParsing="false" text="Actions" onAction="#doSomething">
+            <items>
+                <MenuItem mnemonicParsing="false" text="Action 3" onAction="#doSomething"/>
+                <MenuItem mnemonicParsing="false" text="Action 4" onAction="#doSomething"/>
+            </items>
+        </SMBReverted>
+    </children>
+</VBox>

@@ -1,5 +1,7 @@
 package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics;
 
+import java.util.Arrays;
+
 import javafx.application.Application;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ReadOnlyListWrapper;
@@ -8,12 +10,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
-import java.util.Arrays;
 
 /**
  * Demonstrates the usage of bindings for showing a context menu in a {@link TableView} only for non-empty rows.
@@ -39,6 +44,7 @@ public class E_4_BindingsForShowingContextMenu extends Application {
     @Override
     public void start(Stage stage) {
         Scene scene = new Scene(new Group());
+        scene.getStylesheets().add("table.css");
         stage.setTitle("Table View Sample");
         stage.setWidth(450);
         stage.setHeight(500);
@@ -57,6 +63,7 @@ public class E_4_BindingsForShowingContextMenu extends Application {
 
         table.setItems(data);
         table.getColumns().addAll(Arrays.asList(firstNameCol, lastNameCol, emailCol));
+        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         remove.setDisable(true);
         remove.setOnAction(event -> removeRow(table.getSelectionModel().getSelectedItem()));
@@ -95,6 +102,7 @@ public class E_4_BindingsForShowingContextMenu extends Application {
                             .otherwise(contextMenu));
             return row;
         });
+
 
         BorderPane borderPane = new BorderPane(table);
         borderPane.setTop(remove);
