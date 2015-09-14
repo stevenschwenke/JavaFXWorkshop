@@ -92,7 +92,7 @@ public class E_8_Transitions_and_Timelines extends Application {
 
 		final KeyValue kvDwn1 = new KeyValue(clipRect.heightProperty(), extendableNavigationPane.getHeight());
 		final KeyValue kvDwn2 = new KeyValue(clipRect.translateYProperty(), 0);
-		final KeyValue kvDwn3 = new KeyValue(extendableNavigationPane.translateYProperty(), 0);
+		final KeyValue kvDwn3 = new KeyValue(extendableNavigationPane.translateYProperty(), -5);
 		final KeyFrame kfDwn = new KeyFrame(Duration.millis(100), createBouncingEffect(extendableNavigationPane.getHeight()), kvDwn1, kvDwn2,
 				kvDwn3);
 
