@@ -63,6 +63,8 @@ public class E_4_BindingsForShowingContextMenu extends Application {
 
         table.setItems(data);
         table.getColumns().addAll(Arrays.asList(firstNameCol, lastNameCol, emailCol));
+
+        // This eliminates the famous Ghost Column
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         remove.setDisable(true);

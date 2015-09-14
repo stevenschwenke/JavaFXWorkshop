@@ -1,3 +1,5 @@
+
+// Hides empty table rows
 .table-row-cell:empty {
     -fx-background: transparent;
     -fx-border-width: 0 0 0 0;
