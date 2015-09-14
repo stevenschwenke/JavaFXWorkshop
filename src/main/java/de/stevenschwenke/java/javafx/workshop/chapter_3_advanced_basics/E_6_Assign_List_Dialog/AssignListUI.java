@@ -1,6 +1,16 @@
 package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_6_Assign_List_Dialog;
 
 import de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_5_ListView_searchable_by_keystroke.KeyMoveSelectionHandler;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.function.Predicate;
+
 import javafx.beans.binding.ListExpression;
 import javafx.beans.property.ReadOnlyListWrapper;
 import javafx.collections.FXCollections;
@@ -10,14 +20,14 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Control;
+import javafx.scene.control.ListView;
+import javafx.scene.control.ScrollToEvent;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.util.StringConverter;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.*;
-import java.util.function.Predicate;
 
 /**
  * Pane for 2 lists you can assign items to.
@@ -67,7 +77,8 @@ public class AssignListUI<T> extends BorderPane implements Initializable {
 			};
 		}
 
-		FXMLLoader fxmlLoader = new FXMLLoader(AssignListUI.class.getResource("/E_7_AssignList.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(AssignListUI.class.getResource(
+		    "/E_6_AssignList.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
 
