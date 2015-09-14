@@ -22,7 +22,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class E_8_Timelines extends Application {
+public class E_8_Transitions_and_Timelines extends Application {
 
 	private static final int deltaXNavButton1 = 20;
 	private static final int deltaXNavButton2 = 10;
