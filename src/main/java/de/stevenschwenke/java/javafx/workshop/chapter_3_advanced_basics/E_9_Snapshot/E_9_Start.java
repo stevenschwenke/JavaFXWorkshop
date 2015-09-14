@@ -110,9 +110,6 @@ public class E_9_Start extends Application {
         double yTable2 = rowTable2.localToScene(0, 0).getY();
         WritableImage snapshot = rowTable2.snapshot(new SnapshotParameters(), null);
 
-        // remove entry from table 2
-        observableList2.remove(vo);
-
         // add new object to table 1 (now this entry is in both tables!)
         final E_9_UserFX newUser = new E_9_UserFX(vo.getName(), vo.getUserId());
         observableList1.add(newUser);
@@ -130,7 +127,7 @@ public class E_9_Start extends Application {
         // Animation
         TableRow<E_9_UserFX> rowTable1 = findRow(tableView1, newUser);
         double yTable1 = rowTable1.localToScene(0, 0).getY();
-        doTheFancyAnimation(yTable1, yTable2, snapshot);
+        doTheFancyAnimation(yTable1, yTable2, snapshot, observableList2, vo);
     }
 
     void moveDown(final E_9_UserFX vo) {
@@ -141,7 +138,7 @@ public class E_9_Start extends Application {
         WritableImage snapshot = rowTable1.snapshot(new SnapshotParameters(), null);
 
         // remove entry from table 1
-        observableList1.remove(vo);
+        //observableList1.remove(vo);
 
         // add new object to table 2 (now this entry is in both tables!)
         final E_9_UserFX newUser = new E_9_UserFX(vo.getName(), vo.getUserId());
@@ -157,7 +154,7 @@ public class E_9_Start extends Application {
         // Animation
         TableRow<E_9_UserFX> rowTable2 = findRow(tableView2, newUser);
         double yTable2 = rowTable2.localToScene(0, 0).getY();
-        doTheFancyAnimation(yTable2, yTable1, snapshot);
+        doTheFancyAnimation(yTable2, yTable1, snapshot, observableList1, vo);
     }
 
     /**
@@ -165,7 +162,8 @@ public class E_9_Start extends Application {
      * @param y2       Y-Coordinate to go to
      * @param snapshot that gets translated
      */
-    private void doTheFancyAnimation(final double y1, final double y2, final WritableImage snapshot) {
+    private void doTheFancyAnimation(final double y1, final double y2, final WritableImage snapshot,
+                                     ObservableList<E_9_UserFX> listToRemoveFrom, E_9_UserFX userToRemove) {
 
         Platform.runLater(() -> {
 
@@ -190,6 +188,7 @@ public class E_9_Start extends Application {
             timeline.onFinishedProperty().set(arg0 -> {
                 rootAnchorPane.getChildren().remove(overlayPane);
                 tableView1.requestFocus();
+                listToRemoveFrom.remove(userToRemove);
             });
         });
     }
