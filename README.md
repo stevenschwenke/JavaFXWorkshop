@@ -14,6 +14,9 @@ The workshop is an internal event for my coworkers. Target audience are develope
 
 The code works with Java 7 and Java 8.
 
+Part of this workshop is inspired by Hendrik Ebbers book "Mastering JavaFX Controls" and from his
+repository at https://github.com/guigarage/mastering-javafx-controls.  
+
 **Update June 2015:** This workshop is being extended by the following topics:
 
 chapter 1: building your first FX application
