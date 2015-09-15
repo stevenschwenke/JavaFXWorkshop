@@ -1,6 +1,6 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_6_Assign_List_Dialog;
+package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_7_Assign_List_Dialog;
 
-import de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_5_ListView_searchable_by_keystroke.KeyMoveSelectionHandler;
+import de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_6_ListView_searchable_by_keystroke.KeyMoveSelectionHandler;
 
 import java.io.IOException;
 import java.net.URL;

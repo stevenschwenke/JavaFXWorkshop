@@ -1,4 +1,4 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_7_TableView;
+package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_8_TableView;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_9_Snapshot;
+package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_10_Snapshot;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;

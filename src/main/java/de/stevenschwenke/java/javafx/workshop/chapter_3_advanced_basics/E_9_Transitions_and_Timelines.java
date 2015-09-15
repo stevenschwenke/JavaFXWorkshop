@@ -22,7 +22,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class E_8_Transitions_and_Timelines extends Application {
+public class E_9_Transitions_and_Timelines extends Application {
 
 	private static final int deltaXNavButton1 = 20;
 	private static final int deltaXNavButton2 = 10;
@@ -54,10 +54,10 @@ public class E_8_Transitions_and_Timelines extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("/E_8_Timelines.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/E_9_Timelines.fxml"));
 
 		Scene scene = new Scene(root, 600, 200);
-		scene.getStylesheets().add("E_8_Timelines.css");
+		scene.getStylesheets().add("E_9_Timelines.css");
 
 		stage.setTitle("Extendable navigation pane demo");
 		stage.setScene(scene);

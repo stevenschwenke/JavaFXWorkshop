@@ -17,7 +17,7 @@ import javafx.util.Duration;
  *
  * Your task is to make the rectangle move around the visible screen.
  */
-public class E_8_Transitions_and_Timelines_Exercise extends Application {
+public class E_9_Transitions_and_Timelines_Exercise extends Application {
 
   private AnchorPane root;
 

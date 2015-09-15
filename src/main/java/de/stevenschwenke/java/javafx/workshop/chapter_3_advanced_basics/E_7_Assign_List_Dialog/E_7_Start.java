@@ -1,4 +1,8 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_6_Assign_List_Dialog;
+package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_7_Assign_List_Dialog;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -11,17 +15,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-
 /**
  * Shows a dialog to choose items from a list.
  *
  * @author scavenger156 (https://github.com/Scavenger156)
  *
  */
-public class E_6_Start extends Application {
+public class E_7_Start extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}

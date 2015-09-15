@@ -1,4 +1,6 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_5_ListView_searchable_by_keystroke;
+package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_6_ListView_searchable_by_keystroke;
+
+import java.util.Collections;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -10,15 +12,13 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-import java.util.Collections;
-
 /**
  * Enhanced ListView that searches elements with key strokes.
  * 
  * @author scavenger156 (https://github.com/Scavenger156)
  *
  */
-public class E_5_Start extends Application {
+public class E_6_Start extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}

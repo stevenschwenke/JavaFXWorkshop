@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 /**
  * Shows that controls in JavaFX are scalable and don't pixelate when being zoomed.
  */
-public class E_10_SVG_and_Pixelation extends Application {
+public class E_11_SVG_and_Pixelation extends Application {
 
     private Display display = Display.BUTTON;
 

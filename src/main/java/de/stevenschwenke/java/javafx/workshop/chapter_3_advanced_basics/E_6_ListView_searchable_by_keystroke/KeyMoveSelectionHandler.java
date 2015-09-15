@@ -1,4 +1,6 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_5_ListView_searchable_by_keystroke;
+package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_6_ListView_searchable_by_keystroke;
+
+import java.util.List;
 
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -7,8 +9,6 @@ import javafx.scene.control.ScrollToEvent;
 import javafx.scene.control.SelectionModel;
 import javafx.scene.input.KeyEvent;
 import javafx.util.StringConverter;
-
-import java.util.List;
 /**
  * Using key strokes to navigate in a list and selecting items.
  *

@@ -1,4 +1,4 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_6_Assign_List_Dialog;
+package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_7_Assign_List_Dialog;
 
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;

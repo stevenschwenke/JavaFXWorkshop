@@ -1,4 +1,4 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_9_Snapshot;
+package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_10_Snapshot;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -60,7 +60,7 @@ public class E_9_Start extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/E_9_Snapshot.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/E_10_Snapshot.fxml"));
 
         Scene scene = new Scene(root, 600, 600);
 
