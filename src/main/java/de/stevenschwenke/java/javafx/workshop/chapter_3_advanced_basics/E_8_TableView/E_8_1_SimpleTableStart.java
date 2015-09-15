@@ -1,11 +1,13 @@
 package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_8_TableView;
 
 import javafx.application.Application;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.StackPane;
@@ -42,6 +44,7 @@ public class E_8_1_SimpleTableStart extends Application {
         TableColumn nameColumn = new TableColumn("Name");
         nameColumn.getColumns().addAll(firstNameColumn, lastNameColumn);
         TableColumn jobColumn = new TableColumn("Job");
+        TableColumn employeeOfTheMonthColumn = new TableColumn<>("Employee of the month");
 
         firstNameColumn.setCellValueFactory(
                 new PropertyValueFactory<E_8_1_ExtendedPerson,String>("firstName")
@@ -53,13 +56,19 @@ public class E_8_1_SimpleTableStart extends Application {
                 new PropertyValueFactory<E_8_1_ExtendedPerson,String>("job")
         );
 
+        employeeOfTheMonthColumn.setCellValueFactory(
+            new PropertyValueFactory<E_8_1_ExtendedPerson, Boolean>("employeeOfTheMonth")
+        );
+
+        employeeOfTheMonthColumn.setCellFactory(CheckBoxTableCell.forTableColumn(
+            (i) -> new SimpleBooleanProperty(data.get(i).isEmployeeOfTheMonth())));
         firstNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         lastNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         jobColumn.setCellFactory(TextFieldTableCell.forTableColumn());
 
         table.setEditable(true);
 
-        table.getColumns().addAll(nameColumn, jobColumn);
+        table.getColumns().addAll(nameColumn, jobColumn, employeeOfTheMonthColumn);
 
         table.setOnMouseEntered((e) -> System.out.println(data));
 
@@ -69,7 +78,7 @@ public class E_8_1_SimpleTableStart extends Application {
 
         primaryStage.setScene(myScene);
         primaryStage.setTitle("App");
-        primaryStage.setWidth(300);
+        primaryStage.setWidth(450);
         primaryStage.setHeight(200);
         primaryStage.show();
     }

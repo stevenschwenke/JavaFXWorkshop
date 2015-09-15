@@ -45,4 +45,8 @@ public class E_8_1_ExtendedPerson {
     public String toString() {
         return firstName.get() + " "  + lastName.get() + ": " + job.get();
     }
+
+    public boolean isEmployeeOfTheMonth() {
+        return employeeOfTheMonth.get();
+    }
 }
