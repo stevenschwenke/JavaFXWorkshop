@@ -24,8 +24,8 @@ import javafx.stage.Stage;
  * Values < 6 -> red.</br>
  * Values > 14 -> green.</br>
  *
- * Before restarting comment line 20 in StyledTableCell and scroll (wild!) in the table.</br>
- * The table reuses the StyledTableCell and therefor gets mixed up with the colors.
+ * Before restarting comment line 20 in E_8_StyledTableCell and scroll (wild!) in the table.</br>
+ * The table reuses the E_8_StyledTableCell and therefor gets mixed up with the colors.
  *
  * @see com.sun.javafx.scene.control.skin.VirtualFlow
  * <p>
@@ -34,9 +34,9 @@ import javafx.stage.Stage;
 public class E_8_Start extends Application implements Initializable {
 
     @FXML
-    private TableView<RowValue> table;
+    private TableView<E_8_RowValue> table;
     @FXML
-    private TableColumn<RowValue, String> colName;
+    private TableColumn<E_8_RowValue, String> colName;
 
     int columnCount = 100;
     int rowCount = 100;
@@ -61,7 +61,7 @@ public class E_8_Start extends Application implements Initializable {
 
         initTable();
 
-        ObservableList<RowValue> data = buildTableData();
+        ObservableList<E_8_RowValue> data = buildTableData();
         table.getItems().addAll(data);
     }
 
@@ -78,23 +78,23 @@ public class E_8_Start extends Application implements Initializable {
         for (int i = 0; i < columnCount; i++) {
             final int colIdx = i;
 
-            TableColumn<RowValue, Integer> col = new TableColumn<>("Col " + i);
+            TableColumn<E_8_RowValue, Integer> col = new TableColumn<>("Col " + i);
             col.setCellValueFactory(p ->
                     new ReadOnlyObjectWrapper<>(p.getValue().getValues().get(colIdx)));
-            col.setCellFactory(p -> new StyledTableCell());
+            col.setCellFactory(p -> new E_8_StyledTableCell());
 
             table.getColumns().add(col);
         }
     }
 
     /**
-     * @return List of {@link RowValue}s that each hold a list of values for one row.
+     * @return List of {@link E_8_RowValue}s that each hold a list of values for one row.
      */
-    private ObservableList<RowValue> buildTableData() {
-        ObservableList<RowValue> retVal = FXCollections.observableArrayList();
+    private ObservableList<E_8_RowValue> buildTableData() {
+        ObservableList<E_8_RowValue> retVal = FXCollections.observableArrayList();
 
         for (int i = 0; i < rowCount; i++) {
-            RowValue value = new RowValue("Row " + i);
+            E_8_RowValue value = new E_8_RowValue("Row " + i);
 
             for (int j = 0; j < columnCount; j++) {
                 value.getValues().add(new Random().nextInt(20));

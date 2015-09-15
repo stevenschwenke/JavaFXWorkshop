@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * RowValue for the demo.
+ * E_8_RowValue for the demo.
  * <p>
  * Created by bezze on 04.09.15.
  */
-public class RowValue {
+public class E_8_RowValue {
     private String name;
     private List<Integer> values = new ArrayList<>();
 
-    public RowValue(String name) {
+    public E_8_RowValue(String name) {
         this.name = name;
     }
 
