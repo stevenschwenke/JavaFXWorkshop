@@ -17,8 +17,10 @@ public class StyledTableCell extends TableCell<RowValue, Integer> {
         super.updateItem(item, empty);
 
         /**
-         * Reset the style!
-         * Try commenting and see what is happening!
+         * Best practice: At the beginning of updateItem, you should reset the used values to avoid
+         * strange behavior that's caused by recycling of cells.
+         *
+         * Comment this line and see what's happening.
          */
         setStyle("-fx-text-fill: black; -fx-font-weight: normal");
 
