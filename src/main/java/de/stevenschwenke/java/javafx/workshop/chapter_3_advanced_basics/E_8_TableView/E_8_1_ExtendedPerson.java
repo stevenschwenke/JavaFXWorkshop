@@ -9,7 +9,6 @@ public class E_8_1_ExtendedPerson {
     private SimpleStringProperty firstName;
     private SimpleStringProperty lastName;
     private SimpleStringProperty job;
-
     private SimpleBooleanProperty employeeOfTheMonth;
 
     public E_8_1_ExtendedPerson(String firstName, String lastName, String job,
@@ -41,12 +40,12 @@ public class E_8_1_ExtendedPerson {
         return employeeOfTheMonth;
     }
 
+    public boolean isEmployeeOfTheMonth() {
+        return employeeOfTheMonth.get();
+    }
+
     @Override
     public String toString() {
         return firstName.get() + " "  + lastName.get() + ": " + job.get();
-    }
-
-    public boolean isEmployeeOfTheMonth() {
-        return employeeOfTheMonth.get();
     }
 }

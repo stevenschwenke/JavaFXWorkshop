@@ -22,6 +22,8 @@ import javafx.stage.Stage;
  *   <li>Editing in the cells</li>
  *   <li>multi columns</li>
  *   <li>on mouse entered log output</li>
+ *   <li>Difference between linking attributes to columns either with strings (bad!) or properties
+ *   (fancy and ultra cool)</li>
  * </ol>
  */
 public class E_8_1_SimpleTableStart extends Application {
@@ -44,7 +46,9 @@ public class E_8_1_SimpleTableStart extends Application {
         TableColumn nameColumn = new TableColumn("Name");
         nameColumn.getColumns().addAll(firstNameColumn, lastNameColumn);
         TableColumn jobColumn = new TableColumn("Job");
-        TableColumn employeeOfTheMonthColumn = new TableColumn<>("Employee of the month");
+
+        // Note: This column is parameterized. We'll see why later in this example.
+        TableColumn<E_8_1_ExtendedPerson, Boolean> employeeOfTheMonthColumn = new TableColumn<>("Employee of the month");
 
         firstNameColumn.setCellValueFactory(
                 new PropertyValueFactory<E_8_1_ExtendedPerson,String>("firstName")
@@ -55,16 +59,23 @@ public class E_8_1_SimpleTableStart extends Application {
         jobColumn.setCellValueFactory(
                 new PropertyValueFactory<E_8_1_ExtendedPerson,String>("job")
         );
-
+        // The above way of creating cell value factories are fast to write. However, they use
+        // reflection and are also not refactor-proof. Imagine you rename the variable this column
+        // displays. The string-typed link above won't change in the refactoring and therefore
+        // break the table. Here's a better way to write cell value factories:
         employeeOfTheMonthColumn.setCellValueFactory(
-            new PropertyValueFactory<E_8_1_ExtendedPerson, Boolean>("employeeOfTheMonth")
+            (e) -> e.getValue().employeeOfTheMonthProperty()
+            // Note: This only works if your data model object uses properties!
+            // Our data model uses properties for every attribute. However, the text attributes
+            // are not used as properties to demonstrate the difference.
         );
 
-        employeeOfTheMonthColumn.setCellFactory(CheckBoxTableCell.forTableColumn(
-            (i) -> new SimpleBooleanProperty(data.get(i).isEmployeeOfTheMonth())));
         firstNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         lastNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         jobColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        employeeOfTheMonthColumn.setCellFactory(CheckBoxTableCell.forTableColumn(
+            (i) -> new SimpleBooleanProperty(data.get(i).isEmployeeOfTheMonth())));
 
         table.setEditable(true);
 
