@@ -10,7 +10,7 @@ import javafx.scene.control.TableCell;
  * <p>
  * Created by bezze on 04.09.15.
  */
-public class E_8_StyledTableCell extends TableCell<E_8_RowValue, Integer> {
+public class E_8_2_StyledTableCell extends TableCell<E_8_2_RowValue, Integer> {
 
     @Override
     public void updateItem(Integer item, boolean empty) {
