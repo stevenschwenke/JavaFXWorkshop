@@ -20,12 +20,14 @@ import javafx.stage.Stage;
 public class E_5_ControlsWithADataModel extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
+        // This list is the shared data model for both the ComboBox and the ListView.
         ObservableList<String> data = FXCollections.observableArrayList();
+
         ComboBox<String> comboBox = new ComboBox<>();
         comboBox.itemsProperty().setValue(data);
-
         ListView<String> listView = new ListView<>();
         listView.itemsProperty().setValue(data);
+
         TextField inputField = new TextField();
         inputField.setPromptText("insert new data type");
         inputField.setOnAction(e -> data.add(inputField.getText()));
