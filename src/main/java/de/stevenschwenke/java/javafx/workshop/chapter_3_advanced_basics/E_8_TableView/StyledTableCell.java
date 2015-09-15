@@ -18,7 +18,9 @@ public class StyledTableCell extends TableCell<RowValue, Integer> {
 
         /**
          * Best practice: At the beginning of updateItem, you should reset the used values to avoid
-         * strange behavior that's caused by recycling of cells.
+         * strange behavior that's caused by recycling of cells. In this example, we set some color,
+         * so we should reset it at the beginning of updateItem(). This way, newly appearing
+         * cells at the beginning or end of the table (while scrolling) can be recycled.
          *
          * Comment this line and see what's happening.
          */
