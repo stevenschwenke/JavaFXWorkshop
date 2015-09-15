@@ -17,10 +17,14 @@ public class StyledTableCell extends TableCell<RowValue, Integer> {
         super.updateItem(item, empty);
 
         /**
+         * In JavaFX, only visible cells are part of the Scene Graph. Once a cell is scrolled out
+         * of the visible area, it gets recycled and used for new cells, for example the ones that
+         * gets visible while scrolling. Because of this recycling, the new cells can hold
+         * properties of the recycled cells.
+         *
          * Best practice: At the beginning of updateItem, you should reset the used values to avoid
          * strange behavior that's caused by recycling of cells. In this example, we set some color,
-         * so we should reset it at the beginning of updateItem(). This way, newly appearing
-         * cells at the beginning or end of the table (while scrolling) can be recycled.
+         * so we should reset it at the beginning of updateItem().
          *
          * Comment this line and see what's happening.
          */
