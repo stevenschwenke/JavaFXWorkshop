@@ -6,6 +6,7 @@ import javafx.beans.property.StringProperty;
 
 public class E_8_1_ExtendedPerson {
 
+    // Every attribute of this bean is modelled as a property. That's "the new way of doing things".
     private SimpleStringProperty firstName;
     private SimpleStringProperty lastName;
     private SimpleStringProperty job;
@@ -18,6 +19,8 @@ public class E_8_1_ExtendedPerson {
         this.job = new SimpleStringProperty(job);
         this.employeeOfTheMonth = new SimpleBooleanProperty(employeeOfTheMonth);
 
+        // Through these listeners we can observe that changes in the table are really forwarded to
+        // this bean.
         this.firstName.addListener((e) -> System.out.println("First Name changed to " + this.firstName.get()));
         this.lastName.addListener((e) -> System.out.println("Last Name changed to " + this.lastName.get()));
         this.job.addListener((e) -> System.out.println("Job changed to " + this.job.get()));
@@ -38,10 +41,6 @@ public class E_8_1_ExtendedPerson {
 
     public SimpleBooleanProperty employeeOfTheMonthProperty() {
         return employeeOfTheMonth;
-    }
-
-    public boolean isEmployeeOfTheMonth() {
-        return employeeOfTheMonth.get();
     }
 
     @Override
