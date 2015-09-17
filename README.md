@@ -10,55 +10,34 @@ Travis status:
 
 Meta: About the workshop
 --------------------------
-The workshop is an internal event for my coworkers. Target audience are developers who haven't heard much about JavaFX unit now but want to know what the hype is all about. I hope to get through with the content below in 4 hours. However, it's an open end workshop and we will discuss any special topic that comes up.
+The workshop is an internal event for my coworkers. Target audience are developers who haven't heard much about JavaFX and want to know basic concepts and be able to build modern user interfaces.
 
 The code works with Java 7 and Java 8.
 
 Part of this workshop is inspired by Hendrik Ebbers book "Mastering JavaFX Controls" and from his
 repository at https://github.com/guigarage/mastering-javafx-controls.  
 
-**Update June 2015:** This workshop is being extended by the following topics:
-
-chapter 1: building your first FX application
+Content
 --------------------------
-
-chapter 2: compiling SceneBuilder
---------------------------
-Since JDK 8u40, Oracle doesn't provide a binary for the SceneBuilder. This chapter shows you how to compile your own SceneBuilder.
-
-chapter 3: advanced basics
---------------------------
-A collection of sample applications that show different aspects of JavaFX.
-TODO Screenshots
-
-chapter 4: JavaFX 3D
---------------------------
-This chapter contains a sample application that uses the 3D API. Because JavaFX 3D is not a topic of this workshop, this app is only intended to get you started.
- 
-chapter 5: custom controls
---------------------------
-Writing very own controls from scratch.
-
-chapter 6: testing FX application
---------------------------
-Automatic testing with TestFX.
+- Building your first FX application: How does JavaFX generally work? What is an fxml-file? What is property binding?
+- Compiling SceneBuilder: Since JDK 8u40, Oracle doesn't provide a binary for the SceneBuilder. This chapter shows you how to compile your own SceneBuilder.
+- Advanced basics: What are tranisitions and timelines? How can I style my application window? What are the pitfalls when using the TableView? ... And a lot of other stuff. 
+- JavaFX 3D: What does a 3D application look like?
+- Custom controls: How can I write completely customized components?
+- Testing FX applications
+- SwingInterop: How can FX code be used in Swing applications?
 
 
-**Because of updates, this readme has to be updated, too. The following text refers to the first chapter, "your first FX application".**
-
-1. What is JavaFX and why should you care?
+Meta: About JavaFX
 ---------------
 - successor of Swing
 - Swing is dead! (Zombie-mode because for the time being it will be in the SDK)
 - much more features like CSS-styling, rendering using graphic chip, binding, ...
 
-2. Let's code!
+Quick Start: The first chapter in detail
 --------------
 
-Setup your tools:
-- Eclipse IDE
-- JDK >1.7u6 (with jfxrt.jar)
-- SceneBuilder 1.1 (2.0 is still buggy) (http://www.oracle.com/technetwork/java/javafx/downloads/index.html)
+To get a good start in the workshop, I line out the first chapter ("Building your first FX application") in more detail. Read the following and have a look at the code. Then you are ready to go for the more advanced topics.
 
 **Part 1: SceneBuilder and .fxml-files**
 - .fxml-file = user interface declaration
@@ -129,31 +108,16 @@ With styling, we now have a realy nice looking shopping list:
 
 ![alt tag](4.png)
 
-3. Swing Interop
+More resources
 ----------------
-- JavaFX in Swing easy. Swing in JavaFX not before JDK 8 (however possible)
-- replace Swing components with FX components step by step
-- maybe invert life cycle by setting a controller factory in FXML loader
-- because of time constraints and focus of this workshop: Let's talk about that later and specific for your project. Also, there will be an article about that.
-
-4. current state of JavaFX (Java 1.7 and Java 1.8)
--------------------------------------
-- some basic components missing like date chooser
-- some rough edges in the API
-- huge hype with a lot of potential
-
 - Ensemble (http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)
 - controlsFX (http://fxexperience.com/controlsfx/)
 - watch the first two minutes of http://www.youtube.com/watch?v=a3dAteWr40k&feature=youtu.be
 - jfxtras (http://jfxtras.org/)
-
-5. some more stuff to have a look at
--------------------------------------
 - Oracle http://docs.oracle.com/javafx/
 - More tools: Scenic View  (http://fxexperience.com/scenic-view/)
 - More tools: e(fx)clipse (http://www.eclipse.org/efxclipse/index.html)
 - 3D container terminal monitor (http://www.youtube.com/watch?v=AS26gZrYNy8)
-
 
 Meta: Copyright
 ----------------
