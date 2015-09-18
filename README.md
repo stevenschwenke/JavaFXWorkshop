@@ -118,6 +118,7 @@ More resources
 - More tools: Scenic View  (http://fxexperience.com/scenic-view/)
 - More tools: e(fx)clipse (http://www.eclipse.org/efxclipse/index.html)
 - 3D container terminal monitor (http://www.youtube.com/watch?v=AS26gZrYNy8)
+- Nice controls by Gerrit Grunwald: https://www.youtube.com/watch?v=sgZXIMxNsw4 and https://www.youtube.com/watch?v=1K-8eM5qblA
 
 Meta: Copyright
 ----------------
