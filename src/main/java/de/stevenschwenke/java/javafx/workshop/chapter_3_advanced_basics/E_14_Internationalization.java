@@ -23,7 +23,7 @@ import javafx.util.StringConverter;
  * "%label" which means that the text is going to be translated to whatever the set resource
  * bundle provides.
  */
-public class E_13_Internationalization extends Application {
+public class E_14_Internationalization extends Application {
 
   BorderPane borderPane = new BorderPane();
 
@@ -68,10 +68,11 @@ public class E_13_Internationalization extends Application {
 
       // Here, just the resource bundles name is mentioned. You can add support for more languages
       // by adding more properties-files with language-specific endings like
-      // "E_13_Internationalization_fr.properties".
-      fxmlLoader.setResources(ResourceBundle.getBundle("E_13_Internationalization", locale));
+      // "E_14_Internationalization_fr.properties".
+      fxmlLoader.setResources(ResourceBundle.getBundle("E_14_Internationalization", locale));
 
-      Pane pane = (BorderPane) fxmlLoader.load(this.getClass().getResource("/E_13_Internationalization.fxml").openStream());
+      Pane pane = (BorderPane) fxmlLoader.load(this.getClass().getResource(
+          "/E_14_Internationalization.fxml").openStream());
       borderPane.setCenter(pane);
     } catch (IOException ex) {
       ex.printStackTrace();

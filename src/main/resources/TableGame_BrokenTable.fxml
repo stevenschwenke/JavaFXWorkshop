@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
 <BorderPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
-            fx:controller="de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_8_TableView.TableGame_BrokenTable">
+            fx:controller="de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_9_TableView.TableGame_BrokenTable">
     <center>
         <TableView fx:id="table" BorderPane.alignment="TOP_LEFT">
             <columns>

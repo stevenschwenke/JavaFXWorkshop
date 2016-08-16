@@ -1,4 +1,4 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_10_Snapshot;
+package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_11_Snapshot;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
@@ -8,21 +8,21 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.util.Callback;
 
-public class E_9_ColumnFactory implements Callback<TableColumn<E_9_UserFX, String>, TableCell<E_9_UserFX, String>> {
+public class E_11_ColumnFactory implements Callback<TableColumn<E_11_UserFX, String>, TableCell<E_11_UserFX, String>> {
 
-    private E_9_Start controller;
+    private E_11_Start controller;
 
     private String upOrDown;
 
-    public E_9_ColumnFactory(E_9_Start controller, String upOrDown) {
+    public E_11_ColumnFactory(E_11_Start controller, String upOrDown) {
         super();
         this.controller = controller;
         this.upOrDown = upOrDown;
     }
 
     @Override
-    public TableCell<E_9_UserFX, String> call(TableColumn<E_9_UserFX, String> arg0) {
-        TableCell<E_9_UserFX, String> myTableCell = new TableCell<E_9_UserFX, String>(
+    public TableCell<E_11_UserFX, String> call(TableColumn<E_11_UserFX, String> arg0) {
+        TableCell<E_11_UserFX, String> myTableCell = new TableCell<E_11_UserFX, String>(
         ) {
 
             @Override
@@ -47,7 +47,7 @@ public class E_9_ColumnFactory implements Callback<TableColumn<E_9_UserFX, Strin
 
                     // Action
                     actionButton.setOnAction(e -> {
-                        E_9_UserFX vo = getRowItem();
+                        E_11_UserFX vo = getRowItem();
                         if (upOrDown.equals("up"))
                             controller.moveUp(vo);
                         else
@@ -65,8 +65,8 @@ public class E_9_ColumnFactory implements Callback<TableColumn<E_9_UserFX, Strin
                 return getIndex() == -1 || getIndex() >= getTableView().getItems().size();
             }
 
-            protected E_9_UserFX getRowItem() {
-                E_9_UserFX item = (E_9_UserFX) getTableRow().getItem();
+            protected E_11_UserFX getRowItem() {
+                E_11_UserFX item = (E_11_UserFX) getTableRow().getItem();
 
                 if(isNoDataTableRow())
                     return null;

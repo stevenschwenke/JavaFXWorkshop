@@ -17,7 +17,7 @@ import javafx.stage.Stage;
  * Some controls have own data models, like the ComboBox and ListView. Changing the underlying data
  * model immediately changes the contents in the box and list.
  */
-public class E_5_ControlsWithADataModel extends Application {
+public class E_6_ControlsWithADataModel extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         // This list is the shared data model for both the ComboBox and the ListView.

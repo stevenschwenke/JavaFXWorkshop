@@ -1,4 +1,4 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_8_TableView;
+package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_9_TableView;
 
 import java.net.URL;
 import java.util.ResourceBundle;

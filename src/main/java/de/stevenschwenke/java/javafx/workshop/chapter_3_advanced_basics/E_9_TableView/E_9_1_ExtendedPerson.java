@@ -1,10 +1,10 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_8_TableView;
+package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_9_TableView;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class E_8_1_ExtendedPerson {
+public class E_9_1_ExtendedPerson {
 
     // Every attribute of this bean is modelled as a property. That's "the new way of doing things".
     private SimpleStringProperty firstName;
@@ -12,7 +12,7 @@ public class E_8_1_ExtendedPerson {
     private SimpleStringProperty job;
     private SimpleBooleanProperty employeeOfTheMonth;
 
-    public E_8_1_ExtendedPerson(String firstName, String lastName, String job,
+    public E_9_1_ExtendedPerson(String firstName, String lastName, String job,
                                 boolean employeeOfTheMonth) {
         this.firstName = new SimpleStringProperty(firstName);
         this.lastName = new SimpleStringProperty(lastName);

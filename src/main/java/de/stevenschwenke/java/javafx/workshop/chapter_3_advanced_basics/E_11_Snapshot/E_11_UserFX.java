@@ -1,14 +1,14 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_10_Snapshot;
+package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_11_Snapshot;
 
 import javafx.beans.property.SimpleStringProperty;
 
-public class E_9_UserFX {
+public class E_11_UserFX {
 
     private SimpleStringProperty name = new SimpleStringProperty();
     private SimpleStringProperty userId = new SimpleStringProperty();
 
 
-    public E_9_UserFX(String nameUndAbteilungFormatiert, String userId) {
+    public E_11_UserFX(String nameUndAbteilungFormatiert, String userId) {
         super();
         this.name.set(nameUndAbteilungFormatiert);
         this.userId.set(userId);
@@ -34,7 +34,7 @@ public class E_9_UserFX {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        E_9_UserFX other = (E_9_UserFX) obj;
+        E_11_UserFX other = (E_11_UserFX) obj;
         if (name == null) {
             if (other.name != null) {
                 return false;

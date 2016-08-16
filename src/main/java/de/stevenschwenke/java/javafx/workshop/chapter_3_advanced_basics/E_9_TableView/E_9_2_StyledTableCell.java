@@ -1,4 +1,4 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_8_TableView;
+package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_9_TableView;
 
 import javafx.scene.control.TableCell;
 
@@ -10,7 +10,7 @@ import javafx.scene.control.TableCell;
  * <p>
  * Created by bezze on 04.09.15.
  */
-public class E_8_2_StyledTableCell extends TableCell<E_8_2_RowValue, Integer> {
+public class E_9_2_StyledTableCell extends TableCell<E_9_2_RowValue, Integer> {
 
     @Override
     public void updateItem(Integer item, boolean empty) {

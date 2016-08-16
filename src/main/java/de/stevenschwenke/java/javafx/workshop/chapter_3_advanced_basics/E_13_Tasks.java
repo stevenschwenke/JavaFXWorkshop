@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 /**
  * This example is an enhanced copy from an example of Hendrik Ebbers. See https://github.com/guigarage/mastering-javafx-controls.
  */
-public class E_12_Tasks extends Application {
+public class E_13_Tasks extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {

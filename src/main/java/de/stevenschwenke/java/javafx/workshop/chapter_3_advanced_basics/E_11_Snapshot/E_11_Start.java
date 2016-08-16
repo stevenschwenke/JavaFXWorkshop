@@ -1,4 +1,4 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_10_Snapshot;
+package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_11_Snapshot;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -27,32 +27,32 @@ import javafx.util.Duration;
 /**
  * Demonstrates the snapshot function that allows to create an image from every node.
  */
-public class E_9_Start extends Application {
+public class E_11_Start extends Application {
 
     @FXML
     private AnchorPane rootAnchorPane;
 
     @FXML
-    private TableView<E_9_UserFX> tableView1;
+    private TableView<E_11_UserFX> tableView1;
     @FXML
-    private TableColumn<E_9_UserFX, String> nameCol1;
+    private TableColumn<E_11_UserFX, String> nameCol1;
     @FXML
-    private TableColumn<E_9_UserFX, String> userIdCol1;
+    private TableColumn<E_11_UserFX, String> userIdCol1;
     @FXML
-    private TableColumn<E_9_UserFX, String> actionsCol1;
+    private TableColumn<E_11_UserFX, String> actionsCol1;
 
-    ObservableList<E_9_UserFX> observableList1;
+    ObservableList<E_11_UserFX> observableList1;
 
     @FXML
-    private TableView<E_9_UserFX> tableView2;
+    private TableView<E_11_UserFX> tableView2;
     @FXML
-    private TableColumn<E_9_UserFX, String> nameCol2;
+    private TableColumn<E_11_UserFX, String> nameCol2;
     @FXML
-    private TableColumn<E_9_UserFX, String> userIdCol2;
+    private TableColumn<E_11_UserFX, String> userIdCol2;
     @FXML
-    private TableColumn<E_9_UserFX, String> actionsCol2;
+    private TableColumn<E_11_UserFX, String> actionsCol2;
 
-    private ObservableList<E_9_UserFX> observableList2;
+    private ObservableList<E_11_UserFX> observableList2;
 
     public static void main(String[] args) {
         launch(args);
@@ -74,7 +74,7 @@ public class E_9_Start extends Application {
 
         nameCol1.setCellValueFactory(new PropertyValueFactory<>("name"));
         userIdCol1.setCellValueFactory(new PropertyValueFactory<>("userId"));
-        actionsCol1.setCellFactory(new E_9_ColumnFactory(this, "down"));
+        actionsCol1.setCellFactory(new E_11_ColumnFactory(this, "down"));
 
 
         nameCol1.prefWidthProperty().bind(tableView1.widthProperty().divide(3).subtract(2));
@@ -83,35 +83,35 @@ public class E_9_Start extends Application {
 
         nameCol2.setCellValueFactory(new PropertyValueFactory<>("name"));
         userIdCol2.setCellValueFactory(new PropertyValueFactory<>("userId"));
-        actionsCol2.setCellFactory(new E_9_ColumnFactory(this, "up"));
+        actionsCol2.setCellFactory(new E_11_ColumnFactory(this, "up"));
 
         nameCol2.prefWidthProperty().bind(tableView2.widthProperty().divide(3).subtract(2));
         userIdCol2.prefWidthProperty().bind(tableView2.widthProperty().divide(3).subtract(2));
         actionsCol2.prefWidthProperty().bind(tableView2.widthProperty().divide(3).subtract(2));
 
         observableList1 = FXCollections.observableArrayList(
-                new E_9_UserFX("Max Meyer", "u01"),
-                new E_9_UserFX("Gordon Freeman", "u02")
+                new E_11_UserFX("Max Meyer", "u01"),
+                new E_11_UserFX("Gordon Freeman", "u02")
         );
         tableView1.setItems(observableList1);
 
         observableList2 = FXCollections.observableArrayList(
-                new E_9_UserFX("Jack the Hack", "u03"),
-                new E_9_UserFX("Mister Minister", "u04")
+                new E_11_UserFX("Jack the Hack", "u03"),
+                new E_11_UserFX("Mister Minister", "u04")
         );
         tableView2.setItems(observableList2);
     }
 
 
-    void moveUp(final E_9_UserFX vo) {
+    void moveUp(final E_11_UserFX vo) {
 
         // Position and Snapshot of the row in table 2
-        TableRow<E_9_UserFX> rowTable2 = findRow(tableView2, vo);
+        TableRow<E_11_UserFX> rowTable2 = findRow(tableView2, vo);
         double yTable2 = rowTable2.localToScene(0, 0).getY();
         WritableImage snapshot = rowTable2.snapshot(new SnapshotParameters(), null);
 
         // add new object to table 1 (now this entry is in both tables!)
-        final E_9_UserFX newUser = new E_9_UserFX(vo.getName(), vo.getUserId());
+        final E_11_UserFX newUser = new E_11_UserFX(vo.getName(), vo.getUserId());
         observableList1.add(newUser);
 
         // select new entry in table 1 and scroll to it
@@ -125,15 +125,15 @@ public class E_9_Start extends Application {
         });
 
         // Animation
-        TableRow<E_9_UserFX> rowTable1 = findRow(tableView1, newUser);
+        TableRow<E_11_UserFX> rowTable1 = findRow(tableView1, newUser);
         double yTable1 = rowTable1.localToScene(0, 0).getY();
         doTheFancyAnimation(yTable1, yTable2, snapshot, observableList2, vo);
     }
 
-    void moveDown(final E_9_UserFX vo) {
+    void moveDown(final E_11_UserFX vo) {
 
         // Position and Snapshot of the row in table 1
-        TableRow<E_9_UserFX> rowTable1 = findRow(tableView1, vo);
+        TableRow<E_11_UserFX> rowTable1 = findRow(tableView1, vo);
         double yTable1 = rowTable1.localToScene(0, 0).getY();
         WritableImage snapshot = rowTable1.snapshot(new SnapshotParameters(), null);
 
@@ -141,7 +141,7 @@ public class E_9_Start extends Application {
         //observableList1.remove(vo);
 
         // add new object to table 2 (now this entry is in both tables!)
-        final E_9_UserFX newUser = new E_9_UserFX(vo.getName(), vo.getUserId());
+        final E_11_UserFX newUser = new E_11_UserFX(vo.getName(), vo.getUserId());
         observableList2.add(newUser);
 
         // select new entry in table 2 and scroll to it
@@ -152,7 +152,7 @@ public class E_9_Start extends Application {
         });
 
         // Animation
-        TableRow<E_9_UserFX> rowTable2 = findRow(tableView2, newUser);
+        TableRow<E_11_UserFX> rowTable2 = findRow(tableView2, newUser);
         double yTable2 = rowTable2.localToScene(0, 0).getY();
         doTheFancyAnimation(yTable2, yTable1, snapshot, observableList1, vo);
     }
@@ -163,7 +163,7 @@ public class E_9_Start extends Application {
      * @param snapshot that gets translated
      */
     private void doTheFancyAnimation(final double y1, final double y2, final WritableImage snapshot,
-                                     ObservableList<E_9_UserFX> listToRemoveFrom, E_9_UserFX userToRemove) {
+                                     ObservableList<E_11_UserFX> listToRemoveFrom, E_11_UserFX userToRemove) {
 
         Platform.runLater(() -> {
 

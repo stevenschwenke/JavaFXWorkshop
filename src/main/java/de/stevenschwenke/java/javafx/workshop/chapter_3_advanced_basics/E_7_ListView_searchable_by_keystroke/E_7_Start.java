@@ -1,4 +1,4 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_6_ListView_searchable_by_keystroke;
+package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_7_ListView_searchable_by_keystroke;
 
 import java.util.Collections;
 
@@ -18,7 +18,7 @@ import javafx.stage.Stage;
  * @author scavenger156 (https://github.com/Scavenger156)
  *
  */
-public class E_6_Start extends Application {
+public class E_7_Start extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}

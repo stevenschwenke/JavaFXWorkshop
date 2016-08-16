@@ -3,7 +3,7 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
-<AnchorPane minHeight="200.0" prefHeight="200.0" prefWidth="600.0" styleClass="pane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_9_Transitions_and_Timelines">
+<AnchorPane minHeight="200.0" prefHeight="200.0" prefWidth="600.0" styleClass="pane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_10_Transitions_and_Timelines">
   <children>
     <AnchorPane fx:id="extendableNavigationPane" layoutX="129.0" layoutY="136.0" minHeight="64.0" onMouseEntered="#showPane" onMouseExited="#hidePane" prefHeight="64.0" prefWidth="371.0">
       <children>

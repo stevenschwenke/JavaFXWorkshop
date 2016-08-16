@@ -1,4 +1,4 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_8_TableView;
+package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_9_TableView;
 
 import java.net.URL;
 import java.util.Random;
@@ -24,19 +24,19 @@ import javafx.stage.Stage;
  * Values < 6 -> red.</br>
  * Values > 14 -> green.</br>
  *
- * Before restarting comment line 20 in E_8_2_StyledTableCell and scroll (wild!) in the table.</br>
- * The table reuses the E_8_2_StyledTableCell and therefor gets mixed up with the colors.
+ * Before restarting comment line 20 in E_9_2_StyledTableCell and scroll (wild!) in the table.</br>
+ * The table reuses the E_9_2_StyledTableCell and therefor gets mixed up with the colors.
  *
  * @see com.sun.javafx.scene.control.skin.VirtualFlow
  * <p>
  * Created by bezze on 04.09.15.
  */
-public class E_8_2_RecyclingStart extends Application implements Initializable {
+public class E_9_2_RecyclingStart extends Application implements Initializable {
 
     @FXML
-    private TableView<E_8_2_RowValue> table;
+    private TableView<E_9_2_RowValue> table;
     @FXML
-    private TableColumn<E_8_2_RowValue, String> colName;
+    private TableColumn<E_9_2_RowValue, String> colName;
 
     int columnCount = 100;
     int rowCount = 100;
@@ -61,7 +61,7 @@ public class E_8_2_RecyclingStart extends Application implements Initializable {
 
         initTable();
 
-        ObservableList<E_8_2_RowValue> data = buildTableData();
+        ObservableList<E_9_2_RowValue> data = buildTableData();
         table.getItems().addAll(data);
     }
 
@@ -78,23 +78,23 @@ public class E_8_2_RecyclingStart extends Application implements Initializable {
         for (int i = 0; i < columnCount; i++) {
             final int colIdx = i;
 
-            TableColumn<E_8_2_RowValue, Integer> col = new TableColumn<>("Col " + i);
+            TableColumn<E_9_2_RowValue, Integer> col = new TableColumn<>("Col " + i);
             col.setCellValueFactory(p ->
                     new ReadOnlyObjectWrapper<>(p.getValue().getValues().get(colIdx)));
-            col.setCellFactory(p -> new E_8_2_StyledTableCell());
+            col.setCellFactory(p -> new E_9_2_StyledTableCell());
 
             table.getColumns().add(col);
         }
     }
 
     /**
-     * @return List of {@link E_8_2_RowValue}s that each hold a list of values for one row.
+     * @return List of {@link E_9_2_RowValue}s that each hold a list of values for one row.
      */
-    private ObservableList<E_8_2_RowValue> buildTableData() {
-        ObservableList<E_8_2_RowValue> retVal = FXCollections.observableArrayList();
+    private ObservableList<E_9_2_RowValue> buildTableData() {
+        ObservableList<E_9_2_RowValue> retVal = FXCollections.observableArrayList();
 
         for (int i = 0; i < rowCount; i++) {
-            E_8_2_RowValue value = new E_8_2_RowValue("Row " + i);
+            E_9_2_RowValue value = new E_9_2_RowValue("Row " + i);
 
             for (int j = 0; j < columnCount; j++) {
                 value.getValues().add(new Random().nextInt(20));

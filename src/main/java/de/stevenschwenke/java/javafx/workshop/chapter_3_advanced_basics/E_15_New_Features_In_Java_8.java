@@ -44,7 +44,7 @@ import static javafx.beans.binding.Bindings.when;
 /**
  * These changes have been introduced with JDK 8u40.
  */
-public class E_14_New_Features_In_Java_8 extends Application {
+public class E_15_New_Features_In_Java_8 extends Application {
 
     /*
         Naming:

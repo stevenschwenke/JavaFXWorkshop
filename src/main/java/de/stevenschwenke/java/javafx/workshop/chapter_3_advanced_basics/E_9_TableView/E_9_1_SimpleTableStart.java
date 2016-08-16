@@ -1,4 +1,4 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_8_TableView;
+package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_9_TableView;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -26,19 +26,19 @@ import javafx.stage.Stage;
  *   (fancy and ultra cool)</li>
  * </ol>
  */
-public class E_8_1_SimpleTableStart extends Application {
+public class E_9_1_SimpleTableStart extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        ObservableList<E_8_1_ExtendedPerson> data = FXCollections.observableArrayList(
-                new E_8_1_ExtendedPerson("Claudine", "Zillmann", "Design", true),
-                new E_8_1_ExtendedPerson("Joel", "Ferreira", "Pro Gamer", false),
-                new E_8_1_ExtendedPerson("Alexander", "Jorde", "Junior Developer", false),
-                new E_8_1_ExtendedPerson("Holger", "Merk", "Senior Architect", false)
+        ObservableList<E_9_1_ExtendedPerson> data = FXCollections.observableArrayList(
+                new E_9_1_ExtendedPerson("Claudine", "Zillmann", "Design", true),
+                new E_9_1_ExtendedPerson("Joel", "Ferreira", "Pro Gamer", false),
+                new E_9_1_ExtendedPerson("Alexander", "Jorde", "Junior Developer", false),
+                new E_9_1_ExtendedPerson("Holger", "Merk", "Senior Architect", false)
         );
 
-        TableView<E_8_1_ExtendedPerson> table = new TableView();
+        TableView<E_9_1_ExtendedPerson> table = new TableView();
         table.itemsProperty().setValue(data);
 
         TableColumn firstNameColumn = new TableColumn("First Name");
@@ -51,17 +51,17 @@ public class E_8_1_SimpleTableStart extends Application {
         // show that Java tolerates unparameterized values.
         // However, sometimes it is necessary to provide a type, for example when writing an owm
         // cell factory instead of using standard ones. Like here:
-        TableColumn<E_8_1_ExtendedPerson, Boolean> employeeOfTheMonthColumn = new TableColumn<>("Employee of the month");
+        TableColumn<E_9_1_ExtendedPerson, Boolean> employeeOfTheMonthColumn = new TableColumn<>("Employee of the month");
 
         // Standard CellValueFactories:
         firstNameColumn.setCellValueFactory(
-                new PropertyValueFactory<E_8_1_ExtendedPerson,String>("firstName")
+                new PropertyValueFactory<E_9_1_ExtendedPerson,String>("firstName")
         );
         lastNameColumn.setCellValueFactory(
-                new PropertyValueFactory<E_8_1_ExtendedPerson,String>("lastName")
+                new PropertyValueFactory<E_9_1_ExtendedPerson,String>("lastName")
         );
         jobColumn.setCellValueFactory(
-                new PropertyValueFactory<E_8_1_ExtendedPerson,String>("job")
+                new PropertyValueFactory<E_9_1_ExtendedPerson,String>("job")
         );
         // The above way of creating cell value factories are fast to write. However, they use
         // reflection and are also not refactor-proof. Imagine you rename the variable this column

@@ -1,4 +1,4 @@
-package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_7_Assign_List_Dialog;
+package de.stevenschwenke.java.javafx.workshop.chapter_3_advanced_basics.E_8_Assign_List_Dialog;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,7 +21,7 @@ import javafx.util.StringConverter;
  * @author scavenger156 (https://github.com/Scavenger156)
  *
  */
-public class E_7_Start extends Application {
+public class E_8_Start extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
