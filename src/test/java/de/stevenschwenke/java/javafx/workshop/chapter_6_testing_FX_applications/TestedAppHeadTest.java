@@ -1,15 +1,18 @@
 package de.stevenschwenke.java.javafx.workshop.chapter_6_testing_FX_applications;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
-import org.junit.Test;
-import org.loadui.testfx.GuiTest;
+import javafx.stage.Stage;
+import org.junit.jupiter.api.Test;
+import org.testfx.framework.junit5.ApplicationTest;
 
-import java.io.IOException;
-
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 //Extend the Test-Class with GuiTest
 
@@ -17,59 +20,51 @@ import static org.junit.Assert.*;
  * Test with Head.
  * Created by drandard on 21.07.2015.
  */
-public class TestedAppHeadTest extends GuiTest {
+public class TestedAppHeadTest extends ApplicationTest {
 
-    /**
-     * Needs to be overwritten to obtain a Parent-/Root-Node.
-     *
-     * @return Root-/Parent-Node
-     */
+
     @Override
-    protected Parent getRootNode() {
-        try {
-            //Pick the FXML-File of your Application.
-            return FXMLLoader.load(getClass().getResource("/testedApp.fxml"));
-        } catch (IOException ex) {
-            return null;
-        }
+    public void start(Stage stage) throws Exception {
+        Parent parent = FXMLLoader.load(getClass().getResource("/testedApp.fxml"));
+        Scene scene = new Scene(parent, 800, 600);
+        stage.setScene(scene);
+        stage.show();
     }
 
     /**
      * Tests some of the features of the framework.
      */
-    @Test
-    public void testFXTest() {
+    @Test void testFXTest() {
         //You can click directly with ID or Caption and you can chain these methods
-        clickOn("#minus").clickOn("-");
+        clickOn((Node)lookup("#minus").query()).clickOn("-");
 
         //It's also possible to save to Nodes to variables
-        Button minusID = find("#minus");
-        Button minusCap = find("-");
+        Button minusID = lookup("#minus").query();
+        Button minusCap = lookup("-").query();
         //Tests whether Nodes found by ID and Caption are equal
         assertEquals(minusID, minusCap);
 
         //Tests whether loops are handled properly (Delay w/ Click, No Delay w/ Drag)
         for (int i = 0; i < 4; i++) {
-            clickOn((Button) find("#plus"));
+            clickOn((Node) lookup("#plus").query());
         }
 
-        //Tests whether casting find()-Results directly is possible
-        assertEquals("4", ((TextField) find("#count")).getText());
+        //Tests whether casting lookup()-Results directly is possible
+        assertEquals("4", ((TextField) lookup("#count").query()).getText());
     }
 
     /**
      * Tests the interaction between the plus/minus-Buttons and the Textfield.
      */
-    @Test
-    public void counterTest() {
+    @Test void counterTest() {
         //Tests finding the Nodes with their Caption and ID's
         clickOn("+").clickOn("+").clickOn("#plus");
-        assertEquals(((TextField) find("#count")).getText(), "3");
+        assertEquals(((TextField) lookup("#count").query()).getText(), "3");
         clickOn("-").clickOn("#minus");
-        assertEquals(((TextField) find("#count")).getText(), "1");
+        assertEquals(((TextField) lookup("#count").query()).getText(), "1");
 
-        Button minus = find("#minus");
-        TextField count = find("#count");
+        Button minus = lookup("#minus").query();
+        TextField count = lookup("#count").query();
         //Loops are possible as well
         for (int i = 0; i < 4; i++) {
             clickOn(minus);
@@ -81,11 +76,10 @@ public class TestedAppHeadTest extends GuiTest {
     /**
      * Tests the selection of CheckBoxes, RadioButtons(w/ Groups) and a ChoiceBox.
      */
-    @Test
-    public void selectionTest() {
+    @Test void selectionTest() {
         //Should be empty when nothing is selected
         clickOn("#refresh");
-        Label selection = find("#selection");
+        Label selection = lookup("#selection").query();
         assertFalse(selection.getText().contains("Opt"));
 
         //Lets select some CheckBoxes
@@ -103,7 +97,7 @@ public class TestedAppHeadTest extends GuiTest {
         assertTrue(selection.getText().contains("OptB") && !selection.getText().contains("OptA"));
 
         //Then some ChoiceBox Testing
-        ChoiceBox<String> choice = find("#choice");
+        ChoiceBox<String> choice = lookup("#choice").query();
         choice.getItems().forEach((item) -> {
             clickOn(choice);
             clickOn(item).clickOn("#refresh");
@@ -117,13 +111,12 @@ public class TestedAppHeadTest extends GuiTest {
     /**
      * Tests dragging around the slider-point.
      */
-    @Test
-    public void sliderTest() {
+    @Test void sliderTest() {
         //If you want to work with nodes in other ways than clicking etc., you should save the to a variable
-        Slider sliderX = find("#sliderX");
-        Slider sliderY = find("#sliderY");
-        TextField textX = find("#textX");
-        TextField textY = find("#textY");
+        Slider sliderX = lookup("#sliderX").query();
+        Slider sliderY = lookup("#sliderY").query();
+        TextField textX = lookup("#textX").query();
+        TextField textY = lookup("#textY").query();
 
         //Pretty hard to handle Sliders - ScenicView helps a lot!
         //Moving Slider by Keyboard
@@ -148,10 +141,9 @@ public class TestedAppHeadTest extends GuiTest {
     /**
      * Types something inside the TextArea and then scrolls back up.
      */
-    @Test
-    public void typeTest() {
+    @Test void typeTest() {
         //Click on the TextArea first to focus it
-        TextArea area = find("#area");
+        TextArea area = lookup("#area").query();
         clickOn(area).write("Hello FX-World...\n\n\n\n\n\n\n\n");
 
         //Hard to access Scrollbars - ScenicView helps a lot!
