@@ -7,8 +7,6 @@ Shippable status:
 Travis status:
 [![Build Status](https://travis-ci.org/stevenschwenke/JavaFXWorkshop.svg?branch=master)](https://travis-ci.org/stevenschwenke/JavaFXWorkshop)
 
-[![Dependency Status](https://www.versioneye.com/user/projects/55a8fd323065350020000139/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56598575036c32003d000001)
-
 Meta: About the workshop
 --------------------------
 The workshop is an internal event for my coworkers. Target audience are developers who haven't heard much about JavaFX and want to know basic concepts and be able to build modern user interfaces.
